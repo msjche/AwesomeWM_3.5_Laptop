@@ -84,12 +84,12 @@ vicious.register(entnow, vicious.widgets.os, "$5")
 --weathericon:buttons(awful.util.table.join(awful.button({ }, 1, function () yawn.show(7) end)))
 
 
---yawn = lain.widgets.yawn(2513768,
---{
---    settings = function()
---        yawn_notification_preset.fg = gray
---    end
---})
+yawn = lain.widgets.yawn(2513768,
+{
+    settings = function()
+        yawn_notification_preset.fg = gray
+    end
+})
 
 ----------------------------------------------------------------------------------------
 -- Coretemp
