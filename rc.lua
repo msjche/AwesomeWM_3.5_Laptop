@@ -225,20 +225,12 @@ for s = 1, screen.count() do
     left_layout:add(mypromptbox[s])
 	left_layout:add(separator)
     left_layout:add(gimp_launcher)
+    left_layout:add(filezilla_launcher)
     left_layout:add(libreoffice_launcher)
     left_layout:add(thunderbird_launcher)
     left_layout:add(steam_launcher)
     left_layout:add(torbrowser_launcher)
     left_layout:add(separator)
-    left_layout:add(pianobaricon)
-    left_layout:add(space)
-    left_layout:add(pianobarwidget)
-    left_layout:add(separator)
-    left_layout:add(mpdicon)
-    left_layout:add(space)
-    left_layout:add(mpdwidget)
-    left_layout:add(space)
-
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
@@ -258,7 +250,6 @@ for s = 1, screen.count() do
     right_layout:add(separator)
     right_layout:add(space)
     right_layout:add(wifiicon)
---    right_layout:add(netcheck)
     right_layout:add(vpnwidget)
     right_layout:add(space)
     right_layout:add(separator)
@@ -273,7 +264,7 @@ for s = 1, screen.count() do
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
---    layout:set_middle(mytasklist[s])
+    layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
@@ -301,9 +292,14 @@ for s = 1, screen.count() do
     bottom_left_layout:add(cpugraph8)
     bottom_left_layout:add(cpuicon)
     bottom_left_layout:add(separator)
+    bottom_left_layout:add(pianobaricon)
     bottom_left_layout:add(space)
-    bottom_left_layout:add(bigspace)
-    bottom_left_layout:add(systemwidget)
+    bottom_left_layout:add(pianobarwidget)
+    bottom_left_layout:add(separator)
+    bottom_left_layout:add(mpdicon)
+    bottom_left_layout:add(space)
+    bottom_left_layout:add(mpdwidget)
+    bottom_left_layout:add(space)
 
     -- Widgets that are aligned to the right
     bottom_right_layout = wibox.layout.fixed.horizontal()
@@ -326,7 +322,8 @@ for s = 1, screen.count() do
     -- Now bring it all together (with the tasklist in the middle)
     bottom_layout = wibox.layout.align.horizontal()
     bottom_layout:set_left(bottom_left_layout)
-    bottom_layout:set_right(bottom_right_layout)
+--	layout:set_middle(mytasklist[s])
+	bottom_layout:set_right(bottom_right_layout)
     mybottomwibox[s]:set_widget(bottom_layout)
    
 end
@@ -443,7 +440,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ altkey }, "s", function () awful.util.spawn_with_shell( "urxvt -e glances") end),
 	awful.key({ modkey }, "b", function () awful.util.spawn( "luakit") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
-	awful.key({ modkey }, "v", function () awful.util.spawn( "xbmc") end),
+	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
 	awful.key({ modkey }, "t", function () awful.util.spawn( "turpial") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "libreoffice") end),
 	awful.key({ modkey }, "c", function () awful.util.spawn( "chromium") end),
@@ -672,6 +669,7 @@ autostart("hp-systray", 1)
 autostart("dropbox", 1)
 autostart("insync start", 1)
 autostart("megasync", 1)
+autostart("~/Scripts/Theming/1080.sh", 1)
 autostart("~/Scripts/start_HUD.sh", 3)
 
 -- }}}

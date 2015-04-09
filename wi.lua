@@ -54,6 +54,7 @@ thunderbird_launcher = awful.widget.launcher({ image = launcher_dir .. "thunderb
 kill_launcher = awful.widget.launcher({ image = launcher_dir .. "kill.png", command = "/home/msjche/Scripts/minimal.sh" })
 up_launcher = awful.widget.launcher({ image = launcher_dir .. "up.png", command = "/home/msjche/Scripts/up.sh" })
 gimp_launcher = awful.widget.launcher({ image = launcher_dir .. "gimp.png", command = "gimp" })
+filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.png", command = "filezilla" })
 
 ----------------------------------------------------------------------------------------
 -- System Info
@@ -392,7 +393,7 @@ fshome = lain.widgets.fs({
 -- Memory
 
 memicon = wibox.widget.imagebox(beautiful.widget_mem)
-memicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("urxvt -e htop", false) end)))
+memicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("urxvt -e htop -s PERCENT_MEM", false) end)))
 memwidget = lain.widgets.mem({
     settings  = function()
         mem_header = "mem "
