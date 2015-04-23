@@ -48,11 +48,12 @@ launcher_dir = active_theme .. "/icons/launchers/"
 virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "virtualbox.png", command = "VirtualBox" })
 SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
 torbrowser_launcher = awful.widget.launcher({ image = launcher_dir .. "tor.png", command = "torbrowser-launcher" })
-steam_launcher = awful.widget.launcher({ image = launcher_dir .. "steam.png", command = "primusrun steam" })
+steam_launcher = awful.widget.launcher({ image = launcher_dir .. "steam.png", command = "steam" })
 libreoffice_launcher = awful.widget.launcher({ image = launcher_dir .. "libreoffice.png", command = "libreoffice" })
 thunderbird_launcher = awful.widget.launcher({ image = launcher_dir .. "thunderbird.png", command = "thunderbird-bin" })
 kill_launcher = awful.widget.launcher({ image = launcher_dir .. "kill.png", command = "/home/msjche/Scripts/minimal.sh" })
 up_launcher = awful.widget.launcher({ image = launcher_dir .. "up.png", command = "/home/msjche/Scripts/up.sh" })
+hud_launcher = awful.widget.launcher({ image = launcher_dir .. "hud.png", command = "/home/msjche/Scripts/start_HUD.sh" })
 gimp_launcher = awful.widget.launcher({ image = launcher_dir .. "gimp.png", command = "gimp" })
 filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.png", command = "filezilla" })
 

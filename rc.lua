@@ -315,6 +315,7 @@ for s = 1, screen.count() do
     bottom_right_layout:add(space)
     bottom_right_layout:add(uptimewidget)
     bottom_right_layout:add(separator)
+    bottom_right_layout:add(hud_launcher)
     bottom_right_layout:add(up_launcher)
     bottom_right_layout:add(kill_launcher)
     bottom_right_layout:add(separator)
@@ -446,7 +447,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "c", function () awful.util.spawn( "chromium") end),
 	awful.key({ modkey }, "i", function () awful.util.spawn( "chromium -incognito") end),
 	awful.key({ modkey }, "p", function () awful.util.spawn( "pavucontrol") end),
-	awful.key({ modkey }, "s", function () awful.util.spawn( "optirun /home/msjche/.steam/steam/steam.sh") end),
+	awful.key({ modkey }, "s", function () awful.util.spawn( "steam") end),
 	awful.key({ modkey }, "e", function () awful.util.spawn( "thunar") end),
 	awful.key({ modkey }, "g", function () awful.util.spawn( "gvim") end),
 	awful.key({ altkey }, "z", function () awful.util.spawn( "pkill youtube-viewer") end),
