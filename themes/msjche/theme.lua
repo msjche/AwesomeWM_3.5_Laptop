@@ -65,6 +65,8 @@ theme.menu_height                   = "25"
 theme.menu_width                    = "70"
 
 
+theme.widget_net_up				= themedir .. "/icons/net_up.png"
+theme.widget_net_down			= themedir .. "/icons/net_down.png"
 theme.widget_up					= themedir .. "/icons/up.png"
 theme.widget_kill				= themedir .. "/icons/kill.png"
 theme.widget_play				= themedir .. "/icons/play.png"

@@ -30,7 +30,7 @@ border      = "#4A4A4A"
 bright_red  = "#FF0000"
 green       = "#41F300"
 
-cpuwidth = 75
+cpuwidth = 70
 wifiwidth = 180
 
 local util = awful.util
@@ -56,6 +56,7 @@ up_launcher = awful.widget.launcher({ image = launcher_dir .. "up.png", command 
 hud_launcher = awful.widget.launcher({ image = launcher_dir .. "hud.png", command = "/home/msjche/Scripts/start_HUD.sh" })
 gimp_launcher = awful.widget.launcher({ image = launcher_dir .. "gimp.png", command = "gimp" })
 filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.png", command = "filezilla" })
+chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", command = "google-chrome-stable" })
 
 ----------------------------------------------------------------------------------------
 -- System Info
@@ -656,15 +657,6 @@ netcheck = lain.widgets.net({
         end
     end
 })
-
-vicious.register(mpdwidget, vicious.widgets.mpd,
-    function (mpdwidget, args)
-        if args["{state}"] == "Stop" then 
-            return " - "
-        else 
-            return args["{Artist}"]..' - '.. args["{Title}"]
-        end
-    end, 10)
 
 wifiwidgetwidth = 50
 -- Initialize widget
