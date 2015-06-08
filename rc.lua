@@ -17,8 +17,6 @@ local lain = require("lain")
 local freedesktop = require('freedesktop')
 -- Widget files
 local wi = require("wi")
---
-
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -231,6 +229,7 @@ for s = 1, screen.count() do
     left_layout:add(steam_launcher)
     left_layout:add(torbrowser_launcher)
     left_layout:add(chrome_launcher)
+    left_layout:add(firefox_launcher)
     left_layout:add(separator)
     left_layout:add(pianobaricon)
     left_layout:add(space)
@@ -246,7 +245,6 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-
     right_layout:add(separator)
     right_layout:add(mailicon)
     right_layout:add(separator)
@@ -442,12 +440,13 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "b", function () awful.util.spawn( "luakit") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
-	awful.key({ modkey }, "t", function () awful.util.spawn( "turpial") end),
+	awful.key({ modkey }, "T", function () awful.util.spawn( "turpial") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "libreoffice") end),
 	awful.key({ modkey }, "c", function () awful.util.spawn( "chromium") end),
 	awful.key({ modkey }, "i", function () awful.util.spawn( "chromium -incognito") end),
 	awful.key({ modkey }, "p", function () awful.util.spawn( "pavucontrol") end),
 	awful.key({ modkey }, "s", function () awful.util.spawn( "steam") end),
+	awful.key({ modkey }, "t", function () awful.util.spawn( "tor-browser-en") end),
 	awful.key({ modkey }, "e", function () awful.util.spawn( "thunar") end),
 	awful.key({ modkey }, "g", function () awful.util.spawn( "gvim") end),
 	awful.key({ altkey }, "z", function () awful.util.spawn( "pkill youtube-viewer") end),

@@ -47,7 +47,7 @@ launcher_dir = active_theme .. "/icons/launchers/"
 
 virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "virtualbox.png", command = "VirtualBox" })
 SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
-torbrowser_launcher = awful.widget.launcher({ image = launcher_dir .. "tor.png", command = "torbrowser-launcher" })
+torbrowser_launcher = awful.widget.launcher({ image = launcher_dir .. "tor.png", command = "tor-browser-en" })
 steam_launcher = awful.widget.launcher({ image = launcher_dir .. "steam.png", command = "steam" })
 libreoffice_launcher = awful.widget.launcher({ image = launcher_dir .. "libreoffice.png", command = "libreoffice" })
 thunderbird_launcher = awful.widget.launcher({ image = launcher_dir .. "thunderbird.png", command = "thunderbird-bin" })
@@ -57,6 +57,7 @@ hud_launcher = awful.widget.launcher({ image = launcher_dir .. "hud.png", comman
 gimp_launcher = awful.widget.launcher({ image = launcher_dir .. "gimp.png", command = "gimp" })
 filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.png", command = "filezilla" })
 chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", command = "google-chrome-stable" })
+firefox_launcher = awful.widget.launcher({ image = launcher_dir .. "firefox.png", command = "firefox" })
 
 ----------------------------------------------------------------------------------------
 -- System Info
@@ -78,7 +79,7 @@ entnow:set_background_color("#000000")
 entnow:set_border_color(border)
 entnow:set_color(blue)
 -- Register widget
-vicious.register(entnow, vicious.widgets.os, "$5")
+vicious.register(entnow, vicious.widgets.dio, "$1")
 
 ----------------------------------------------------------------------------------------
 -- Weather
@@ -201,10 +202,13 @@ vicious.register(pianobarwidget, vicious.widgets.mpd,
       -- Paused
     if play_or_pause == "0" then
         pianobaricon:set_image(beautiful.widget_pause)
-		return markup(gray, band) .. markup(gray, " ┈ ") .. markup(gray, "paused")
+--		return markup(gray, band) .. markup(gray, " ■ ") .. markup(gray, "paused")
+		return markup(gray, "✗ ") .. markup(gray, band)
+--		return markup(gray, "Pandora paused (") .. markup(blue, band) .. markup (gray,")")
     elseif play_or_pause == "1" then
         pianobarwidget.width = 0
-		return markup(blue, band) .. markup(gray, " ┈ ") .. markup(green, song)
+--		return markup(blue, band) .. markup(yellow, " ▶ ") .. markup(green, song)
+		return markup(yellow, " ♬  ") .. markup(blue, band) .. markup(gray, " ⥤ ") .. markup(green, song)
     else
       	-- Stopped
       	pianobarwidget.width = 0
@@ -236,7 +240,7 @@ mpdwidget = lain.widgets.mpd({
             artist = "mpd"
             title  = "paused"
 			mpdicon:set_image(beautiful.widget_mpd_paused)
-			mpdwidget:set_markup(markup(gray, artist) .. markup(gray, " ┈ ") .. markup(gray, title))
+			mpdwidget:set_markup(markup(gray, artist) .. markup(gray, " ") .. markup(gray, title))
         elseif mpd_now.state == "stop" then
             artist = ""
             title  = ""
