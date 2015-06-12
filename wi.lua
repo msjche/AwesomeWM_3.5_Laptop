@@ -203,12 +203,14 @@ vicious.register(pianobarwidget, vicious.widgets.mpd,
     if play_or_pause == "0" then
         pianobaricon:set_image(beautiful.widget_pause)
 --		return markup(gray, band) .. markup(gray, " ■ ") .. markup(gray, "paused")
-		return markup(gray, "✗ ") .. markup(gray, band)
+		return markup(gray, band)
+--		return markup(gray, "✗ ") .. markup(gray, band)
 --		return markup(gray, "Pandora paused (") .. markup(blue, band) .. markup (gray,")")
     elseif play_or_pause == "1" then
         pianobarwidget.width = 0
 --		return markup(blue, band) .. markup(yellow, " ▶ ") .. markup(green, song)
-		return markup(yellow, " ♬  ") .. markup(blue, band) .. markup(gray, " ⥤ ") .. markup(green, song)
+--		return markup(yellow, " ♬  ") .. markup(blue, band) .. markup(gray, " ⥤ ") .. markup(green, song)
+		return markup(blue, band) .. markup(gray, " ⥤ ") .. markup(green, song)
     else
       	-- Stopped
       	pianobarwidget.width = 0
