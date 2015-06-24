@@ -372,14 +372,14 @@ globalkeys = awful.util.table.join(
 	awful.key({ }, "XF86AudioMute", function ()
 	awful.util.spawn("amixer set Master toggle", false) end),
 
-    awful.key({  }, "F5", function ()
---  awful.key({ modkey, "Control" }, "Up", function ()
+--    awful.key({  }, "F5", function ()
+  awful.key({ modkey, "Control" }, "Up", function ()
     awful.util.spawn("mpc toggle", false) end),
-    awful.key({  }, "F6", function ()
---  awful.key({ modkey, "Control" }, "Right", function ()
+--    awful.key({  }, "F6", function ()
+  awful.key({ modkey, "Control" }, "Right", function ()
     awful.util.spawn("mpc next", false) end),
---  awful.key({ modkey, "Control" }, "Left", function ()
-    awful.key({  }, "F4", function ()
+  awful.key({ modkey, "Control" }, "Left", function ()
+--    awful.key({  }, "F4", function ()
     awful.util.spawn("mpc prev", false) end),
 	
 --Pianobar
