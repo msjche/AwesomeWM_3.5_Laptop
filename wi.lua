@@ -30,8 +30,8 @@ border      = "#4A4A4A"
 bright_red  = "#FF0000"
 green       = "#41F300"
 
-cpuwidth = 70
-wifiwidth = 180
+cpuwidth = 90
+wifiwidth = 240
 
 local util = awful.util
 
@@ -235,11 +235,12 @@ mpdwidget = lain.widgets.mpd({
 		
 
         if mpd_now.state == "pause" then
-            artist = "mpd"
+--            artist = "mpd"
+        	artist = mpd_now.artist .. " "
             title  = "paused"
 			mpdicon:set_image(beautiful.widget_mpd_paused)
 --			mpdwidget:set_markup(markup(gray, artist) .. markup(gray, " ") .. markup(gray, title))
-			mpdwidget:set_markup(markup(gray, title))
+			mpdwidget:set_markup(markup(gray, artist))
         elseif mpd_now.state == "stop" then
             artist = ""
             title  = ""
@@ -447,6 +448,7 @@ baticon:buttons(batwidget:buttons())
         
     if bat_s == "Full" then
 			baticon:set_image(beautiful.widget_charge_ac)
+            return batwidget:set_markup(markup(gray, "")
        
 	elseif bat_s == "Discharging" then
 

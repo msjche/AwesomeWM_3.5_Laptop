@@ -213,7 +213,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 23 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 27 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -279,7 +279,7 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Create the bottom wibox
-    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 22 })
+    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 30 })
 
     -- Widgets that are aligned to the bottom left
     bottom_left_layout = wibox.layout.fixed.horizontal()
@@ -669,7 +669,7 @@ autostart("compton -b", 1)
 --autostart("dropbox", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
-autostart("~/Scripts/Theming/1080.sh", 1)
+autostart("~/Scripts/Theming/1440.sh", 1)
 autostart("~/Scripts/start_HUD.sh", 3)
 
 -- }}}
