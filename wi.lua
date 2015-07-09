@@ -448,7 +448,7 @@ baticon:buttons(batwidget:buttons())
         
     if bat_s == "Full" then
 			baticon:set_image(beautiful.widget_charge_ac)
-            return batwidget:set_markup(markup(gray, "")
+            return batwidget:set_markup(markup(gray, ""))
        
 	elseif bat_s == "Discharging" then
 
