@@ -595,7 +595,7 @@ client.connect_signal("manage", function (c, startup)
             awful.placement.no_overlap(c)
             awful.placement.no_offscreen(c)
 --            awful.placement.under_mouse(c)
-            awful.placement.centered(c)
+--            awful.placement.centered(c)
         end
     end
 
@@ -662,7 +662,8 @@ autostart("pkill conky", 1)
 autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
-autostart("nm-applet", 1)
+autostart("pkill nm-applet", 1)
+autostart("nm-applet", 3)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)

@@ -57,7 +57,7 @@ hud_launcher = awful.widget.launcher({ image = launcher_dir .. "hud.png", comman
 gimp_launcher = awful.widget.launcher({ image = launcher_dir .. "gimp.png", command = "gimp" })
 filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.png", command = "filezilla" })
 chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", command = "google-chrome-stable" })
-firefox_launcher = awful.widget.launcher({ image = launcher_dir .. "firefox.png", command = "firefox" })
+firefox_launcher = awful.widget.launcher({ image = launcher_dir .. "firefox.png", command = "firefox-developer" })
 
 ----------------------------------------------------------------------------------------
 -- System Info
