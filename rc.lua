@@ -279,7 +279,7 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Create the bottom wibox
-    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 30 })
+    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 28 })
 
     -- Widgets that are aligned to the bottom left
     bottom_left_layout = wibox.layout.fixed.horizontal()
@@ -433,11 +433,12 @@ globalkeys = awful.util.table.join(
 
 -- User programs
 
-	awful.key({ modkey, "Shift"   }, "Delete", function() awful.util.spawn("oblogout") end),
+	awful.key({ modkey, "Shift" }, "Delete", function() awful.util.spawn("oblogout") end),
 	awful.key({ modkey }, "Escape", function() awful.util.spawn("poweroff") end),
 	awful.key({ altkey }, "m", function () awful.util.spawn_with_shell( "urxvt -e htop -s PERCENT_MEM") end),
 	awful.key({ altkey }, "s", function () awful.util.spawn_with_shell( "urxvt -e glances") end),
 	awful.key({ modkey }, "b", function () awful.util.spawn( "luakit") end),
+	awful.key({ modkey, "Shift" }, "b", function () awful.util.spawn( "firefox-developer") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
 	awful.key({ modkey }, "T", function () awful.util.spawn( "turpial") end),
@@ -662,7 +663,7 @@ autostart("pkill conky", 1)
 autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
-autostart("pkill nm-applet", 1)
+--autostart("pkill nm-applet", 1)
 autostart("nm-applet", 3)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
@@ -672,6 +673,7 @@ autostart("compton -b", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
 autostart("~/Scripts/start_HUD.sh", 3)
+autostart("~/Scripts/blanking.sh", 3)
 
 -- }}}
 
