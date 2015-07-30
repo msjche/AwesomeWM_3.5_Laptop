@@ -28,7 +28,7 @@ local fs = {}
 
 local notification  = nil
 fs_notification_preset = { fg = beautiful.fg_normal }
-fs_notification_preset = { font = "Inconsolata 10" }
+fs_notification_preset = { font = "Inconsolata 13" }
 
 function fs:hide()
     if notification ~= nil then

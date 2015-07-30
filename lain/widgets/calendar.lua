@@ -108,7 +108,7 @@ function calendar:attach(widget, args)
     calendar.cal       = args.cal or "/usr/bin/cal"
     calendar.icons     = args.icons or icons_dir .. "cal/white/"
     calendar.font      = "Inconsolata"
-    calendar.font_size = 10
+    calendar.font_size = 13
     calendar.fg        = args.fg or beautiful.fg_normal or "#FFFFFF"
     calendar.bg        = args.bg or beautiful.bg_normal or "#FFFFFF"
     calendar.position  = args.position or "top_right"
