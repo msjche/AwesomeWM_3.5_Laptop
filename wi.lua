@@ -58,6 +58,7 @@ gimp_launcher = awful.widget.launcher({ image = launcher_dir .. "gimp.png", comm
 filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.png", command = "filezilla" })
 chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", command = "google-chrome-beta" })
 firefox_launcher = awful.widget.launcher({ image = launcher_dir .. "firefox.png", command = "firefox-developer" })
+SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
 
 ----------------------------------------------------------------------------------------
 -- System Info
@@ -406,7 +407,8 @@ memwidget = lain.widgets.mem({
         mem_u      = mem_now.used
         mem_t      = mem_now.total
         mem_p      = mem_now.percent
-        widget:set_markup(markup(blue, mem_u) .. markup(gray, "MB"))
+--        widget:set_markup(markup(blue, mem_u) .. markup(gray, "MB"))
+        widget:set_markup(markup(blue, mem_u))
     end
 })
 

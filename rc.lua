@@ -230,6 +230,7 @@ for s = 1, screen.count() do
     left_layout:add(torbrowser_launcher)
     left_layout:add(chrome_launcher)
     left_layout:add(firefox_launcher)
+    left_layout:add(SSR_launcher)
     left_layout:add(separator)
     left_layout:add(pianobaricon)
     left_layout:add(space)
@@ -451,6 +452,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "e", function () awful.util.spawn( "thunar") end),
 	awful.key({ modkey }, "g", function () awful.util.spawn( "gvim") end),
 	awful.key({ altkey }, "z", function () awful.util.spawn( "pkill youtube-viewer") end),
+	awful.key({ altkey }, "x", function () awful.util.spawn( "pkill mpv") end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
