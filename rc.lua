@@ -247,6 +247,8 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(separator)
+    right_layout:add(pacicon)
+    right_layout:add(pacwidget)
     right_layout:add(mailicon)
     right_layout:add(separator)
     right_layout:add(memicon)
