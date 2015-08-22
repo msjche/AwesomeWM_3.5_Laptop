@@ -249,6 +249,7 @@ for s = 1, screen.count() do
     right_layout:add(separator)
     right_layout:add(pacicon)
     right_layout:add(pacwidget)
+    right_layout:add(separator)
     right_layout:add(mailicon)
     right_layout:add(separator)
     right_layout:add(memicon)
