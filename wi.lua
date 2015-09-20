@@ -140,12 +140,12 @@ vicious.register(pacwidget, vicious.widgets.pkg, function(widget, args)
    end
 
   return args[1]
-  end, 60, "Arch S") -- Arch S for ignorepkg
+  end, 1, "Arch S") -- Arch S for ignorepkg
 --
 -- Buttons
   function popup_pac()
 --  local pac_updates = ""
-  local f = io.popen("pacman -Sup --dbpath /tmp/checkup-db-msjche/sync")
+  local f = io.popen("sudo pacman -S --dbpath /tmp/checkup-db-msjche/sync")
 --  local f = io.popen("cat /tmp/off.updates")
   if f then
   pac_updates = f:read("*a"):match(".*/(.*)-.*\n$")
@@ -182,7 +182,6 @@ vicious.register(pianobarwidget, vicious.widgets.mpd,
 --      f = io.open(os.getenv("HOME") .. "/.config/pianobar/isplaying")
 --      play_or_pause = f:read("*line")
 --      f:close()
-
 
       f = io.open(os.getenv("HOME") .. "/.config/pianobar/isplaying")
       play_or_pause = f:read("*line")
@@ -386,13 +385,15 @@ fshome = lain.widgets.fs({
         fs_notification_preset.fg = gray
         fs_header = ""
         fs_p      = ""
+		fs_ps	  = ""
 
         if fs_now.used >= 75 then
             fs_header = " Hdd "
             fs_p      = fs_now.used
+			fs_ps	  = "%"
         end
 
-        widget:set_markup(markup(gray, " ◘ ") .. markup(red, fs_header) .. markup(bright_red, fs_p))
+        widget:set_markup(markup(gray, " ◘ ") .. markup(red, fs_header) .. markup(bright_red, fs_p) .. markup(gray, fs_ps))
     end
 })
 
@@ -490,12 +491,12 @@ baticon:buttons(batwidget:buttons())
 		elseif bat_perc >= bat_10 and bat_perc < bat_20 then
 			baticon:set_image(beautiful.widget_bat_20)
             return batwidget:set_markup(markup(gray, "  ") .. markup(red, bat_t) 
-			.. markup(red, "  ⚠"))
+			.. markup(red, " ⚠"))
 	
 		elseif bat_perc > bat_5 and bat_perc < bat_10 then
 			baticon:set_image(beautiful.widget_bat_10)
             return batwidget:set_markup(markup(gray, "  ") .. markup(red, bat_t) 
-			.. markup(red, " ⚠ "))
+			.. markup(red, " ⚠"))
 	
 		else
 			baticon:set_image(beautiful.widget_bat_empty)

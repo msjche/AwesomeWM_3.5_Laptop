@@ -446,7 +446,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
 	awful.key({ modkey }, "T", function () awful.util.spawn( "turpial") end),
-	awful.key({ modkey }, "o", function () awful.util.spawn( "libreoffice") end),
+	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
 	awful.key({ modkey }, "c", function () awful.util.spawn( "chromium") end),
 	awful.key({ modkey }, "i", function () awful.util.spawn( "chromium -incognito") end),
 	awful.key({ modkey }, "p", function () awful.util.spawn( "pavucontrol") end),
@@ -669,7 +669,8 @@ autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
 --autostart("pkill nm-applet", 1)
-autostart("nm-applet", 3)
+autostart("pkill nm-applet", 3)
+autostart("nm-applet", 5)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)
@@ -677,7 +678,7 @@ autostart("compton -b", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
-autostart("~/Scripts/start_HUD.sh", 3)
+--autostart("~/Scripts/start_HUD.sh", 3)
 autostart("~/Scripts/blanking.sh", 3)
 
 -- }}}
