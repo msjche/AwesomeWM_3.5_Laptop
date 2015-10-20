@@ -231,6 +231,7 @@ for s = 1, screen.count() do
     left_layout:add(chrome_launcher)
     left_layout:add(firefox_launcher)
     left_layout:add(SSR_launcher)
+    left_layout:add(telegram_launcher)
     left_layout:add(separator)
     left_layout:add(pianobaricon)
     left_layout:add(space)
@@ -442,6 +443,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ altkey }, "m", function () awful.util.spawn_with_shell( "urxvt -e htop -s PERCENT_MEM") end),
 	awful.key({ altkey }, "s", function () awful.util.spawn_with_shell( "urxvt -e glances") end),
 	awful.key({ modkey }, "b", function () awful.util.spawn( "luakit") end),
+	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
 	awful.key({ modkey, "Shift" }, "b", function () awful.util.spawn( "firefox-developer") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
