@@ -113,6 +113,11 @@ end
 
 -- {{{ Menu
 require("freedesktop/freedesktop")
+
+mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
+                              theme = { height = 25, width = 250 }})
+							  mylauncher = awful.widget.launcher({ image = active_theme .. "/icons/" .. "awesome_icon.png" ,
+							                                       menu = mymainmenu })
 -- }}}
 
 -- Menubar configuration
@@ -149,6 +154,7 @@ separator = wibox.widget.textbox(' ⁞ ')
 -- Create a wibox for each screen and add it
 mywibox = {}
 mybottomwibox = {}
+myverticalwibox = {}
 mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
@@ -211,28 +217,39 @@ for s = 1, screen.count() do
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
+ 
+ -- Create the vertical wibox
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 35 })
+
+    -- Widgets that are aligned to the bottom left
+    top_left_layout = wibox.layout.fixed.vertical()
+    top_left_layout:add(mylauncher)
+    top_left_layout:add(gimp_launcher)
+    top_left_layout:add(filezilla_launcher)
+    top_left_layout:add(libreoffice_launcher)
+    top_left_layout:add(thunderbird_launcher)
+    top_left_layout:add(steam_launcher)
+    top_left_layout:add(torbrowser_launcher)
+    top_left_layout:add(chrome_launcher)
+    top_left_layout:add(firefox_launcher)
+    top_left_layout:add(SSR_launcher)
+    top_left_layout:add(telegram_launcher)
+    top_left_layout:add(space)
+ 
+	-- Now bring it all together (with the tasklist in the middle)
+    top_layout= wibox.layout.align.vertical()
+    top_layout:set_top(top_left_layout)
+    myverticalwibox[s]:set_widget(top_layout)
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s, height = 27 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
     left_layout:add(mytaglist[s])
     left_layout:add(space)
     left_layout:add(mypromptbox[s])
 	left_layout:add(separator)
-    left_layout:add(gimp_launcher)
-    left_layout:add(filezilla_launcher)
-    left_layout:add(libreoffice_launcher)
-    left_layout:add(thunderbird_launcher)
-    left_layout:add(steam_launcher)
-    left_layout:add(torbrowser_launcher)
-    left_layout:add(chrome_launcher)
-    left_layout:add(firefox_launcher)
-    left_layout:add(SSR_launcher)
-    left_layout:add(telegram_launcher)
-    left_layout:add(separator)
     left_layout:add(pianobaricon)
     left_layout:add(space)
     left_layout:add(pianobarwidget)
@@ -241,8 +258,7 @@ for s = 1, screen.count() do
     left_layout:add(space)
     left_layout:add(mpdwidget)
     left_layout:add(space)
-
-   left_layout:add(separator)
+	left_layout:add(separator)
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
@@ -278,7 +294,6 @@ for s = 1, screen.count() do
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
---    layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
@@ -329,7 +344,7 @@ for s = 1, screen.count() do
 	bottom_layout:set_middle(mytasklist[s])
 	bottom_layout:set_right(bottom_right_layout)
     mybottomwibox[s]:set_widget(bottom_layout)
-   
+ 
 end
 -- }}}
 
@@ -671,8 +686,7 @@ autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
 --autostart("pkill nm-applet", 1)
-autostart("pkill nm-applet", 3)
-autostart("nm-applet", 5)
+--autostart("nm-applet", 5)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)
