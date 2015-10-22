@@ -30,8 +30,9 @@ border      = "#4A4A4A"
 bright_red  = "#FF0000"
 green       = "#41F300"
 
-cpuwidth = 90
-wifiwidth = 240
+widheight = 30
+cpuwidth = 50
+wifiwidth = 50
 
 local util = awful.util
 
@@ -289,7 +290,7 @@ vicious.cache(vicious.widgets.cpu)
 cpugraph1 = awful.widget.graph()
 -- Graph properties
 cpugraph1:set_width(cpuwidth)
-cpugraph1:set_height(27)
+cpugraph1:set_height(widheight)
 cpugraph1:set_background_color("#000000")
 cpugraph1:set_border_color(border)
 cpugraph1:set_color(blue)
@@ -300,7 +301,7 @@ vicious.register(cpugraph1, vicious.widgets.cpu, "$2")
 cpugraph2 = awful.widget.graph()
 -- Graph properties
 cpugraph2:set_width(cpuwidth)
-cpugraph2:set_height(27)
+cpugraph2:set_height(widheight)
 cpugraph2:set_background_color("#000000")
 cpugraph2:set_border_color(border)
 cpugraph2:set_color(blue)
@@ -311,7 +312,7 @@ vicious.register(cpugraph2, vicious.widgets.cpu, "$3")
 cpugraph3 = awful.widget.graph()
 -- Graph properties
 cpugraph3:set_width(cpuwidth)
-cpugraph3:set_height(27)
+cpugraph3:set_height(widheight)
 cpugraph3:set_background_color("#000000")
 cpugraph3:set_border_color(border)
 cpugraph3:set_color(blue)
@@ -322,7 +323,7 @@ vicious.register(cpugraph3, vicious.widgets.cpu, "$4")
 cpugraph4 = awful.widget.graph()
 -- Graph properties
 cpugraph4:set_width(cpuwidth)
-cpugraph4:set_height(27)
+cpugraph4:set_height(widheight)
 cpugraph4:set_background_color("#000000")
 cpugraph4:set_border_color(border)
 cpugraph4:set_color(blue)
@@ -333,7 +334,7 @@ vicious.register(cpugraph4, vicious.widgets.cpu, "$5")
 cpugraph5 = awful.widget.graph()
 -- Graph properties
 cpugraph5:set_width(cpuwidth)
-cpugraph5:set_height(27)
+cpugraph5:set_height(widheight)
 cpugraph5:set_background_color("#000000")
 cpugraph5:set_border_color(border)
 cpugraph5:set_color(blue)
@@ -344,7 +345,7 @@ vicious.register(cpugraph5, vicious.widgets.cpu, "$6")
 cpugraph6 = awful.widget.graph()
 -- Graph properties
 cpugraph6:set_width(cpuwidth)
-cpugraph6:set_height(27)
+cpugraph6:set_height(widheight)
 cpugraph6:set_background_color("#000000")
 cpugraph6:set_border_color(border)
 cpugraph6:set_color(blue)
@@ -355,7 +356,7 @@ vicious.register(cpugraph6, vicious.widgets.cpu, "$7")
 cpugraph7 = awful.widget.graph()
 -- Graph properties
 cpugraph7:set_width(cpuwidth)
-cpugraph7:set_height(27)
+cpugraph7:set_height(widheight)
 cpugraph7:set_background_color("#000000")
 cpugraph7:set_border_color(border)
 cpugraph7:set_color(blue)
@@ -366,7 +367,7 @@ vicious.register(cpugraph7, vicious.widgets.cpu, "$8")
 cpugraph8 = awful.widget.graph()
 -- Graph properties
 cpugraph8:set_width(cpuwidth)
-cpugraph8:set_height(27)
+cpugraph8:set_height(widheight)
 cpugraph8:set_background_color("#000000")
 cpugraph8:set_border_color(border)
 cpugraph8:set_color(blue)
@@ -688,6 +689,7 @@ vicious.cache(vicious.widgets.net)
 wifidown = awful.widget.graph()
 -- Graph properties
 wifidown:set_width(wifiwidth)
+wifidown:set_height(widheight)
 wifidown:set_scale(true)
 wifidown:set_max_value(20)
 wifidown:set_background_color("#000000")
@@ -701,6 +703,7 @@ vicious.register(wifidown, vicious.widgets.net, "${wlp6s0 down_kb}")
 wifiup = awful.widget.graph()
 -- Graph properties
 wifiup:set_width(wifiwidth)
+wifiup:set_height(widheight)
 wifiup:set_scale(true)
 wifiup:set_max_value(5)
 wifiup:set_background_color("#000000")
@@ -737,7 +740,10 @@ vicious.cache(vicious.widgets.uptime)
 
 uptimewidget = wibox.widget.textbox()
   uptimewidget:set_align("right")
-  vicious.register(uptimewidget, vicious.widgets.uptime, markup(blue, "$1") .. markup (gray, "D ┈ ") .. markup(blue, "$2") .. markup(gray, "h ") .. markup(blue, "$3") .. markup(gray, "m"))
+  --vicious.register(uptimewidget, vicious.widgets.uptime, markup(blue, "$1") .. markup (gray, "D ┈ ") .. markup(blue, "$2") .. markup(gray, "h ") .. markup(blue, "$3") .. markup(gray, "m"))
+
+  --vertical widget:
+  vicious.register(uptimewidget, vicious.widgets.uptime, markup(blue, "$1") .. markup (gray, "D ") .. markup(blue, "$2") .. markup(gray, "h ") .. markup(blue, "$3") .. markup(gray, "m"))
 
 ----------------------------------------------------------------------------------------
 -- Conky HUD

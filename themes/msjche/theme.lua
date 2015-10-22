@@ -46,8 +46,8 @@ else
 end
 --}}}
 
-theme.font                          = "Droid Sans 14"
-theme.taglist_font                  = "Droid Sans 16"
+theme.font                          = "Droid Sans 16"
+theme.taglist_font                  = "Droid Sans 18"
 theme.fg_normal                     = "#747474"
 theme.fg_focus                      = "#DDDCFF70"
 theme.bg_normal                     = "#12121270"
@@ -61,8 +61,8 @@ theme.titlebar_bg_focus             = "#292929"
 
 theme.taglist_fg_focus              = "#DDDCFF"
 theme.taglist_bg_focus              = "#121212"
-theme.menu_height                   = "25"
-theme.menu_width                    = "70"
+theme.menu_height                   = "30"
+theme.menu_width                    = "80"
 
 
 theme.widget_net_up				= themedir .. "/icons/net_up.png"

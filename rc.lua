@@ -219,7 +219,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
  
  -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 35 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 55 })
 
     -- Widgets that are aligned to the bottom left
     top_left_layout = wibox.layout.fixed.vertical()
@@ -235,14 +235,35 @@ for s = 1, screen.count() do
     top_left_layout:add(SSR_launcher)
     top_left_layout:add(telegram_launcher)
     top_left_layout:add(space)
+
+    bottom_left_layout = wibox.layout.fixed.vertical()
+    bottom_left_layout:add(cpuicon)
+    bottom_left_layout:add(cpugraph1)
+    bottom_left_layout:add(cpugraph1)
+    bottom_left_layout:add(cpugraph2)
+    bottom_left_layout:add(cpugraph3)
+    bottom_left_layout:add(cpugraph4)
+    bottom_left_layout:add(cpugraph5)
+    bottom_left_layout:add(cpugraph7)
+    bottom_left_layout:add(cpugraph8)
+    bottom_left_layout:add(cpuicon)
+    bottom_left_layout:add(net_down)
+    bottom_left_layout:add(wifidown)
+    bottom_left_layout:add(wifiup)
+    bottom_left_layout:add(net_up)
+    bottom_left_layout:add(baticon)
+    bottom_left_layout:add(batwidget)
+    bottom_left_layout:add(wifiicon)
+    bottom_left_layout:add(vpnwidget)
  
 	-- Now bring it all together (with the tasklist in the middle)
     top_layout= wibox.layout.align.vertical()
     top_layout:set_top(top_left_layout)
+	top_layout:set_bottom(bottom_left_layout)
     myverticalwibox[s]:set_widget(top_layout)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 27 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 32 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -278,15 +299,19 @@ for s = 1, screen.count() do
     right_layout:add(volicon)
     right_layout:add(volumewidget)
     right_layout:add(separator)
-    right_layout:add(space)
-    right_layout:add(wifiicon)
-    right_layout:add(vpnwidget)
-    right_layout:add(space)
+    right_layout:add(wifiwidget)
+--    right_layout:add(separator)
+--    right_layout:add(wifiicon)
+--    right_layout:add(vpnwidget)
+--    right_layout:add(space)
+--    right_layout:add(separator)
+--    right_layout:add(space)
+--    right_layout:add(baticon)
+--    right_layout:add(batwidget)
+--    right_layout:add(space)
     right_layout:add(separator)
-    right_layout:add(space)
-    right_layout:add(baticon)
-    right_layout:add(batwidget)
-    right_layout:add(space)
+    right_layout:add(uptimeicon)
+    right_layout:add(uptimewidget)
     right_layout:add(separator)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
@@ -294,12 +319,13 @@ for s = 1, screen.count() do
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
     layout:set_left(left_layout)
+	layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
     mywibox[s]:set_widget(layout)
 
     -- Create the bottom wibox
-    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 28 })
+--    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 28 })
 
     -- Widgets that are aligned to the bottom left
     bottom_left_layout = wibox.layout.fixed.horizontal()
@@ -343,7 +369,7 @@ for s = 1, screen.count() do
     bottom_layout:set_left(bottom_left_layout)
 	bottom_layout:set_middle(mytasklist[s])
 	bottom_layout:set_right(bottom_right_layout)
-    mybottomwibox[s]:set_widget(bottom_layout)
+--    mybottomwibox[s]:set_widget(bottom_layout)
  
 end
 -- }}}
