@@ -46,11 +46,11 @@ else
 end
 --}}}
 
-theme.font                          = "Droid Sans 16"
-theme.taglist_font                  = "Droid Sans 18"
+theme.font                          = "Droid Sans 15"
+theme.taglist_font                  = "Droid Sans 17"
 theme.fg_normal                     = "#747474"
-theme.fg_focus                      = "#DDDCFF70"
-theme.bg_normal                     = "#12121270"
+theme.fg_focus                      = "#DDDCFF"
+theme.bg_normal                     = "#12121200"
 theme.bg_focus                      = "#101010"
 theme.fg_urgent                     = "#CC9393"
 theme.bg_urgent                     = "#2A1F1E"

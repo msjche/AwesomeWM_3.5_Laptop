@@ -57,7 +57,7 @@ up_launcher = awful.widget.launcher({ image = launcher_dir .. "up.png", command 
 hud_launcher = awful.widget.launcher({ image = launcher_dir .. "hud.png", command = "/home/msjche/Scripts/start_HUD.sh" })
 gimp_launcher = awful.widget.launcher({ image = launcher_dir .. "gimp.png", command = "gimp" })
 filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.png", command = "filezilla" })
-chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", command = "google-chrome-stable" })
+chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", command = "google-chrome-beta" })
 firefox_launcher = awful.widget.launcher({ image = launcher_dir .. "firefox.png", command = "firefox-developer" })
 telegram_launcher= awful.widget.launcher({ image = launcher_dir .. "telegram.png", command = "telegram" })
 

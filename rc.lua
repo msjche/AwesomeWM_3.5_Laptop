@@ -219,20 +219,20 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
  
  -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 55 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 50 })
 
     -- Widgets that are aligned to the bottom left
     top_left_layout = wibox.layout.fixed.vertical()
     top_left_layout:add(mylauncher)
-    top_left_layout:add(gimp_launcher)
+--    top_left_layout:add(gimp_launcher)
     top_left_layout:add(filezilla_launcher)
     top_left_layout:add(libreoffice_launcher)
     top_left_layout:add(thunderbird_launcher)
     top_left_layout:add(steam_launcher)
     top_left_layout:add(torbrowser_launcher)
-    top_left_layout:add(chrome_launcher)
-    top_left_layout:add(firefox_launcher)
-    top_left_layout:add(SSR_launcher)
+--    top_left_layout:add(chrome_launcher)
+--    top_left_layout:add(firefox_launcher)
+--    top_left_layout:add(SSR_launcher)
     top_left_layout:add(telegram_launcher)
     top_left_layout:add(space)
 
@@ -255,6 +255,9 @@ for s = 1, screen.count() do
     bottom_left_layout:add(batwidget)
     bottom_left_layout:add(wifiicon)
     bottom_left_layout:add(vpnwidget)
+--    bottom_left_layout:add(up_launcher)
+    bottom_left_layout:add(hud_launcher)
+    bottom_left_layout:add(kill_launcher)
  
 	-- Now bring it all together (with the tasklist in the middle)
     top_layout= wibox.layout.align.vertical()
@@ -283,6 +286,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+    right_layout:add(separator)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(separator)
     right_layout:add(pacicon)
@@ -436,7 +440,16 @@ globalkeys = awful.util.table.join(
        awful.key({ altkey }, "-", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/ban.sh") end),
        awful.key({ altkey }, "i", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/status.sh") end),
 --       awful.key({ altkey }, "x", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/stop.sh") end),
-	
+
+-- Toggle vertical wibox visibility
+     awful.key({ altkey }, "l", function ()
+	      myverticalwibox[mouse.screen].visible = not myverticalwibox[mouse.screen].visible
+		      end), 
+     awful.key({ altkey }, "t", function ()
+	      mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+		      end), 
+
+
 -- Conky keybindings
     awful.key({}, "F12", function() raise_conky() end, function() lower_conky() end),
     awful.key({}, "F10", function() toggle_conky() end),
@@ -491,7 +504,6 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "T", function () awful.util.spawn( "turpial") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
 	awful.key({ modkey }, "c", function () awful.util.spawn( "chromium") end),
-	awful.key({ modkey }, "i", function () awful.util.spawn( "chromium -incognito") end),
 	awful.key({ modkey }, "p", function () awful.util.spawn( "pavucontrol") end),
 	awful.key({ modkey }, "s", function () awful.util.spawn( "steam") end),
 	awful.key({ modkey }, "t", function () awful.util.spawn( "tor-browser-en") end),
@@ -720,7 +732,7 @@ autostart("compton -b", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
---autostart("~/Scripts/start_HUD.sh", 3)
+autostart("~/Scripts/start_HUD.sh", 3)
 autostart("~/Scripts/blanking.sh", 3)
 
 -- }}}
