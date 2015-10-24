@@ -45,6 +45,7 @@ local math         = { floor  = math.floor }
 ----------------------------------------------------------------------------------------
 -- Launchers
 launcher_dir = active_theme .. "/icons/launchers/"
+icon_dir = active_theme .. "/icons/"
 
 virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "virtualbox.png", command = "VirtualBox" })
 SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
@@ -463,40 +464,40 @@ baticon:buttons(batwidget:buttons())
 
 		elseif bat_perc >= bat_80 and bat_perc < bat_90 then
 			baticon:set_image(beautiful.widget_bat_90)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(green, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(green, bat_t))
 
 		elseif bat_perc >= bat_70 and bat_perc < bat_80 then
 			baticon:set_image(beautiful.widget_bat_80)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(blue, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(blue, bat_t))
 
 		elseif bat_perc >= bat_60 and bat_perc < bat_70 then
 			baticon:set_image(beautiful.widget_bat_70)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 
 		elseif bat_perc >= bat_50 and bat_perc < bat_60 then
 			baticon:set_image(beautiful.widget_bat_60)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t)) 
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t)) 
 
 		elseif bat_perc >= bat_40 and bat_perc < bat_50 then
 			baticon:set_image(beautiful.widget_bat_50)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 		
 		elseif bat_perc >= bat_30 and bat_perc < bat_40 then
 			baticon:set_image(beautiful.widget_bat_40)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 		
 		elseif bat_perc >= bat_20 and bat_perc < bat_30 then
 			baticon:set_image(beautiful.widget_bat_30)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 		
 		elseif bat_perc >= bat_10 and bat_perc < bat_20 then
 			baticon:set_image(beautiful.widget_bat_20)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(red, bat_t) 
+            return batwidget:set_markup(markup(gray, " ") .. markup(red, bat_t) 
 			.. markup(red, " ⚠"))
 	
 		elseif bat_perc > bat_5 and bat_perc < bat_10 then
 			baticon:set_image(beautiful.widget_bat_10)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(red, bat_t) 
+            return batwidget:set_markup(markup(gray, " ") .. markup(red, bat_t) 
 			.. markup(red, " ⚠"))
 	
 		else
@@ -514,43 +515,43 @@ baticon:buttons(batwidget:buttons())
 
 		elseif bat_perc >= bat_80 and bat_perc < bat_90 then
 			baticon:set_image(beautiful.widget_charge_90)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(green, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(green, bat_t))
 
 		elseif bat_perc >= bat_70 and bat_perc < bat_80 then
 			baticon:set_image(beautiful.widget_charge_80)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(blue, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(blue, bat_t))
 
 		elseif bat_perc >= bat_60 and bat_perc < bat_70 then
 			baticon:set_image(beautiful.widget_charge_70)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 
 		elseif bat_perc >= bat_50 and bat_perc < bat_60 then
 			baticon:set_image(beautiful.widget_charge_60)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t)) 
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t)) 
 
 		elseif bat_perc >= bat_40 and bat_perc < bat_50 then
 			baticon:set_image(beautiful.widget_charge_50)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 		
 		elseif bat_perc >= bat_30 and bat_perc < bat_40 then
 			baticon:set_image(beautiful.widget_charge_40)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 		
 		elseif bat_perc >= bat_20 and bat_perc < bat_30 then
 			baticon:set_image(beautiful.widget_charge_30)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(gray, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(gray, bat_t))
 		
 		elseif bat_perc >= bat_10 and bat_perc < bat_20 then
 			baticon:set_image(beautiful.widget_charge_20)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(red, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(red, bat_t))
 	
 		elseif bat_perc > bat_5 and bat_perc < bat_10 then
 			baticon:set_image(beautiful.widget_charge_10)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(red, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(red, bat_t))
 		
 		else
 			baticon:set_image(beautiful.widget_charge_empty)
-            return batwidget:set_markup(markup(gray, "  ") .. markup(red, bat_t))
+            return batwidget:set_markup(markup(gray, " ") .. markup(red, bat_t))
 		end
 	end
 end

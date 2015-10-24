@@ -219,11 +219,12 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
  
  -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 50 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 55 })
 
     -- Widgets that are aligned to the bottom left
     top_left_layout = wibox.layout.fixed.vertical()
     top_left_layout:add(mylauncher)
+    top_left_layout:add(space)
 --    top_left_layout:add(gimp_launcher)
     top_left_layout:add(filezilla_launcher)
     top_left_layout:add(libreoffice_launcher)
@@ -260,10 +261,10 @@ for s = 1, screen.count() do
     bottom_left_layout:add(kill_launcher)
  
 	-- Now bring it all together (with the tasklist in the middle)
-    top_layout= wibox.layout.align.vertical()
-    top_layout:set_top(top_left_layout)
-	top_layout:set_bottom(bottom_left_layout)
-    myverticalwibox[s]:set_widget(top_layout)
+    vert_layout= wibox.layout.align.vertical()
+    vert_layout:set_top(top_left_layout)
+	vert_layout:set_bottom(bottom_left_layout)
+    myverticalwibox[s]:set_widget(vert_layout)
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s, height = 32 })
