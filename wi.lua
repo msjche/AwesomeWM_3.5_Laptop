@@ -204,10 +204,11 @@ vicious.register(pianobarwidget, vicious.widgets.mpd,
       -- Paused
     if play_or_pause == "0" then
         pianobaricon:set_image(beautiful.widget_pause)
-		return markup(gray, band)
+--		return markup(gray, band)
+		return markup(gray, "")
     elseif play_or_pause == "1" then
         pianobarwidget.width = 0
-		return markup(blue, band) .. markup(gray, " ") .. markup(green, song)
+		return markup(blue, band) .. markup(gray, " ") .. markup(white, song)
     else
       	-- Stopped
       	pianobarwidget.width = 0
@@ -230,19 +231,21 @@ mpdwidget = lain.widgets.mpd({
     settings = function()
         mpd_notification_preset.fg = gray
 		mpdicon:set_image(beautiful.widget_mpd)
-        artist = mpd_now.artist .. " "
+--        artist = mpd_now.artist .. " "
+        artist = mpd_now.artist
         title  = mpd_now.title  .. " "
 --		mpdwidget:set_markup(markup(blue, artist) .. markup(gray, " ┈ ") .. markup(green, title))
-		mpdwidget:set_markup(markup(blue, artist) .. markup(gray, " ") .. markup(green, title))
+		mpdwidget:set_markup(markup(gray, " ") .. markup(blue, artist) .. markup(gray, " ") .. markup(green, title))
 		
 
         if mpd_now.state == "pause" then
 --            artist = "mpd"
-        	artist = mpd_now.artist .. " "
+        	artist = mpd_now.artist
             title  = "paused"
 			mpdicon:set_image(beautiful.widget_mpd_paused)
 --			mpdwidget:set_markup(markup(gray, artist) .. markup(gray, " ") .. markup(gray, title))
-			mpdwidget:set_markup(markup(gray, artist))
+--			mpdwidget:set_markup(markup(gray, artist))
+			mpdwidget:set_markup(markup(gray, ""))
         elseif mpd_now.state == "stop" then
             artist = ""
             title  = ""
