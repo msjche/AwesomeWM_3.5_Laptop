@@ -271,16 +271,17 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
+	left_layout:add(space)
     left_layout:add(mytaglist[s])
     left_layout:add(space)
     left_layout:add(mypromptbox[s])
 	left_layout:add(separator)
+    left_layout:add(mpdicon)
+    left_layout:add(mpdwidget)
+	left_layout:add(separator)
     left_layout:add(pianobaricon)
     left_layout:add(space)
     left_layout:add(pianobarwidget)
-    left_layout:add(separator)
-    left_layout:add(mpdicon)
-    left_layout:add(mpdwidget)
 	left_layout:add(separator)
 
     -- Widgets that are aligned to the right
@@ -731,7 +732,7 @@ autostart("compton -b", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
-autostart("~/Scripts/start_HUD.sh", 3)
+--autostart("~/Scripts/start_HUD.sh", 3)
 autostart("~/Scripts/blanking.sh", 3)
 
 -- }}}

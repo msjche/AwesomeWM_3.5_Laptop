@@ -235,7 +235,7 @@ mpdwidget = lain.widgets.mpd({
         artist = mpd_now.artist
         title  = mpd_now.title  .. " "
 --		mpdwidget:set_markup(markup(blue, artist) .. markup(gray, " ┈ ") .. markup(green, title))
-		mpdwidget:set_markup(markup(gray, " ") .. markup(blue, artist) .. markup(gray, " ") .. markup(green, title))
+		mpdwidget:set_markup(markup(gray, " ") .. markup(blue, artist) .. markup(gray, " ") .. markup(white, title))
 		
 
         if mpd_now.state == "pause" then
