@@ -61,6 +61,8 @@ filezilla_launcher = awful.widget.launcher({ image = launcher_dir .. "filezilla.
 chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", command = "google-chrome-beta" })
 firefox_launcher = awful.widget.launcher({ image = launcher_dir .. "firefox.png", command = "firefox-developer" })
 telegram_launcher= awful.widget.launcher({ image = launcher_dir .. "telegram.png", command = "telegram" })
+pycharm_launcher= awful.widget.launcher({ image = launcher_dir .. "pycharm.png", command = "pycharm" })
+youtube_dl= awful.widget.launcher({ image = launcher_dir .. "youtube.png", command = "/home/msjche/Scripts/youtube_download.sh" })
 
 ----------------------------------------------------------------------------------------
 -- System Info

@@ -103,7 +103,7 @@ end
 
 tags = 	{
 	names = { "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒" },
-	layout = { layouts[10], layouts[2], layouts[2], layouts[10], layouts[4], layouts[5], layouts[10], layouts[1], layouts [1] }
+	layout = { layouts[10], layouts[2], layouts[8], layouts[10], layouts[4], layouts[5], layouts[10], layouts[1], layouts [1] }
 		}
 for s = 1, screen.count() do
 	tags[s] = awful.tag(tags.names, s, tags.layout)
@@ -235,6 +235,7 @@ for s = 1, screen.count() do
 --    top_left_layout:add(firefox_launcher)
 --    top_left_layout:add(SSR_launcher)
     top_left_layout:add(telegram_launcher)
+    top_left_layout:add(pycharm_launcher)
     top_left_layout:add(space)
 
     bottom_left_layout = wibox.layout.fixed.vertical()
@@ -271,16 +272,18 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-	left_layout:add(space)
+	left_layout:add(bigspace)
     left_layout:add(mytaglist[s])
     left_layout:add(space)
     left_layout:add(mypromptbox[s])
-	left_layout:add(separator)
-    left_layout:add(mpdicon)
-    left_layout:add(mpdwidget)
-	left_layout:add(separator)
+--	left_layout:add(separator)
+    left_layout:add(space)
     left_layout:add(pianobaricon)
     left_layout:add(space)
+    left_layout:add(mpdicon)
+    left_layout:add(mpdwidget)
+    left_layout:add(space)
+--	left_layout:add(separator)
     left_layout:add(pianobarwidget)
 	left_layout:add(separator)
 
@@ -293,6 +296,7 @@ for s = 1, screen.count() do
     right_layout:add(pacwidget)
     right_layout:add(separator)
     right_layout:add(mailicon)
+    right_layout:add(youtube_dl)
     right_layout:add(separator)
     right_layout:add(memicon)
     right_layout:add(space)
@@ -723,8 +727,8 @@ autostart("pkill conky", 1)
 autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
---autostart("pkill nm-applet", 1)
---autostart("nm-applet", 5)
+autostart("pkill nm-applet", 1)
+autostart("nm-applet", 5)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)
