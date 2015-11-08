@@ -279,12 +279,12 @@ for s = 1, screen.count() do
 --	left_layout:add(separator)
     left_layout:add(space)
     left_layout:add(pianobaricon)
+    left_layout:add(pianobarwidget)
     left_layout:add(space)
     left_layout:add(mpdicon)
     left_layout:add(mpdwidget)
     left_layout:add(space)
 --	left_layout:add(separator)
-    left_layout:add(pianobarwidget)
 	left_layout:add(separator)
 
     -- Widgets that are aligned to the right
