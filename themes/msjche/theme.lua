@@ -144,7 +144,7 @@ theme.tasklist_maximized_horizontal = ""
 theme.tasklist_maximized_vertical   = ""
 
 -- lain related
-theme.useless_gap_width             = 10
+theme.useless_gap_width             = 1
 theme.layout_uselesstile            = themedir .. "/icons/uselesstile.png"
 theme.layout_uselesstileleft        = themedir .. "/icons/uselesstileleft.png"
 theme.layout_uselesstiletop         = themedir .. "/icons/uselesstiletop.png"
