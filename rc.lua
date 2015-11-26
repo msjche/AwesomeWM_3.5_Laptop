@@ -661,7 +661,7 @@ client.connect_signal("manage", function (c, startup)
             awful.placement.no_overlap(c)
             awful.placement.no_offscreen(c)
 --            awful.placement.under_mouse(c)
---            awful.placement.centered(c)
+            awful.placement.centered(c)
         end
     end
 
@@ -723,7 +723,7 @@ end
 
 -- Autostart applications. The extra argument is optional, it means how long to
 -- delay a command before starting it (in seconds).
---autostart("pkill conky", 1)
+autostart("pkill conky", 1)
 autostart("urxvtd -q -f -o", 1)
 autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
