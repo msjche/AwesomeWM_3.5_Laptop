@@ -219,7 +219,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
  
  -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 55 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 50 })
 
     -- Widgets that are aligned to the bottom left
     top_left_layout = wibox.layout.fixed.vertical()
@@ -227,12 +227,13 @@ for s = 1, screen.count() do
     top_left_layout:add(space)
 --    top_left_layout:add(gimp_launcher)
 --    top_left_layout:add(filezilla_launcher)
+    top_left_layout:add(chrome_launcher)
+    top_left_layout:add(firefox_launcher)
+    top_left_layout:add(torbrowser_launcher)
     top_left_layout:add(libreoffice_launcher)
---    top_left_layout:add(thunderbird_launcher)
---    top_left_layout:add(steam_launcher)
---    top_left_layout:add(torbrowser_launcher)
---    top_left_layout:add(chrome_launcher)
---    top_left_layout:add(firefox_launcher)
+    top_left_layout:add(thunderbird_launcher)
+    top_left_layout:add(steam_launcher)
+    top_left_layout:add(torbrowser_launcher)
 --    top_left_layout:add(SSR_launcher)
     top_left_layout:add(telegram_launcher)
     top_left_layout:add(pycharm_launcher)
@@ -722,13 +723,13 @@ end
 
 -- Autostart applications. The extra argument is optional, it means how long to
 -- delay a command before starting it (in seconds).
-autostart("pkill conky", 1)
---autostart("urxvtd -q -f -o", 1)
+--autostart("pkill conky", 1)
+autostart("urxvtd -q -f -o", 1)
 autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
 --autostart("pkill nm-applet", 1)
---autostart("nm-applet", 5)
+autostart("nm-applet", 5)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)
