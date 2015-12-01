@@ -112,13 +112,14 @@ end
 -- }}}
 
 -- {{{ Menu
-require("freedesktop/freedesktop")
+--require("freedesktop/freedesktop")
+require("menugen")
 
-mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
-                              theme = { height = 25, width = 250 }})
-							  mylauncher = awful.widget.launcher({ image = active_theme .. "/icons/" .. "awesome_icon.png" ,
-							                                       menu = mymainmenu })
--- }}}
+--mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
+--                              theme = { height = 25, width = 250 }})
+--							  mylauncher = awful.widget.launcher({ image = active_theme .. "/icons/" .. "awesome_icon.png" ,
+--							                                       menu = mymainmenu })
+---- }}}
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -223,17 +224,18 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the bottom left
     top_left_layout = wibox.layout.fixed.vertical()
-    top_left_layout:add(mylauncher)
+--    top_left_layout:add(mylauncher)
+    top_left_layout:add(space)
     top_left_layout:add(space)
 --    top_left_layout:add(gimp_launcher)
 --    top_left_layout:add(filezilla_launcher)
     top_left_layout:add(chrome_launcher)
     top_left_layout:add(firefox_launcher)
+    top_left_layout:add(skype_launcher)
     top_left_layout:add(torbrowser_launcher)
     top_left_layout:add(libreoffice_launcher)
     top_left_layout:add(thunderbird_launcher)
     top_left_layout:add(steam_launcher)
-    top_left_layout:add(torbrowser_launcher)
 --    top_left_layout:add(SSR_launcher)
     top_left_layout:add(telegram_launcher)
     top_left_layout:add(pycharm_launcher)
@@ -385,7 +387,7 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
+--    awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -506,12 +508,12 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, "Shift" }, "b", function () awful.util.spawn( "firefox-developer") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
-	awful.key({ modkey }, "T", function () awful.util.spawn( "turpial") end),
+	awful.key({ modkey }, "t", function () awful.util.spawn( "turpial") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
 	awful.key({ modkey }, "c", function () awful.util.spawn( "chromium") end),
 	awful.key({ modkey }, "p", function () awful.util.spawn( "pavucontrol") end),
 	awful.key({ modkey }, "s", function () awful.util.spawn( "steam") end),
-	awful.key({ modkey }, "t", function () awful.util.spawn( "tor-browser-en") end),
+	awful.key({ modkey }, "T", function () awful.util.spawn( "tor-browser-en") end),
 	awful.key({ modkey }, "e", function () awful.util.spawn( "thunar") end),
 	awful.key({ modkey }, "g", function () awful.util.spawn( "gvim") end),
 	awful.key({ altkey }, "z", function () awful.util.spawn( "pkill youtube-viewer") end),

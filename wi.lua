@@ -62,6 +62,7 @@ chrome_launcher = awful.widget.launcher({ image = launcher_dir .. "chrome.png", 
 firefox_launcher = awful.widget.launcher({ image = launcher_dir .. "firefox.png", command = "firefox-developer" })
 telegram_launcher= awful.widget.launcher({ image = launcher_dir .. "telegram.png", command = "telegram" })
 pycharm_launcher= awful.widget.launcher({ image = launcher_dir .. "pycharm.png", command = "pycharm" })
+skype_launcher= awful.widget.launcher({ image = launcher_dir .. "skype.png", command = "skype" })
 youtube_dl= awful.widget.launcher({ image = launcher_dir .. "youtube.png", command = "/home/msjche/Scripts/youtube_download.sh" })
 
 ----------------------------------------------------------------------------------------
@@ -148,15 +149,17 @@ vicious.register(pacwidget, vicious.widgets.pkg, function(widget, args)
 --
 -- Buttons
   function popup_pac()
---  local pac_updates = ""
+  local pac_updates = ""
   local f = io.popen("sudo pacman -S --dbpath /tmp/checkup-db-msjche/sync")
 --  local f = io.popen("cat /tmp/off.updates")
   if f then
-  pac_updates = f:read("*a"):match(".*/(.*)-.*\n$")
+	pac_updates = f:read("*a"):match(".*/(.*)-.*\n$")
+  else
+	local pac_updates = ""
   end
   f:close()
   if not pac_updates then
-  pac_updates = "System is up to date"
+	  pac_updates = "System is up to date"
   end
   naughty.notify { text = pac_updates }
   end
