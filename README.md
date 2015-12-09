@@ -12,12 +12,15 @@ and create symlinks as follows:
 
 For "msjche" theme
 ![Alt text](msjche.png?raw=true "Title")
+''''
 ln -s PROFILES/msjche/* .
+''''
 
 For "Default" theme
 ![Alt text](default.png?raw=true "Title")
-
+''''
 ln -s PROFILES/default/* .
+''''
 
 from there you should be able to reload Awesome and have the new system. Enjoy!
 
