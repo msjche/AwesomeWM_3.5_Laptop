@@ -145,7 +145,7 @@ memicon = wibox.widget.imagebox()
 memicon:set_image(beautiful.widget_ram)
 --
 mem = wibox.widget.textbox()
-vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB Free: $4MB Swap: $5%", 2)
+vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB Free: $4MB", 2)
 -- End Mem }}}
 --
 -- {{{ Start Gmail 

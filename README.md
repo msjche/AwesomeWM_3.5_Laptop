@@ -10,12 +10,11 @@ if you want any specific PROFILE go to:
 
 and create symlinks as follows:
 
-![alt tag](https://raw.github.com/msjche/AwesomeWM_Laptop/msjche.png)
+![Alt text](msjche.png?raw=true "Title")
 
 ln -s PROFILES/msjche/* .
-or
 
-![alt tag](https://raw.github.com/msjche/AwesomeWM_Laptop/default.png)
+![Alt text](default.png?raw=true "Title")
 
 ln -s PROFILES/default/* .
 
