@@ -1,8 +1,9 @@
 # Ignore symlinks
-freedesktop/
-lain/
-menugen/
+
+freedesktop
+lain
+menugen
 rc.lua
-themes/
+themes
 wi.lua
 
