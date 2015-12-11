@@ -113,7 +113,7 @@ tags = {
          '♨:News', 
          '☠:IRC',  
          '☃:Music', 
-         '⌥:Pirate', 
+         '⌥:Arrrg', 
          '⌘:Multimedia',
          '✇:Gaming',
          '✣:Facepalm',
@@ -124,7 +124,7 @@ tags = {
       layouts[8],	-- 3:news
       layouts[10],	-- 4:IRC
       layouts[4],	-- 5:music
-      layouts[5],	-- 6:pirate
+      layouts[5],	-- 6:arrrg
       layouts[10],	-- 7:multimedia
       layouts[1],	-- 8:game
       layouts[1],	-- 9:facepalm
