@@ -23,6 +23,15 @@ freedesktop.utils.icon_theme = 'gnome'
 vicious = require("vicious")
 local wi = require("wi")
 
+-- Launchers
+home 			= os.getenv("HOME")
+confdir 		= home .. "/.config/awesome"
+themes 			= confdir .. "/themes"
+active_theme 	= themes .. "/default"
+launcher_dir = active_theme .. "/icons/launchers/"
+
+msjche_launcher= awful.widget.launcher({ image =  launcher_dir .. "tux.png", command = "~/Scripts/Theming/msjche.sh" })
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -329,6 +338,8 @@ for s = 1, screen.count() do
     bottom_right_layout:add(spacer)
     bottom_right_layout:add(uptimeicon)
     bottom_right_layout:add(uptimewidget)
+    bottom_right_layout:add(spacer)
+    bottom_right_layout:add(msjche_launcher)
     
  	-- Now bring it all together 
     local bottom_layout = wibox.layout.align.horizontal()

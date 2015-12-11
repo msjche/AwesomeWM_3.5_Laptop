@@ -47,7 +47,8 @@ local math         = { floor  = math.floor }
 launcher_dir = active_theme .. "/icons/launchers/"
 icon_dir = active_theme .. "/icons/"
 
-virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "virtualbox.png", command = "VirtualBox" })
+Default_launcher= awful.widget.launcher({ image = launcher_dir .. "virtualbox.png", command = "~/Scripts/Theming/default.sh" })
+virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = "VirtualBox" })
 SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
 torbrowser_launcher = awful.widget.launcher({ image = launcher_dir .. "tor.png", command = "tor-browser-en" })
 steam_launcher = awful.widget.launcher({ image = launcher_dir .. "steam.png", command = "steam" })
