@@ -653,12 +653,12 @@ end
 -- Autostart applications. The extra argument is optional, it means how long to
 -- delay a command before starting it (in seconds).
 autostart("pkill conky", 1)
-autostart("urxvtd -q -f -o", 1)
+--autostart("urxvtd -q -f -o", 1)
 autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
 --autostart("pkill nm-applet", 1)
---autostart("nm-applet", 5)
+autostart("nm-applet", 5)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)
