@@ -30,7 +30,7 @@ themes 			= confdir .. "/themes"
 active_theme 	= themes .. "/default"
 launcher_dir = active_theme .. "/icons/launchers/"
 
-msjche_launcher= awful.widget.launcher({ image =  launcher_dir .. "tux.png", command = "~/Scripts/Theming/msjche.sh" })
+msjche_launcher= awful.widget.launcher({ image =  launcher_dir .. "tux.png", command = home .. "/Scripts/Theming/msjche.sh" })
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
