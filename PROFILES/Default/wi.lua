@@ -255,7 +255,7 @@ wifiicon = wibox.widget.imagebox()
 wifiicon:set_image(beautiful.widget_wifi)
 --
 wifi = wibox.widget.textbox()
-vicious.register(wifi, vicious.widgets.wifi, "${ssid} Rate: Link: ${link}%", 3, "wlp6s0")
+vicious.register(wifi, vicious.widgets.wifi, "${ssid} - Link: ${link}% -", 3, "wlp6s0")
 -- End Wifi }}}
 
 -- Uptime

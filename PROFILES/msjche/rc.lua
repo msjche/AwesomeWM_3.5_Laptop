@@ -262,7 +262,6 @@ for s = 1, screen.count() do
     right_layout:add(space)
     right_layout:add(separator)
     right_layout:add(mytextclock)
-    right_layout:add(Default_launcher)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -312,6 +311,7 @@ for s = 1, screen.count() do
     bottom_right_layout:add(up_launcher)
     bottom_right_layout:add(kill_launcher)
     bottom_right_layout:add(separator)
+    bottom_right_layout:add(Default_launcher)
 
     -- Now bring it all together (with the tasklist in the middle)
     bottom_layout = wibox.layout.align.horizontal()
