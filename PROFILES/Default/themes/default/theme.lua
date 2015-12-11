@@ -133,12 +133,15 @@ theme.widget_mpd = awful.util.getdir("config") .. "/themes/default/widgets/mpd.p
 theme.widget_play = awful.util.getdir("config") .. "/themes/default/widgets/play.png"
 theme.widget_pause = awful.util.getdir("config") .. "/themes/default/widgets/pause.png"
 theme.widget_ram = awful.util.getdir("config") .. "/themes/default/widgets/ram.png"
-theme.widget_mem = awful.util.getdir("config") .. "/themes/default/tp/ram.png"
-theme.widget_swap = awful.util.getdir("config") .. "/themes/default/tp/swap.png"
-theme.widget_fs = awful.util.getdir("config") .. "/themes/default/tp/fs_01.png"
-theme.widget_fs2 = awful.util.getdir("config") .. "/themes/default/tp/fs_02.png"
-theme.widget_up = awful.util.getdir("config") .. "/themes/default/tp/up.png"
-theme.widget_down = awful.util.getdir("config") .. "/themes/default/tp/down.png"
+theme.widget_mem = awful.util.getdir("config") .. "/themes/default/widgets/ram.png"
+theme.widget_swap = awful.util.getdir("config") .. "/themes/default/widgets/swap.png"
+theme.widget_fs = awful.util.getdir("config") .. "/themes/default/widgets/fs_01.png"
+theme.widget_fs2 = awful.util.getdir("config") .. "/themes/default/widgets/fs_02.png"
+theme.widget_up = awful.util.getdir("config") .. "/themes/default/widgets/up.png"
+theme.widget_down = awful.util.getdir("config") .. "/themes/default/widgets/down.png"
+theme.widget_uptime = awful.util.getdir("config") .. "/themes/default/widgets/uptime.png"
+theme.widget_pianobar_pause = awful.util.getdir("config") .. "/themes/default/widgets/pianobar_pause.png"
+theme.widget_pianobar_play = awful.util.getdir("config") .. "/themes/default/widgets/pianobar_play.png"
 -- }}}
 
 return theme

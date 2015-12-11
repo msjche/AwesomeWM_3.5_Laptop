@@ -19,6 +19,80 @@ local blink      = true
 baticon = wibox.widget.imagebox()
 baticon:set_image(beautiful.widget_batfull)
 
+-----------------------------------
+-- Pianobar
+
+pianobaricon = wibox.widget.imagebox(beautiful.widget_pianobar)
+pianobaricon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("urxvt -e ~/.config/pianobar/pianobar_headless.sh") end)))
+
+pianobarwidth    = 100
+
+pianobarwidget = wibox.widget.textbox()
+vicious.register(pianobarwidget, vicious.widgets.mpd,
+  function(widget, args)
+	pianobaricon:set_image(beautiful.widget_pianobar)
+	local f = io.popen("pgrep pianobar")
+
+--	if f:read("*line") then
+--      f = io.open(os.getenv("HOME") .. "/.config/pianobar/isplaying")
+--      play_or_pause = f:read("*line")
+--      f:close()
+
+      f = io.open(os.getenv("HOME") .. "/.config/pianobar/isplaying")
+      play_or_pause = f:read("*line")
+      f:close()
+
+      -- Current song
+      f = io.open(os.getenv("HOME") .. "/.config/pianobar/artist")
+      band = f:read("*line"):match("(.*)")
+      f:close()
+
+      f = io.open(os.getenv("HOME") .. "/.config/pianobar/title")
+      song = f:read("*line"):match("(.*)")
+      f:close()
+ 	  
+	  f = io.open(os.getenv("HOME") .. "/.config/pianobar/nowplaying")
+      text = f:read("*line"):match("(.*)")
+      f:close()
+      -- Paused
+    if play_or_pause == "0" then
+        pianobaricon:set_image(beautiful.widget_pianobar_pause)
+--		return markup(gray, band)
+		return ""
+    elseif play_or_pause == "1" then
+        pianobaricon:set_image(beautiful.widget_pianobar_play)
+        pianobarwidget.width = 0
+		return " " .. band .. " - " .. song
+    else
+      	-- Stopped
+      	pianobarwidget.width = 0
+      	pianobaricon:set_image(beautiful.widget_pianobar_stopped)
+      	info = "..."
+	  	band = ""
+	  	song = ""
+    end
+
+--	return markup(blue, band) .. markup(gray, " ┈ ") .. markup(green, song)
+
+  end, 3)
+
+----------------------------------------------------------------------------------------
+-- MPD
+
+mpdicon = wibox.widget.imagebox(beautiful.widget_mpd)
+mpdicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell(musicplr) end)))
+-- Initialize widget
+mpdwidget = wibox.widget.textbox()
+-- Register widget
+vicious.register(mpdwidget, vicious.widgets.mpd,
+    function (mpdwidget, args)
+        if args["{state}"] == "Pause" then 
+            return ""
+        else 
+            return args["{Artist}"]..' - '.. args["{Title}"]
+        end
+    end, 1)
+
 -- Charge %
 batpct = wibox.widget.textbox()
 vicious.register(batpct, vicious.widgets.bat, function(widget, args)
@@ -145,7 +219,7 @@ memicon = wibox.widget.imagebox()
 memicon:set_image(beautiful.widget_ram)
 --
 mem = wibox.widget.textbox()
-vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB Free: $4MB", 2)
+vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB", 2)
 -- End Mem }}}
 --
 -- {{{ Start Gmail 
@@ -163,11 +237,55 @@ vicious.register(mailwidget, vicious.widgets.gmail,
          awful.button({ }, 1, function () awful.util.spawn("urxvt -e mutt", false) end)
      ))
 -- End Gmail }}}
---
--- {{{ Start Wifi
+
+-- Network 
+
+vicious.cache(vicious.widgets.net)
+
+netupicon= wibox.widget.imagebox(beautiful.widget_up)
+netup= wibox.widget.textbox()
+vicious.register(netup, vicious.widgets.net, "${wlp6s0 up_kb}", 3)
+
+netdownicon= wibox.widget.imagebox(beautiful.widget_down)
+netdown= wibox.widget.textbox()
+vicious.register(netdown, vicious.widgets.net, "${wlp6s0 down_kb} - ", 3)
+
+-- Wifi
 wifiicon = wibox.widget.imagebox()
 wifiicon:set_image(beautiful.widget_wifi)
 --
 wifi = wibox.widget.textbox()
-vicious.register(wifi, vicious.widgets.wifi, "${ssid} Rate: ${rate}MB/s Link: ${link}%", 3, "wlp6s0")
+vicious.register(wifi, vicious.widgets.wifi, "${ssid} Rate: Link: ${link}%", 3, "wlp6s0")
 -- End Wifi }}}
+
+-- Uptime
+
+uptimeicon = wibox.widget.imagebox(beautiful.widget_uptime)
+vicious.cache(vicious.widgets.uptime)
+
+uptimewidget = wibox.widget.textbox()
+  uptimewidget:set_align("right")
+  --vicious.register(uptimewidget, vicious.widgets.uptime, markup(blue, "$1") .. markup (gray, "D ┈ ") .. markup(blue, "$2") .. markup(gray, "h ") .. markup(blue, "$3") .. markup(gray, "m"))
+
+  --vertical widget:
+vicious.register(uptimewidget, vicious.widgets.uptime, "$1" .. "D " .. "$2" .. "h " .. "$3" .. "m")
+
+-- VPN
+
+vpnwidget = wibox.widget.textbox()
+vpnwidget:set_text(" ...checking... ")
+vpnwidgettimer = timer({ timeout = 5 })
+vpnwidgettimer:connect_signal("timeout",
+  function()
+    status = io.popen("ifconfig | grep tun0")
+    if status:read() == nil then
+        vpnwidget:set_text("")
+    else
+        vpnwidget:set_text(" VPN ON")
+    end
+    status:close()    
+  end    
+)    
+vpnwidgettimer:start()
+
+

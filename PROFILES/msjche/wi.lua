@@ -170,10 +170,6 @@ vicious.register(pacwidget, vicious.widgets.pkg, function(widget, args)
 ----------------------------------------------------------------------------------------
 -- Pianobar
 
-pandoraicon = wibox.widget.imagebox(beautiful.widget_pianobar)
-pandoraicon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("urxvt -e ~/.config/pianobar/pianobar_headless.sh") end)))
-
-
 pianobaricon = wibox.widget.imagebox(beautiful.widget_pianobar)
 pianobaricon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell("urxvt -e ~/.config/pianobar/pianobar_headless.sh") end)))
 

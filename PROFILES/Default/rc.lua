@@ -160,7 +160,7 @@ spacer:set_text(' | ')
 
 --Weather Widget
 weather = wibox.widget.textbox()
-vicious.register(weather, vicious.widgets.weather, "Weather: ${city}. Sky: ${sky}. Temp: ${tempf}F Humid: ${humid}%. Wind: ${windmpg} mph", 1200, "KCCR")
+vicious.register(weather, vicious.widgets.weather, "Weather: Sky: ${sky} - Temp: ${tempf}F - Humid: ${humid}% - Wind: ${windmph} mph", 1200, "KCCR")
 
 --Battery Widget
 batt = wibox.widget.textbox()
@@ -295,27 +295,45 @@ for s = 1, screen.count() do
     layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
 
-   mywibox[s]:set_widget(layout)
+   	mywibox[s]:set_widget(layout)
    
    -- Create the bottom wibox
      myinfowibox[s] = awful.wibox({ position = "bottom", screen = s })
    -- Widgets that are aligned to the bottom
-    local bottom_layout = wibox.layout.fixed.horizontal()
-    bottom_layout:add(cpuicon)
-    bottom_layout:add(cpu)
-    bottom_layout:add(spacer)
-    bottom_layout:add(memicon)
-    bottom_layout:add(mem)
-    bottom_layout:add(spacer)
-    bottom_layout:add(wifiicon)
-    bottom_layout:add(wifi)
-    bottom_layout:add(spacer)
-    bottom_layout:add(weather)
-    bottom_layout:add(spacer)
-
- -- Now bring it all together 
-    --local layout = wibox.layout.align.horizontal()
-    --layout:set_bottom(bottom_layout)
+    local bottom_left_layout = wibox.layout.fixed.horizontal()
+    bottom_left_layout:add(cpuicon)
+    bottom_left_layout:add(cpu)
+    bottom_left_layout:add(spacer)
+    bottom_left_layout:add(memicon)
+    bottom_left_layout:add(mem)
+    bottom_left_layout:add(spacer)
+    bottom_left_layout:add(wifiicon)
+    bottom_left_layout:add(netdownicon)
+    bottom_left_layout:add(netdown)
+    bottom_left_layout:add(netup)
+    bottom_left_layout:add(netupicon)
+    bottom_left_layout:add(spacer)
+    bottom_left_layout:add(wifi)
+    bottom_left_layout:add(vpnwidget)
+    bottom_left_layout:add(spacer)
+    bottom_left_layout:add(weather)
+    bottom_left_layout:add(spacer)
+	
+	-- Widgets that are aligned to the right
+    local bottom_right_layout = wibox.layout.fixed.horizontal()
+    bottom_right_layout:add(pianobaricon)
+    bottom_right_layout:add(pianobarwidget)
+    bottom_right_layout:add(spacer)
+    bottom_right_layout:add(mpdicon)
+    bottom_right_layout:add(mpdwidget)
+    bottom_right_layout:add(spacer)
+    bottom_right_layout:add(uptimeicon)
+    bottom_right_layout:add(uptimewidget)
+    
+ 	-- Now bring it all together 
+    local bottom_layout = wibox.layout.align.horizontal()
+	bottom_layout:set_right(bottom_right_layout)
+    bottom_layout:set_left(bottom_left_layout)
 
     myinfowibox[s]:set_widget(bottom_layout)
 
@@ -371,6 +389,10 @@ globalkeys = awful.util.table.join(
 -- On the fly useless gaps change
     awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
     awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
+ 	
+-- On the fly useless gaps change
+    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
+    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
 
 -- Custome key bindings
   	awful.key({ }, "XF86MonBrightnessUp", function ()
@@ -389,32 +411,9 @@ globalkeys = awful.util.table.join(
     awful.util.spawn("mpc toggle", false) end),
 --    awful.key({  }, "F6", function ()
   	awful.key({ modkey, "Control" }, "Right", function ()
-    awful.util.spawn("mpc next", false) end),
-  	
--- On the fly useless gaps change
-    awful.key({ altkey, "Control" }, "+", function () lain.util.useless_gaps_resize(1) end),
-    awful.key({ altkey, "Control" }, "-", function () lain.util.useless_gaps_resize(-1) end),
-
--- Custome key bindings
-  	awful.key({ }, "XF86MonBrightnessUp", function ()
-	awful.util.spawn("xbacklight -inc 2") end),
-	awful.key({ }, "XF86MonBrightnessDown", function ()
-	awful.util.spawn("xbacklight -dec 2") end),
-	awful.key({ }, "XF86AudioRaiseVolume", function ()
-	awful.util.spawn("amixer set Master 5%+", false) end),
-	awful.key({ }, "XF86AudioLowerVolume", function ()
-	awful.util.spawn("amixer set Master 5%-", false) end),
-	awful.key({ }, "XF86AudioMute", function ()
-	awful.util.spawn("amixer set Master toggle", false) end),
-
---    awful.key({  }, "F5", function ()
-  awful.key({ modkey, "Control" }, "Up", function ()
-    awful.util.spawn("mpc toggle", false) end),
---    awful.key({  }, "F6", function ()
-  awful.key({ modkey, "Control" }, "Right", function ()
-    awful.util.spawn("mpc next", false) end),
-  awful.key({ modkey, "Control" }, "Left", function ()
+  	awful.util.spawn("mpc next", false) end),
 --    awful.key({  }, "F4", function ()
+  	awful.key({ modkey, "Control" }, "Left", function ()
     awful.util.spawn("mpc prev", false) end),
 	
 --Pianobar
@@ -425,21 +424,6 @@ globalkeys = awful.util.table.join(
        awful.key({ altkey }, "-", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/ban.sh") end),
        awful.key({ altkey }, "i", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/status.sh") end),
 --       awful.key({ altkey }, "x", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/stop.sh") end),
-
-awful.key({ modkey, "Control" }, "Left", function ()
---    awful.key({  }, "F4", function ()
-    awful.util.spawn("mpc prev", false) end),
-	
---Pianobar
-       awful.key({ altkey }, "p", function () awful.util.spawn_with_shell( "urxvt -e ~/.config/pianobar/pianobar_headless.sh") end),
-       awful.key({ }, "XF86AudioPlay", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/toggle.sh") end),
-       awful.key({ }, "XF86AudioNext", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/next.sh") end),
-       awful.key({ altkey }, "=", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/love.sh") end),
-       awful.key({ altkey }, "-", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/ban.sh") end),
-       awful.key({ altkey }, "i", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/status.sh") end),
---       awful.key({ altkey }, "x", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/stop.sh") end),
-
-
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -648,4 +632,31 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+-- {{{ Run autostarting applications only once
+function autostart(cmd, delay)
+    delay = delay or 0
+    awful.util.spawn_with_shell("pgrep -u $USER -x -f '" .. cmd .. "' || ( sleep " .. delay .. " && " .. cmd .. " )")
+end
+
+-- Autostart applications. The extra argument is optional, it means how long to
+-- delay a command before starting it (in seconds).
+autostart("pkill conky", 1)
+autostart("urxvtd -q -f -o", 1)
+autostart("mpd", 1)
+autostart("xscreensaver -no-splash", 1)
+autostart("xflux -z 94596", 1)
+--autostart("pkill nm-applet", 1)
+--autostart("nm-applet", 5)
+autostart("udiskie -2", 1)
+autostart("compton -b", 1)
+--autostart("hp-systray", 1)
+--autostart("dropbox", 1)
+--autostart("insync start", 1)
+--autostart("megasync", 1)
+autostart("~/Scripts/Theming/1440.sh", 1)
+--autostart("~/Scripts/start_HUD.sh", 3)
+autostart("~/Scripts/blanking.sh", 3)
+
 -- }}}
