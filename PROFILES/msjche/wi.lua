@@ -31,8 +31,8 @@ bright_red  = "#FF0000"
 green       = "#41F300"
 
 widheight = 30
-cpuwidth = 50
-wifiwidth = 50
+cpuwidth = 60
+wifiwidth = 200
 
 local util = awful.util
 
@@ -47,11 +47,7 @@ local math         = { floor  = math.floor }
 launcher_dir = active_theme .. "/icons/launchers/"
 icon_dir = active_theme .. "/icons/"
 
-<<<<<<< HEAD
 Default_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = home .. "/Scripts/Theming/default.sh" })
-=======
-Default_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = "~/Scripts/Theming/default.sh" })
->>>>>>> 256727e718050470acff3d79bee323f41d929ff9
 virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = "VirtualBox" })
 SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
 torbrowser_launcher = awful.widget.launcher({ image = launcher_dir .. "tor.png", command = "tor-browser-en" })
