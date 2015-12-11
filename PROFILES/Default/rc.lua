@@ -332,7 +332,6 @@ for s = 1, screen.count() do
     local bottom_right_layout = wibox.layout.fixed.horizontal()
     bottom_right_layout:add(pianobaricon)
     bottom_right_layout:add(pianobarwidget)
-    bottom_right_layout:add(spacer)
     bottom_right_layout:add(mpdicon)
     bottom_right_layout:add(mpdwidget)
     bottom_right_layout:add(spacer)
