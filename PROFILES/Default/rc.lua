@@ -270,7 +270,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 30 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -307,7 +307,7 @@ for s = 1, screen.count() do
    	mywibox[s]:set_widget(layout)
    
    -- Create the bottom wibox
-     myinfowibox[s] = awful.wibox({ position = "bottom", screen = s })
+     myinfowibox[s] = awful.wibox({ position = "bottom", screen = s, height = 30 })
    -- Widgets that are aligned to the bottom
     local bottom_left_layout = wibox.layout.fixed.horizontal()
     bottom_left_layout:add(cpuicon)
@@ -478,7 +478,7 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "a", function() menubar.show() end)
 )
 
 clientkeys = awful.util.table.join(
