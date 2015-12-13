@@ -407,27 +407,36 @@ globalkeys = awful.util.table.join(
 	awful.util.spawn("amixer set Master toggle", false) end),
 
 --    awful.key({  }, "F5", function ()
-  awful.key({ modkey, "Control" }, "Up", function ()
+  	awful.key({ modkey, "Control" }, "Up", function ()
     awful.util.spawn("mpc toggle", false) end),
 --    awful.key({  }, "F6", function ()
-  awful.key({ modkey, "Control" }, "Right", function ()
+  	awful.key({ modkey, "Control" }, "Right", function ()
     awful.util.spawn("mpc next", false) end),
-  awful.key({ modkey, "Control" }, "Left", function ()
+  	awful.key({ modkey, "Control" }, "Left", function ()
 --    awful.key({  }, "F4", function ()
     awful.util.spawn("mpc prev", false) end),
 	
---Pianobar
-       awful.key({ altkey }, "p", function () awful.util.spawn_with_shell( "urxvt -e ~/.config/pianobar/pianobar_headless.sh") end),
-       awful.key({ }, "XF86AudioPlay", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/toggle.sh") end),
-       awful.key({ }, "XF86AudioNext", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/next.sh") end),
-       awful.key({ altkey }, "=", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/love.sh") end),
-       awful.key({ altkey }, "-", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/ban.sh") end),
-       awful.key({ altkey }, "i", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/status.sh") end),
+	--Pianobar
+   awful.key({ altkey }, "p", function () awful.util.spawn_with_shell( "urxvt -e ~/.config/pianobar/pianobar_headless.sh") end),
+   awful.key({ }, "XF86AudioPlay", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/toggle.sh") end),
+   awful.key({ }, "XF86AudioNext", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/next.sh") end),
+   awful.key({ altkey }, "=", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/love.sh") end),
+   awful.key({ altkey }, "-", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/ban.sh") end),
+   awful.key({ altkey }, "i", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/status.sh") end),
 --       awful.key({ altkey }, "x", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/stop.sh") end),
 	
--- Conky keybindings
+	-- Conky keybindings
     awful.key({}, "F12", function() raise_conky() end, function() lower_conky() end),
     awful.key({}, "F10", function() toggle_conky() end),
+
+	-- Show / Hide wiboxes
+	awful.key({ altkey }, "t", function ()
+		mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+	end),
+	awful.key({ altkey }, "l", function ()
+		myverticalwibox[mouse.screen].visible = not myverticalwibox[mouse.screen].visible
+	end),
+
 
 -- Widgets popups
     awful.key({ altkey,           }, "q",      function () lain.widgets.calendar:show(7) end),
