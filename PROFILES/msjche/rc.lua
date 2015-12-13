@@ -228,6 +228,7 @@ for s = 1, screen.count() do
     left_layout:add(space)
     left_layout:add(pianobaricon)
     left_layout:add(pianobarwidget)
+	left_layout:add(separator)
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
@@ -248,6 +249,9 @@ for s = 1, screen.count() do
     right_layout:add(volumewidget)
     right_layout:add(separator)
     right_layout:add(wifiwidget)
+    right_layout:add(separator)
+    right_layout:add(baticon)
+    right_layout:add(batwidget)
     right_layout:add(separator)
     right_layout:add(uptimewidget)
     right_layout:add(separator)
@@ -341,8 +345,8 @@ for s = 1, screen.count() do
     left_bottom_layout:add(wifidown)
     left_bottom_layout:add(wifiup)
     left_bottom_layout:add(net_up)
-    left_bottom_layout:add(baticon)
-    left_bottom_layout:add(batwidget)
+--    left_bottom_layout:add(baticon)
+--    left_bottom_layout:add(batwidget)
     left_bottom_layout:add(wifiicon)
     left_bottom_layout:add(vpnwidget)
     left_bottom_layout:add(hud_launcher)
