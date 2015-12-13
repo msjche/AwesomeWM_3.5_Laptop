@@ -315,7 +315,7 @@ for s = 1, screen.count() do
 --    mybottomwibox[s]:set_widget(bottom_layout)
 
     -- Create the bottom wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 45 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 50 })
 
     -- Widgets that are aligned to the bottom right
     left_top_layout = wibox.layout.fixed.vertical()
