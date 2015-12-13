@@ -213,7 +213,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 27 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 33 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -231,10 +231,11 @@ for s = 1, screen.count() do
     left_layout:add(chrome_launcher)
     left_layout:add(firefox_launcher)
     left_layout:add(separator)
-    left_layout:add(pianobaricon)
-    left_layout:add(pianobarwidget)
     left_layout:add(mpdicon)
     left_layout:add(mpdwidget)
+    left_layout:add(space)
+    left_layout:add(pianobaricon)
+    left_layout:add(pianobarwidget)
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
@@ -273,7 +274,7 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Create the bottom wibox
-    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 30 })
+    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 33 })
 
     -- Widgets that are aligned to the bottom left
     bottom_left_layout = wibox.layout.fixed.horizontal()
