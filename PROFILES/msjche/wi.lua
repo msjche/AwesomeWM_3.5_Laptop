@@ -684,7 +684,7 @@ vicious.register(wifiwidget, vicious.widgets.wifi,
        if args["{ssid}"] == "N/A" then
               return " - "
        else
-              return markup(yellow, " ☣ ") .. markup(blue, args["{ssid}"]) .. markup(yellow, " ☣ ")
+              return markup(yellow, "☣ ") .. markup(blue, args["{ssid}"]) .. markup(yellow, " ☣")
        end
     end, 10, "wlp6s0")
 
