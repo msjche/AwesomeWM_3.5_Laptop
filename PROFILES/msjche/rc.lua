@@ -148,7 +148,7 @@ separator = wibox.widget.textbox(' ⁞ ')
 
 -- Create a wibox for each screen and add it
 mywibox = {}
-mybottomwibox = {}
+--mybottomwibox = {}
 myverticalwibox = {}
 mypromptbox = {}
 mylayoutbox = {}
@@ -266,52 +266,52 @@ for s = 1, screen.count() do
 
     mywibox[s]:set_widget(layout)
 
-    -- Create the bottom wibox
+--    -- Create the bottom wibox
 --    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 33 })
-
-    -- Widgets that are aligned to the bottom left
-    bottom_left_layout = wibox.layout.fixed.horizontal()
-    bottom_left_layout:add(cpuicon)
-    bottom_left_layout:add(cpugraph1)
-    bottom_left_layout:add(space)
-    bottom_left_layout:add(cpugraph1)
-    bottom_left_layout:add(space)
-    bottom_left_layout:add(cpugraph2)
-    bottom_left_layout:add(space)
-    bottom_left_layout:add(cpugraph3)
-    bottom_left_layout:add(space)
-    bottom_left_layout:add(cpugraph4)
-    bottom_left_layout:add(space)
-    bottom_left_layout:add(cpugraph5)
-    bottom_left_layout:add(space)
-    bottom_left_layout:add(cpugraph7)
-    bottom_left_layout:add(space)
-    bottom_left_layout:add(cpugraph8)
-    bottom_left_layout:add(cpuicon)
-
-    -- Widgets that are aligned to the bottom right
-    bottom_right_layout = wibox.layout.fixed.horizontal()
-    bottom_right_layout:add(net_down)
-    bottom_right_layout:add(wifidown)
-    bottom_right_layout:add(wifiwidget)
-    bottom_right_layout:add(wifiup)
-    bottom_right_layout:add(net_up)
-    bottom_right_layout:add(separator)
-    bottom_right_layout:add(uptimeicon)
-    bottom_right_layout:add(space)
-    bottom_right_layout:add(uptimewidget)
-    bottom_right_layout:add(separator)
-    bottom_right_layout:add(hud_launcher)
-    bottom_right_layout:add(up_launcher)
-    bottom_right_layout:add(kill_launcher)
-    bottom_right_layout:add(separator)
-    bottom_right_layout:add(Default_launcher)
-
-    -- Now bring it all together (with the tasklist in the middle)
-    bottom_layout = wibox.layout.align.horizontal()
-    bottom_layout:set_left(bottom_left_layout)
-	bottom_layout:set_middle(mytasklist[s])
-	bottom_layout:set_right(bottom_right_layout)
+--
+--    -- Widgets that are aligned to the bottom left
+--    bottom_left_layout = wibox.layout.fixed.horizontal()
+--    bottom_left_layout:add(cpuicon)
+--    bottom_left_layout:add(cpugraph1)
+--    bottom_left_layout:add(space)
+--    bottom_left_layout:add(cpugraph1)
+--    bottom_left_layout:add(space)
+--    bottom_left_layout:add(cpugraph2)
+--    bottom_left_layout:add(space)
+--    bottom_left_layout:add(cpugraph3)
+--    bottom_left_layout:add(space)
+--    bottom_left_layout:add(cpugraph4)
+--    bottom_left_layout:add(space)
+--    bottom_left_layout:add(cpugraph5)
+--    bottom_left_layout:add(space)
+--    bottom_left_layout:add(cpugraph7)
+--    bottom_left_layout:add(space)
+--    bottom_left_layout:add(cpugraph8)
+--    bottom_left_layout:add(cpuicon)
+--
+--    -- Widgets that are aligned to the bottom right
+--    bottom_right_layout = wibox.layout.fixed.horizontal()
+--    bottom_right_layout:add(net_down)
+--    bottom_right_layout:add(wifidown)
+--    bottom_right_layout:add(wifiwidget)
+--    bottom_right_layout:add(wifiup)
+--    bottom_right_layout:add(net_up)
+--    bottom_right_layout:add(separator)
+--    bottom_right_layout:add(uptimeicon)
+--    bottom_right_layout:add(space)
+--    bottom_right_layout:add(uptimewidget)
+--    bottom_right_layout:add(separator)
+--    bottom_right_layout:add(hud_launcher)
+--    bottom_right_layout:add(up_launcher)
+--    bottom_right_layout:add(kill_launcher)
+--    bottom_right_layout:add(separator)
+--    bottom_right_layout:add(Default_launcher)
+--
+--    -- Now bring it all together (with the tasklist in the middle)
+--    bottom_layout = wibox.layout.align.horizontal()
+--    bottom_layout:set_left(bottom_left_layout)
+--	  bottom_layout:set_middle(mytasklist[s])
+--	  bottom_layout:set_right(bottom_right_layout)
 --    mybottomwibox[s]:set_widget(bottom_layout)
 
     -- Create the bottom wibox
