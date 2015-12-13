@@ -31,8 +31,8 @@ bright_red  = "#FF0000"
 green       = "#41F300"
 
 widheight = 30
-cpuwidth = 60
-wifiwidth = 200
+cpuwidth = 45
+wifiwidth = 45
 
 local util = awful.util
 
