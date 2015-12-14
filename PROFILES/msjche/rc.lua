@@ -256,6 +256,7 @@ for s = 1, screen.count() do
     right_layout:add(uptimewidget)
     right_layout:add(separator)
     right_layout:add(mytextclock)
+    right_layout:add(Default_launcher)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -323,6 +324,7 @@ for s = 1, screen.count() do
     left_top_layout:add(firefox_launcher)
     left_top_layout:add(torbrowser_launcher)
     left_top_layout:add(libreoffice_launcher)
+    left_top_layout:add(gimp_launcher)
     left_top_layout:add(thunderbird_launcher)
     left_top_layout:add(steam_launcher)
     left_top_layout:add(skype_launcher)

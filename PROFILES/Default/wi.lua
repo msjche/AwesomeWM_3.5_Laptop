@@ -100,7 +100,7 @@ vicious.register(batpct, vicious.widgets.bat, function(widget, args)
   bat_charge = args[2]
   bat_time   = args[3]
 
-  if args[1] == "-" then
+  if args[1] == "Discharging" then
     if bat_charge > 70 then
       baticon:set_image(beautiful.widget_batfull)
     elseif bat_charge > 30 then
@@ -112,7 +112,7 @@ vicious.register(batpct, vicious.widgets.bat, function(widget, args)
     end
   else
     baticon:set_image(beautiful.widget_ac)
-    if args[1] == "+" then
+    if args[1] == "Charging" then
       blink = not blink
       if blink then
         baticon:set_image(beautiful.widget_acblink)
@@ -146,7 +146,7 @@ end
 batpct:buttons(awful.util.table.join(awful.button({ }, 1, popup_bat)))
 baticon:buttons(batpct:buttons())
 -- End Battery}}}
---
+
 -- {{{ PACMAN
 -- Icon
 pacicon = wibox.widget.imagebox()
