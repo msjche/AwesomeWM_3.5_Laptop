@@ -91,10 +91,6 @@ vicious.register(entnow, vicious.widgets.dio, "$1")
 ----------------------------------------------------------------------------------------
 -- Weather
 
---weathericon = wibox.widget.imagebox(beautiful.widget_weather)
---weathericon:buttons(awful.util.table.join(awful.button({ }, 1, function () yawn.show(7) end)))
-
-
 yawn = lain.widgets.yawn(2513768,
 {
     settings = function()
@@ -612,24 +608,18 @@ wifiwidget = lain.widgets.net({
        medlow_signal = tostring (19)
 
 --       link = tostring (40)      -- for testing
-
        local link = awful.util.pread("iwconfig wlp6s0 | awk -F '=' '/Quality/ {print $2}' | cut -d '/' -f 1")
        
 	if link == "" then
 	       wifiicon:set_image(beautiful.widget_wifi_no)
-			
 	elseif link > high_signal then
 		wifiicon:set_image(beautiful.widget_wifi_high)
-
 	elseif link > medhigh_signal and link <= high_signal then
 		wifiicon:set_image(beautiful.widget_wifi_medhigh)
-
 	elseif link > med_signal and link <= medhigh_signal then
 		wifiicon:set_image(beautiful.widget_wifi_med)
-
 	elseif link > medlow_signal and link <= med_signal then
 		wifiicon:set_image(beautiful.widget_wifi_medlow)
-
 	else wifiicon:set_image(beautiful.widget_wifi_low)
 
 	end
@@ -678,7 +668,6 @@ wifidown:set_background_color("#000000")
 wifidown:set_border_color(border)
 wifidown:set_color(blue)
 -- Register widget
---vicious.register(wifidown, vicious.widgets.net, "${wlp6s0 down_kb}")
 vicious.register(wifidown, vicious.widgets.net, "${wlp6s0 down_kb}")
 
 -- Initialize widget
@@ -692,7 +681,6 @@ wifiup:set_background_color("#000000")
 wifiup:set_border_color(border)
 wifiup:set_color(blue)
 -- Register widget
---vicious.register(wifiup, vicious.widgets.net, "${wlp6s0 up_kb}")
 vicious.register(wifiup, vicious.widgets.net, "${wlp6s0 up_kb}")
 
 ----------------------------------------------------------------------------------------
@@ -721,11 +709,8 @@ uptimeicon = wibox.widget.imagebox(beautiful.widget_uptime)
 vicious.cache(vicious.widgets.uptime)
 
 uptimewidget = wibox.widget.textbox()
-  uptimewidget:set_align("right")
-  --vicious.register(uptimewidget, vicious.widgets.uptime, markup(blue, "$1") .. markup (gray, "D ┈ ") .. markup(blue, "$2") .. markup(gray, "h ") .. markup(blue, "$3") .. markup(gray, "m"))
-
-  --vertical widget:
-  vicious.register(uptimewidget, vicious.widgets.uptime, markup(blue, "$1") .. markup (gray, "D ") .. markup(blue, "$2") .. markup(gray, "h ") .. markup(blue, "$3") .. markup(gray, "m"))
+uptimewidget:set_align("right")
+vicious.register(uptimewidget, vicious.widgets.uptime, markup(blue, "$1") .. markup (gray, "D ") .. markup(blue, "$2") .. markup(gray, "h ") .. markup(blue, "$3") .. markup(gray, "m"))
 
 ----------------------------------------------------------------------------------------
 -- Conky HUD

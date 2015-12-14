@@ -255,6 +255,7 @@ for s = 1, screen.count() do
     right_layout:add(baticon)
     right_layout:add(batwidget)
     right_layout:add(separator)
+    right_layout:add(uptimeicon)
     right_layout:add(uptimewidget)
     right_layout:add(separator)
     right_layout:add(mytextclock)
@@ -487,7 +488,6 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "b", function () awful.util.spawn( "luakit") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
-	awful.key({ modkey }, "T", function () awful.util.spawn( "turpial") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
 	awful.key({ modkey }, "c", function () awful.util.spawn( "chromium") end),
 	awful.key({ modkey }, "i", function () awful.util.spawn( "chromium -incognito") end),
