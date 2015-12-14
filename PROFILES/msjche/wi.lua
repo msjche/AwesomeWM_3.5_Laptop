@@ -454,12 +454,12 @@ baticon:buttons(batwidget:buttons())
         
     if bat_s == "Full" then
 		baticon:set_image(beautiful.widget_charged_ac)
-			if bat_s == "Charging" then
-				blink = not blink
-				if blink then
-					baticon:set_image(beautiful.widget_bat_full)
-				end
+		if bat_s == "Full" then
+			blink = not blink
+			if blink then
+				baticon:set_image(beautiful.widget_bat_full)
 			end
+		end
 	elseif bat_s == "Discharging" then
 		if 	bat_perc >= bat_90 then
 			baticon:set_image(beautiful.widget_bat_full)
