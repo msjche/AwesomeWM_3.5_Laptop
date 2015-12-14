@@ -1,3 +1,4 @@
+local wibox = wibox
 local widget = widget
 local screen = screen
 local image = image
@@ -6,7 +7,6 @@ local table = table
 local ipairs = ipairs
 local awful = require("awful")
 local utils = require("freedesktop.utils")
-local wibox = require("wibox")
 
 module("freedesktop.desktop")
 
@@ -51,7 +51,7 @@ function add_icon(settings)
     end
 
     if (settings.label) then
-        caption = wibox.widget.textbox()
+        caption = widget({ type="textbox", align="right", width=labelsize.width })
         caption.ellipsize = "middle"
         caption.text = settings.label
         caption:buttons({

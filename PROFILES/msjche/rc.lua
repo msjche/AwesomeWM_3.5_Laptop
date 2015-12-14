@@ -14,7 +14,9 @@ local vicious	= require("vicious")
 -- Lain
 local lain = require("lain")
 -- freedesktop.org
-local freedesktop = require('freedesktop')
+--local freedesktop = require('freedesktop')
+--require('freedesktop.utils')
+--require('freedesktop.menu')
 -- Widget files
 local wi = require("wi")
 
@@ -112,7 +114,7 @@ end
 -- }}}
 
 -- {{{ Menu
---require("freedesktop/freedesktop")
+
 -- }}}
 
 -- Menubar configuration
