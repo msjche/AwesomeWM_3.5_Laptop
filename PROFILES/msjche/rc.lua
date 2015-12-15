@@ -185,7 +185,7 @@ vicious.cache(vicious.widgets.net)
 
 netwidget = blingbling.net({interface = "wlp6s0",
 							show_text = true,
-							width = 40,
+							width = 20,
 							height = 33,
 							graph_color = "#1793D099",
 							graph_line_color = "#9F9F9F99",
