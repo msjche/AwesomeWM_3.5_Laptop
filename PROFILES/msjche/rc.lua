@@ -405,8 +405,6 @@ for s = 1, screen.count() do
     left_bottom_layout:add(wifidown)
     left_bottom_layout:add(wifiup)
     left_bottom_layout:add(net_up)
-    left_bottom_layout:add(baticon)
-    left_bottom_layout:add(batwidget)
     left_bottom_layout:add(wifiicon)
     left_bottom_layout:add(vpnwidget)
     left_bottom_layout:add(hud_launcher)
