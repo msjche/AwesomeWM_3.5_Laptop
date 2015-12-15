@@ -3,11 +3,15 @@
 --     by msjche	 --
 -----------------------
 
+local gears = require("gears")
 local awful = require("awful")
+awful.rules = require("awful.rules")
+require('awful.autofocus')
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local vicious = require("vicious")
 local naughty = require("naughty")
+local menubar = require("menubar")
 local lain = require("lain")
 
 home 			= os.getenv("HOME")
@@ -26,7 +30,8 @@ blue        = "#1793D0"
 yellow		= "#E3E34E"
 red         = "#EB8F8F"
 gray        = "#858585"
-border      = "#4A4A4A"
+border      = "#4A4A4A33"
+background	= "#00000033"
 bright_red  = "#FF0000"
 green       = "#41F300"
 
@@ -66,7 +71,7 @@ pycharm_launcher= awful.widget.launcher({ image = launcher_dir .. "pycharm.png",
 skype_launcher= awful.widget.launcher({ image = launcher_dir .. "skype.png", command = "skype" })
 youtube_dl= awful.widget.launcher({ image = launcher_dir .. "youtube.png", command = "/home/msjche/Scripts/youtube_download.sh" })
 
-----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 -- System Info
 
 systemicon = wibox.widget.imagebox(beautiful.widget_system)
@@ -82,7 +87,7 @@ entnow = awful.widget.graph()
 entnow:set_width(80)
 entnow:set_scale(true)
 entnow:set_max_value(1000)
-entnow:set_background_color("#000000")
+entnow:set_background_color(background)
 entnow:set_border_color(border)
 entnow:set_color(blue)
 -- Register widget
@@ -293,7 +298,7 @@ cpugraph1 = awful.widget.graph()
 -- Graph properties
 cpugraph1:set_width(cpuwidth)
 cpugraph1:set_height(widheight)
-cpugraph1:set_background_color("#000000")
+cpugraph1:set_background_color(background)
 cpugraph1:set_border_color(border)
 cpugraph1:set_color(blue)
 -- Register widget
@@ -304,7 +309,7 @@ cpugraph2 = awful.widget.graph()
 -- Graph properties
 cpugraph2:set_width(cpuwidth)
 cpugraph2:set_height(widheight)
-cpugraph2:set_background_color("#000000")
+cpugraph2:set_background_color(background)
 cpugraph2:set_border_color(border)
 cpugraph2:set_color(blue)
 -- Register widget
@@ -315,7 +320,7 @@ cpugraph3 = awful.widget.graph()
 -- Graph properties
 cpugraph3:set_width(cpuwidth)
 cpugraph3:set_height(widheight)
-cpugraph3:set_background_color("#000000")
+cpugraph3:set_background_color(background)
 cpugraph3:set_border_color(border)
 cpugraph3:set_color(blue)
 -- Register widget
@@ -326,7 +331,7 @@ cpugraph4 = awful.widget.graph()
 -- Graph properties
 cpugraph4:set_width(cpuwidth)
 cpugraph4:set_height(widheight)
-cpugraph4:set_background_color("#000000")
+cpugraph4:set_background_color(background)
 cpugraph4:set_border_color(border)
 cpugraph4:set_color(blue)
 -- Register widget
@@ -337,7 +342,7 @@ cpugraph5 = awful.widget.graph()
 -- Graph properties
 cpugraph5:set_width(cpuwidth)
 cpugraph5:set_height(widheight)
-cpugraph5:set_background_color("#000000")
+cpugraph5:set_background_color(background)
 cpugraph5:set_border_color(border)
 cpugraph5:set_color(blue)
 -- Register widget
@@ -348,7 +353,7 @@ cpugraph6 = awful.widget.graph()
 -- Graph properties
 cpugraph6:set_width(cpuwidth)
 cpugraph6:set_height(widheight)
-cpugraph6:set_background_color("#000000")
+cpugraph6:set_background_color(background)
 cpugraph6:set_border_color(border)
 cpugraph6:set_color(blue)
 -- Register widget
@@ -359,7 +364,7 @@ cpugraph7 = awful.widget.graph()
 -- Graph properties
 cpugraph7:set_width(cpuwidth)
 cpugraph7:set_height(widheight)
-cpugraph7:set_background_color("#000000")
+cpugraph7:set_background_color(background)
 cpugraph7:set_border_color(border)
 cpugraph7:set_color(blue)
 -- Register widget
@@ -370,7 +375,7 @@ cpugraph8 = awful.widget.graph()
 -- Graph properties
 cpugraph8:set_width(cpuwidth)
 cpugraph8:set_height(widheight)
-cpugraph8:set_background_color("#000000")
+cpugraph8:set_background_color(background)
 cpugraph8:set_border_color(border)
 cpugraph8:set_color(blue)
 -- Register widget
@@ -664,7 +669,7 @@ wifidown:set_width(wifiwidth)
 wifidown:set_height(widheight)
 wifidown:set_scale(true)
 wifidown:set_max_value(20)
-wifidown:set_background_color("#000000")
+wifidown:set_background_color(background)
 wifidown:set_border_color(border)
 wifidown:set_color(blue)
 -- Register widget
@@ -677,7 +682,7 @@ wifiup:set_width(wifiwidth)
 wifiup:set_height(widheight)
 wifiup:set_scale(true)
 wifiup:set_max_value(5)
-wifiup:set_background_color("#000000")
+wifiup:set_background_color(background)
 wifiup:set_border_color(border)
 wifiup:set_color(blue)
 -- Register widget

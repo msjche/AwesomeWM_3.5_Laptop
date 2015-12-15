@@ -19,6 +19,7 @@ local lain = require("lain")
 --require('freedesktop.menu')
 -- Widget files
 local wi = require("wi")
+local blingbling = require("blingbling")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -147,6 +148,52 @@ bigspace = wibox.widget.textbox('   ')
 separator = wibox.widget.textbox(' ⁞ ')
 
 ----------------------------------------------------------------------------------------
+-- Blingbling
+
+-- CPU
+vicious.cache(vicious.widgets.cpu)
+cpu_graph = blingbling.line_graph({ height = 40,
+                                        width = 50,
+                                        show_text = true,
+										font = "Droid Sans",
+										font_size = "9",
+                                        label = "CPU $percent %",
+	                                    rounded_size = 0.3,
+    									graph_color = "#1793D099",
+										graph_line_color = "#9F9F9F99",
+                                        graph_background_color = "#00000033"
+                                      })
+vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
+
+cores_graph_conf =({height = 15,
+					width = 50,
+					rounded_size = 0.3,
+					graph_color = "#1793D099",
+					graph_line_color = "#9F9F9F99",
+					horizontal = true
+					})
+cores_graphs = {}
+for i=1,8 do
+	cores_graphs[i] = blingbling.progress_graph( cores_graph_conf)
+	vicious.register(cores_graphs[i], vicious.widgets.cpu, "$"..(i+1).."",1)
+end
+
+vicious.cache(vicious.widgets.net)
+
+-- Wifi
+vicious.cache(vicious.widgets.net)
+
+netwidget = blingbling.net({interface = "wlp6s0",
+							show_text = true,
+							width = 40,
+							height = 33,
+							graph_color = "#1793D099",
+							graph_line_color = "#9F9F9F99",
+                			graph_background_color = "#00000033"
+							})
+netwidget:set_ippopup()
+
+----------------------------------------------------------------------------------------
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -251,11 +298,14 @@ for s = 1, screen.count() do
     right_layout:add(volumewidget)
     right_layout:add(separator)
     right_layout:add(wifiwidget)
+    right_layout:add(space)
+    right_layout:add(netwidget)
     right_layout:add(separator)
     right_layout:add(baticon)
     right_layout:add(batwidget)
     right_layout:add(separator)
     right_layout:add(uptimeicon)
+    right_layout:add(space)
     right_layout:add(uptimewidget)
     right_layout:add(separator)
     right_layout:add(mytextclock)
@@ -336,22 +386,27 @@ for s = 1, screen.count() do
 	
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()
-    left_bottom_layout:add(cpuicon)
-    left_bottom_layout:add(cpugraph1)
-    left_bottom_layout:add(cpugraph2)
-    left_bottom_layout:add(cpugraph3)
-    left_bottom_layout:add(cpugraph4)
-    left_bottom_layout:add(cpugraph5)
-    left_bottom_layout:add(cpugraph6)
-    left_bottom_layout:add(cpugraph7)
-    left_bottom_layout:add(cpugraph8)
-    left_bottom_layout:add(cpuicon)
+--    left_bottom_layout:add(cpuicon)
+ 	left_bottom_layout:add(cpu_graph)
+	for i=1,8 do
+	  left_bottom_layout:add(cores_graphs[i])
+	end
+--	  left_bottom_layout:add(cpugraph1)
+--    left_bottom_layout:add(cpugraph2)
+--    left_bottom_layout:add(cpugraph3)
+--    left_bottom_layout:add(cpugraph4)
+--    left_bottom_layout:add(cpugraph5)
+--    left_bottom_layout:add(cpugraph6)
+--    left_bottom_layout:add(cpugraph7)
+--    left_bottom_layout:add(cpugraph8)
+--    left_bottom_layout:add(cpuicon)
+    left_bottom_layout:add(space)
     left_bottom_layout:add(net_down)
     left_bottom_layout:add(wifidown)
     left_bottom_layout:add(wifiup)
     left_bottom_layout:add(net_up)
---    left_bottom_layout:add(baticon)
---    left_bottom_layout:add(batwidget)
+    left_bottom_layout:add(baticon)
+    left_bottom_layout:add(batwidget)
     left_bottom_layout:add(wifiicon)
     left_bottom_layout:add(vpnwidget)
     left_bottom_layout:add(hud_launcher)
@@ -705,11 +760,10 @@ end
 -- Autostart applications. The extra argument is optional, it means how long to
 -- delay a command before starting it (in seconds).
 autostart("pkill conky", 1)
---autostart("urxvtd -q -f -o", 1)
+autostart("urxvtd -q -f -o", 1)
 autostart("mpd", 1)
 autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
-autostart("nm-applet", 1)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)
@@ -717,7 +771,6 @@ autostart("compton -b", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
---autostart("~/Scripts/start_HUD.sh", 3)
 
 -- }}}
 
