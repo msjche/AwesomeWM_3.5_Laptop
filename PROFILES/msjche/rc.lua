@@ -155,10 +155,11 @@ vicious.cache(vicious.widgets.cpu)
 cpu_graph = blingbling.line_graph({ height = 40,
                                         width = 50,
                                         show_text = true,
+										font = "Droid Sans",
 										font_size = "10",
 										text_color = "#C1C0DE",
                                         label = "CPU $percent %",
-	                                    rounded_size = 0.3,
+	                                    rounded_size = 0,
     									graph_color = "#1793D099",
 										graph_line_color = "#9F9F9F99",
                                         graph_background_color = "#00000033"
@@ -185,6 +186,7 @@ vicious.cache(vicious.widgets.net)
 
 netwidget = blingbling.net({interface = "wlp6s0",
 							show_text = true,
+							font = "Droid Sans",
 							font_size = "14",
 							text_color = "#C1C0DE",
 							width = 20,
