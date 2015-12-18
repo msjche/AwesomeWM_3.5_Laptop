@@ -13,10 +13,6 @@ local menubar = require("menubar")
 local vicious	= require("vicious")
 -- Lain
 local lain = require("lain")
--- freedesktop.org
---local freedesktop = require('freedesktop')
---require('freedesktop.utils')
---require('freedesktop.menu')
 -- Widget files
 local wi = require("wi")
 local blingbling = require("blingbling")
@@ -201,7 +197,6 @@ netwidget:set_ippopup()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
---mybottomwibox = {}
 myverticalwibox = {}
 mypromptbox = {}
 mylayoutbox = {}
@@ -321,56 +316,7 @@ for s = 1, screen.count() do
     layout:set_left(left_layout)
     layout:set_middle(mytasklist[s])
     layout:set_right(right_layout)
-
     mywibox[s]:set_widget(layout)
-
---    -- Create the bottom wibox
---    mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, height = 33 })
---
---    -- Widgets that are aligned to the bottom left
---    bottom_left_layout = wibox.layout.fixed.horizontal()
---    bottom_left_layout:add(cpuicon)
---    bottom_left_layout:add(cpugraph1)
---    bottom_left_layout:add(space)
---    bottom_left_layout:add(cpugraph1)
---    bottom_left_layout:add(space)
---    bottom_left_layout:add(cpugraph2)
---    bottom_left_layout:add(space)
---    bottom_left_layout:add(cpugraph3)
---    bottom_left_layout:add(space)
---    bottom_left_layout:add(cpugraph4)
---    bottom_left_layout:add(space)
---    bottom_left_layout:add(cpugraph5)
---    bottom_left_layout:add(space)
---    bottom_left_layout:add(cpugraph7)
---    bottom_left_layout:add(space)
---    bottom_left_layout:add(cpugraph8)
---    bottom_left_layout:add(cpuicon)
---
---    -- Widgets that are aligned to the bottom right
---    bottom_right_layout = wibox.layout.fixed.horizontal()
---    bottom_right_layout:add(net_down)
---    bottom_right_layout:add(wifidown)
---    bottom_right_layout:add(wifiwidget)
---    bottom_right_layout:add(wifiup)
---    bottom_right_layout:add(net_up)
---    bottom_right_layout:add(separator)
---    bottom_right_layout:add(uptimeicon)
---    bottom_right_layout:add(space)
---    bottom_right_layout:add(uptimewidget)
---    bottom_right_layout:add(separator)
---    bottom_right_layout:add(hud_launcher)
---    bottom_right_layout:add(up_launcher)
---    bottom_right_layout:add(kill_launcher)
---    bottom_right_layout:add(separator)
---    bottom_right_layout:add(Default_launcher)
---
---    -- Now bring it all together (with the tasklist in the middle)
---    bottom_layout = wibox.layout.align.horizontal()
---    bottom_layout:set_left(bottom_left_layout)
---	  bottom_layout:set_middle(mytasklist[s])
---	  bottom_layout:set_right(bottom_right_layout)
---    mybottomwibox[s]:set_widget(bottom_layout)
 
     -- Create the vertical wibox
     myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 50 })
@@ -390,20 +336,10 @@ for s = 1, screen.count() do
 	
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()
---    left_bottom_layout:add(cpuicon)
  	left_bottom_layout:add(cpu_graph)
 	for i=1,8 do
 	  left_bottom_layout:add(cores_graphs[i])
 	end
---	  left_bottom_layout:add(cpugraph1)
---    left_bottom_layout:add(cpugraph2)
---    left_bottom_layout:add(cpugraph3)
---    left_bottom_layout:add(cpugraph4)
---    left_bottom_layout:add(cpugraph5)
---    left_bottom_layout:add(cpugraph6)
---    left_bottom_layout:add(cpugraph7)
---    left_bottom_layout:add(cpugraph8)
---    left_bottom_layout:add(cpuicon)
     left_bottom_layout:add(space)
     left_bottom_layout:add(net_down)
     left_bottom_layout:add(wifidown)
@@ -485,7 +421,6 @@ globalkeys = awful.util.table.join(
    awful.key({ altkey }, "=", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/love.sh") end),
    awful.key({ altkey }, "-", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/ban.sh") end),
    awful.key({ altkey }, "i", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/status.sh") end),
---       awful.key({ altkey }, "x", function () awful.util.spawn_with_shell( "~/.config/pianobar/pianobar-scripts/stop.sh") end),
 	
 	-- Conky keybindings
     awful.key({}, "F12", function() raise_conky() end, function() lower_conky() end),
@@ -536,7 +471,7 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
--- User programs
+	-- User programs
 
 	awful.key({ modkey, "Shift"   }, "Delete", function() awful.util.spawn("oblogout") end),
 	awful.key({ modkey }, "Escape", function() awful.util.spawn("poweroff") end),
@@ -776,12 +711,3 @@ autostart("~/Scripts/Theming/1440.sh", 1)
 
 -- }}}
 
--- {{{ Run .desktop files with dex
--- Because 'dex' is not an application, autostart("dex -ae Awesome") will always
--- execute every entry (which is unwanted).
-local dex_output = io.popen("dex -ade Awesome")
-for cmd in dex_output:lines() do
-    autostart(cmd:gsub("Executing command: ", ""), 4)
-end
-dex_output:close()
--- }}}
