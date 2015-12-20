@@ -146,13 +146,29 @@ separator = wibox.widget.textbox(' ⁞ ')
 ----------------------------------------------------------------------------------------
 -- Blingbling
 
+volume_master = blingbling.volume({height = 33, 
+									width = 70, 
+									bar =true, 
+									show_text = true, 
+									font = "Droid Sans",
+									font_size = "14",
+									text_color = "#C1C0DE",
+									label ="Vol: $percent%", 
+									pulseaudio = true,
+									graph_color = "#7A5ADA99",
+									graph_line_color = "#7A5ADA33",
+									graph_background_color = "#C1C0DE20"
+									})
+volume_master:update_master()
+volume_master:set_master_control()
+
 -- CPU
 vicious.cache(vicious.widgets.cpu)
 cpu_graph = blingbling.line_graph({ height = 40,
                                         width = 50,
                                         show_text = true,
 										font = "Droid Sans",
-										font_size = "10",
+										font_size = "11",
 										text_color = "#C1C0DE",
                                         label = "CPU $percent %",
 	                                    rounded_size = 0,
@@ -293,8 +309,7 @@ for s = 1, screen.count() do
     right_layout:add(separator)
     right_layout:add(fshome)
     right_layout:add(separator)
-    right_layout:add(volicon)
-    right_layout:add(volumewidget)
+    right_layout:add(volume_master)
     right_layout:add(separator)
     right_layout:add(wifiwidget)
     right_layout:add(space)
@@ -439,7 +454,8 @@ globalkeys = awful.util.table.join(
     awful.key({ altkey,           }, "q",      function () lain.widgets.calendar:show(7) end),
     awful.key({ altkey,           }, "h",      function () fshome.show(7) end),
     awful.key({ altkey,           }, "w",      function () yawn.show(7) end),
-    awful.key({ altkey,           }, "b",      function () awful.util.table:popup_bat(7) end),
+--    awful.key({ altkey,           }, "b",      function () lain.widgets.battery:show(7) end),
+    awful.key({ altkey,           }, "b",      function () batwidget.show.popup_bat(7) end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),

@@ -459,23 +459,23 @@ baticon:buttons(batwidget:buttons())
 	elseif bat_s == "Discharging" then
 		if 	bat_perc >= bat_90 then
 			baticon:set_image(beautiful.widget_bat_full)
-		elseif bat_perc >= bat_80 then
+		elseif bat_perc >= bat_80 and bat_perc < bat_90 then
 			baticon:set_image(beautiful.widget_bat_90)
-		elseif bat_perc >= bat_70 then
+		elseif bat_perc >= bat_70 and bat_perc < bat_80 then
 			baticon:set_image(beautiful.widget_bat_80)
-		elseif bat_perc >= bat_60 then
+		elseif bat_perc >= bat_60 and bat_perc < bat_70 then
 			baticon:set_image(beautiful.widget_bat_70)
-		elseif bat_perc >= bat_50 then
+		elseif bat_perc >= bat_50 and bat_perc < bat_60 then
 			baticon:set_image(beautiful.widget_bat_60)
-		elseif bat_perc >= bat_40 then
+		elseif bat_perc >= bat_40 and bat_perc < bat_50 then
 			baticon:set_image(beautiful.widget_bat_50)
-		elseif bat_perc >= bat_30 then
+		elseif bat_perc >= bat_30 and bat_perc < bat_40 then
 			baticon:set_image(beautiful.widget_bat_40)
-		elseif bat_perc >= bat_20 then
+		elseif bat_perc >= bat_20 and bat_perc < bat_30 then
 			baticon:set_image(beautiful.widget_bat_30)
-		elseif bat_perc >= bat_10 then
+		elseif bat_perc >= bat_10 and bat_perc < bat_20 then
 			baticon:set_image(beautiful.widget_bat_20)
-		elseif bat_perc > bat_5 then
+		elseif bat_perc > bat_5 and bat_perc < bat_10 then
 			baticon:set_image(beautiful.widget_bat_10)
 		else
 			baticon:set_image(beautiful.widget_bat_empty)
@@ -483,28 +483,29 @@ baticon:buttons(batwidget:buttons())
 	else
 		if 	bat_perc >= bat_90 then
 			baticon:set_image(beautiful.widget_charge_full)
-		elseif bat_perc >= bat_80 then
+		elseif bat_perc >= bat_80 and bat_perc < bat_90 then
 			baticon:set_image(beautiful.widget_charge_90)
-		elseif bat_perc >= bat_70 then
+		elseif bat_perc >= bat_70 and bat_perc < bat_80 then
 			baticon:set_image(beautiful.widget_charge_80)
-		elseif bat_perc >= bat_60 then
+		elseif bat_perc >= bat_60 and bat_perc < bat_70 then
 			baticon:set_image(beautiful.widget_charge_70)
-		elseif bat_perc >= bat_50 then
+		elseif bat_perc >= bat_50 and bat_perc < bat_60 then
 			baticon:set_image(beautiful.widget_charge_60)
-		elseif bat_perc >= bat_40 then
+		elseif bat_perc >= bat_40 and bat_perc < bat_50 then
 			baticon:set_image(beautiful.widget_charge_50)
-		elseif bat_perc >= bat_30 then
+		elseif bat_perc >= bat_30 and bat_perc < bat_40 then
 			baticon:set_image(beautiful.widget_charge_40)
-		elseif bat_perc >= bat_20 then
+		elseif bat_perc >= bat_20 and bat_perc < bat_30 then
 			baticon:set_image(beautiful.widget_charge_30)
-		elseif bat_perc >= bat_10 then
+		elseif bat_perc >= bat_10 and bat_perc < bat_20 then
 			baticon:set_image(beautiful.widget_charge_20)
-		elseif bat_perc > bat_5 then
+		elseif bat_perc >= bat_5 and bat_perc < bat_10 then
 			baticon:set_image(beautiful.widget_charge_10)
 		else
 			baticon:set_image(beautiful.widget_charge_empty)
 		end
 	end
+	return " " .. bat_perc .. " %"
 end, 1, "BAT1"
 })
 
