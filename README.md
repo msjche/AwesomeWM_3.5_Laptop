@@ -8,7 +8,7 @@ Installation:
 
 	git clone https://github.com/msjche/AwesomeWM_Laptop.git ~/.config/awesome
 	cd ~/.config/awesome && cp -r AwesomeWM_Laptop/* .
-Optional:
+Optional
 	rm -r AwesomeWM_Laptop
 
 if you want any specific PROFILE:
