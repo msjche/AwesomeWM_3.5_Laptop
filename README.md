@@ -24,7 +24,7 @@ For "msjche" theme
 For "Default" theme
 ![Alt text](default.png?raw=true "Title")
 
-	cd ~/.config/awesome && ln -s PROFILES/default/* .
+	cd ~/.config/awesome && ln -s PROFILES/Default/* .
 
 from there you should be able to reload Awesome and have the new system. Enjoy!
 
