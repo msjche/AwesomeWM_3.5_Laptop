@@ -505,7 +505,6 @@ baticon:buttons(batwidget:buttons())
 			baticon:set_image(beautiful.widget_charge_empty)
 		end
 	end
-	return " " .. bat_perc .. " %"
 end, 1, "BAT1"
 })
 
