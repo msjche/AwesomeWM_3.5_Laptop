@@ -4,9 +4,16 @@ I've created a folder "PROFILES" that contain folders, widgets and libraries for
 
 Since these two configs do not use the same themes or paths, i've decided to move to this system
 
-if you want any specific PROFILE go to:
+Installation:
 
-~/.config/awesome
+	git clone https://github.com/msjche/AwesomeWM_Laptop.git ~/.config/awesome
+	cd ~/.config/awesome && cp -r AwesomeWM_Laptop/* .
+Optional:
+	rm -r AwesomeWM_Laptop
+
+if you want any specific PROFILE:
+
+	cd ~/.config/awesome
 
 and create symlinks as follows:
 
