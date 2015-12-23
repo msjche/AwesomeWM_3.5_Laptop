@@ -129,7 +129,7 @@ tags = {
            },
  layout = {
       layouts[10],	-- 1:2eb
-      layouts[2],  	-- 2:pacman
+      layouts[8],  	-- 2:pacman
       layouts[8],	-- 3:news
       layouts[10],	-- 4:IRC
       layouts[4],	-- 5:music
@@ -450,7 +450,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "Escape", function() awful.util.spawn("poweroff") end),
 	awful.key({ altkey }, "m", function () awful.util.spawn_with_shell( "urxvt -e htop -s PERCENT_MEM") end),
 	awful.key({ altkey }, "s", function () awful.util.spawn_with_shell( "urxvt -e glances") end),
-	awful.key({ modkey }, "b", function () awful.util.spawn( "luakit") end),
+	awful.key({ modkey }, "b", function () awful.util.spawn( "qutebrowser") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
 	awful.key({ modkey, "Shift" }, "b", function () awful.util.spawn( "firefox-developer") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),

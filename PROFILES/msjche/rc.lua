@@ -494,7 +494,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey }, "Escape", function() awful.util.spawn("poweroff") end),
 	awful.key({ altkey }, "m", function () awful.util.spawn_with_shell( "urxvt -e htop -s PERCENT_MEM") end),
 	awful.key({ altkey }, "s", function () awful.util.spawn_with_shell( "urxvt -e glances") end),
-	awful.key({ modkey }, "b", function () awful.util.spawn( "luakit") end),
+	awful.key({ modkey }, "b", function () awful.util.spawn( "qutebrowser") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
