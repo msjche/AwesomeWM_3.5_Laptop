@@ -416,8 +416,9 @@ memwidget = lain.widgets.mem({
         mem_u      = mem_now.used
         mem_t      = mem_now.total
         mem_p      = mem_now.percent
---        widget:set_markup(markup(blue, mem_u) .. markup(gray, "MB"))
-        widget:set_markup(markup(blue, mem_u))
+--		widget:set_markup(markup(blue, mem_u) .. markup(gray, "MB"))
+        widget:set_markup(markup(gray, " ") .. markup(blue, mem_u))
+		widget:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("urxvt -e htop -s PERCENT_MEM", false) end)))
     end
 })
 

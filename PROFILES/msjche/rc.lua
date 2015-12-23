@@ -147,6 +147,73 @@ separator = wibox.widget.textbox(' ⁞ ')
 ----------------------------------------------------------------------------------------
 -- Blingbling
 
+----------------------------------------------------------------------------------------
+-- Filesystems
+boot_graph = blingbling.progress_graph({ height = 35,
+									width = 60,
+									v_margin = 5,
+									horizontal = true,
+									show_text = true,
+									font = "Droid Sans",
+									font_size = "12",
+									text_color = "#C1C0DE",
+									label ="boot $percent%", 
+									rounded_size = 0.3,
+									graph_color = "#1793D099",
+									graph_background_color = "#00000033",
+									graph_line_color = "#1793D033"
+								  })
+vicious.register(boot_graph, vicious.widgets.fs,'${/boot used_p}',10)
+
+home_graph = blingbling.progress_graph({ height = 35,
+									width = 60,
+									v_margin = 5,
+									horizontal = true,
+									show_text = true,
+									font = "Droid Sans",
+									font_size = "12",
+									text_color = "#C1C0DE",
+									label ="home $percent%", 
+									rounded_size = 0.3,
+									graph_color = "#1793D099",
+									graph_background_color = "#00000033",
+									graph_line_color = "#1793D033"
+								  })
+vicious.register(home_graph, vicious.widgets.fs,'${/home used_p}',10)
+
+
+root_graph = blingbling.progress_graph({ height = 35,
+									width = 60,
+									v_margin = 5,
+									horizontal = true,
+									show_text = true,
+									font = "Droid Sans",
+									font_size = "12",
+									text_color = "#C1C0DE",
+									label ="root $percent%", 
+									rounded_size = 0.3,
+									graph_color = "#1793D099",
+									graph_background_color = "#00000033",
+									graph_line_color = "#1793D033"
+								  })
+vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',10)
+
+-- Memory
+mem_graph = blingbling.progress_graph({ height = 30,
+									width = 60,
+									horizontal = true,
+									show_text = true,
+									font = "Droid Sans",
+									font_size = "12",
+									text_color = "#C1C0DE",
+									label ="Mem: $percent%", 
+									rounded_size = 0.3,
+									graph_color = "#1793D099",
+									graph_background_color = "#00000033",
+									graph_line_color = "#1793D033"
+								  })
+vicious.register(mem_graph, vicious.widgets.mem,'$1',3)
+
 volume_master = blingbling.volume({height = 33, 
 									width = 70, 
 									bar =true, 
@@ -156,8 +223,8 @@ volume_master = blingbling.volume({height = 33,
 									text_color = "#C1C0DE",
 									label ="Vol: $percent%", 
 									pulseaudio = true,
-									graph_color = "#7A5ADA99",
-									graph_line_color = "#7A5ADA33",
+									graph_color = "#1793D099",
+									graph_line_color = "#1793D033",
 									graph_background_color = "#C1C0DE20"
 									})
 volume_master:update_master()
@@ -166,10 +233,10 @@ volume_master:set_master_control()
 -- CPU
 vicious.cache(vicious.widgets.cpu)
 cpu_graph = blingbling.line_graph({ height = 40,
-                                        width = 50,
+                                        width = 60,
                                         show_text = true,
 										font = "Droid Sans",
-										font_size = "11",
+										font_size = "13",
 										text_color = "#C1C0DE",
                                         label = "CPU $percent %",
 	                                    rounded_size = 0,
@@ -179,8 +246,8 @@ cpu_graph = blingbling.line_graph({ height = 40,
                                       })
 vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
 
-cores_graph_conf =({height = 15,
-					width = 50,
+cores_graph_conf =({height = 20,
+					width = 60,
 					rounded_size = 0.3,
 					graph_color = "#1793D099",
 					graph_line_color = "#9F9F9F99",
@@ -284,6 +351,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
     --left_layout:add(mylauncher)
+    left_layout:add(hud_launcher)
+    left_layout:add(kill_launcher)
     left_layout:add(mytaglist[s])
     left_layout:add(space)
     left_layout:add(mypromptbox[s])
@@ -304,17 +373,13 @@ for s = 1, screen.count() do
     right_layout:add(separator)
     right_layout:add(mailicon)
     right_layout:add(separator)
-    right_layout:add(memicon)
-    right_layout:add(space)
-    right_layout:add(memwidget)
-    right_layout:add(separator)
-    right_layout:add(fshome)
-    right_layout:add(separator)
     right_layout:add(volume_master)
     right_layout:add(separator)
     right_layout:add(wifiwidget)
     right_layout:add(space)
     right_layout:add(netwidget)
+    right_layout:add(wifiicon)
+    right_layout:add(vpnwidget)
     right_layout:add(separator)
     right_layout:add(baticon)
     right_layout:add(batwidget)
@@ -335,7 +400,7 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 50 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 60 })
 
     -- Widgets that are aligned to the top left
     left_top_layout = wibox.layout.fixed.vertical()
@@ -356,15 +421,18 @@ for s = 1, screen.count() do
 	for i=1,8 do
 	  left_bottom_layout:add(cores_graphs[i])
 	end
-    left_bottom_layout:add(space)
     left_bottom_layout:add(net_down)
     left_bottom_layout:add(wifidown)
     left_bottom_layout:add(wifiup)
     left_bottom_layout:add(net_up)
-    left_bottom_layout:add(wifiicon)
-    left_bottom_layout:add(vpnwidget)
-    left_bottom_layout:add(hud_launcher)
-    left_bottom_layout:add(kill_launcher)
+    left_bottom_layout:add(space)
+    left_bottom_layout:add(mem_graph)
+    left_bottom_layout:add(memwidget)
+    left_bottom_layout:add(space)
+    left_bottom_layout:add(boot_graph)
+    left_bottom_layout:add(home_graph)
+    left_bottom_layout:add(root_graph)
+    left_bottom_layout:add(fshome)
 
 	-- Now bring it all together (with the tasklist in the middle)
     vertical_layout = wibox.layout.align.vertical()
