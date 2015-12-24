@@ -286,7 +286,7 @@ for s = 1, screen.count() do
     right_layout:add(mailwidget)
     right_layout:add(spacer)
     right_layout:add(baticon)
-    right_layout:add(batpct)
+    right_layout:add(batwidget)
     right_layout:add(spacer)
     right_layout:add(pacicon)
     right_layout:add(pacwidget)

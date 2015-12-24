@@ -3,6 +3,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 local vicious = require("vicious")
 local naughty = require("naughty")
+local lain = require("lain")
 
 -- Spacers
 volspace = wibox.widget.textbox()
@@ -93,46 +94,80 @@ vicious.register(mpdwidget, vicious.widgets.mpd,
         end
     end, 1)
 
--- Charge %
-batpct = wibox.widget.textbox()
-vicious.register(batpct, vicious.widgets.bat, function(widget, args)
-  bat_state  = args[1]
-  bat_charge = args[2]
-  bat_time   = args[3]
+----------------------------------------------------------------------------------------
+-- Battery
 
-  if args[1] == "-" then
-    if bat_charge > 70 then
-      baticon:set_image(beautiful.widget_batfull)
-    elseif bat_charge > 30 then
-      baticon:set_image(beautiful.widget_batmed)
-    elseif bat_charge > 10 then
-      baticon:set_image(beautiful.widget_batlow)
-    else
-      baticon:set_image(beautiful.widget_batempty)
-    end
-  else
-    baticon:set_image(beautiful.widget_ac)
-    if args[1] == "Charging" then
-      blink = not blink
-      if blink then
-        baticon:set_image(beautiful.widget_acblink)
-      end
-    end
-  end
+baticon = wibox.widget.imagebox()
+batwidget = lain.widgets.bat({
 
-  return args[2] .. "%"
-end, nil, "BAT1")
+settings = function(widget, args)
+
+batwidget:buttons(awful.util.table.join(awful.button({ }, 1, popup_bat)))
+baticon:buttons(batwidget:buttons())
+
+	local bat_state  	= ""
+	local bat_charge 	= 0
+	local bat_time  	= 0
+	local blink      	= true
+	local timeout		= 1
+
+	bat_70	= tostring (75)
+	bat_40	= tostring (35)
+	bat_10	= tostring (15)
+
+	bat_perc = bat_now.perc
+	bat_p = tostring (bat_perc) 
+	bat_s = bat_now.status
+	bat_t = bat_now.time
+        
+    if bat_s == "Full" then
+		baticon:set_image(beautiful.widget_ac)
+	elseif bat_s == "Discharging" then
+			baticon:set_image(beautiful.widget_batfull)
+			batwidget:set_text(" ( - ) ")
+		if bat_perc >= bat_70 then
+			baticon:set_image(beautiful.widget_batfull)
+			batwidget:set_text(" ( - ) ")
+		elseif bat_perc >= bat_40 then
+			baticon:set_image(beautiful.widget_batmed)
+			batwidget:set_text(" ( - ) ")
+		elseif bat_perc > bat_10 then
+			baticon:set_image(beautiful.widget_batlow)
+			batwidget:set_text(" ( - ) ")
+		elseif bat_perc > bat_10 then
+		else
+			baticon:set_image(beautiful.widget_batempty)
+			batwidget:set_text(" ( - ) plug in now ")
+		end
+	else
+		if 	bat_perc >= bat_70 then
+			baticon:set_image(beautiful.widget_batfull)
+			batwidget:set_text(" ( + ) ")
+		elseif bat_perc >= bat_40 then
+			baticon:set_image(beautiful.widget_batmed)
+			batwidget:set_text(" ( + ) ")
+		elseif bat_perc >= bat_10 then
+			baticon:set_image(beautiful.widget_batlow)
+			batwidget:set_text(" ( + ) ")
+		else
+			baticon:set_image(beautiful.widget_batempty)
+			batwidget:set_text(" ( + ) ")
+		end
+	end
+end, 1, "BAT1"
+})
 
 -- Buttons
 function popup_bat()
   local state = ""
+  local popup_bat_preset = { font = "Insonsolata 15" }
   if bat_state == "↯" then
     state = "Full"
   elseif bat_state == "↯" then
     state = "Charged"
   elseif bat_state == "+" then
     state = "Charging"
-  elseif bat_state == "-" then
+  elseif bat_state == "−" then
     state = "Discharging"
   elseif bat_state == "⌁" then
     state = "Not charging"
@@ -140,12 +175,38 @@ function popup_bat()
     state = "Unknown"
   end
 
-  naughty.notify { text = "Charge : " .. bat_charge .. "%\nState  : " .. state ..
-    " (" .. bat_time .. ")", timeout = 5, hover_timeout = 0.5 }
+  naughty.notify { text = "Charge : " .. bat_p .. "%\nState  : " .. bat_s ..
+    " (" .. bat_t .. ")", timeout = 5, hover_timeout = 0.5 }
 end
-batpct:buttons(awful.util.table.join(awful.button({ }, 1, popup_bat)))
-baticon:buttons(batpct:buttons())
--- End Battery}}}
+
+-- Battery Warning
+local function trim(s)
+  return s:find'^%s*$' and '' or s:match'^%s*(.*%S)'
+end
+
+local function bat_notification()
+  local f_capacity = assert(io.open("/sys/class/power_supply/BAT1/capacity", "r"))
+  local f_status = assert(io.open("/sys/class/power_supply/BAT1/status", "r"))
+  local bat_capacity = tonumber(f_capacity:read("*all"))
+  local bat_status = trim(f_status:read("*all"))
+  local bat_status_preset = { font = "Insonsolata 15" }
+
+  if (bat_capacity <= 15 and bat_status == "Discharging") then
+    naughty.notify({ title      = "Battery Warning"
+      , text       = "Battery low! " .. bat_capacity .."%" .. " left!"
+      , fg="#ffffff"
+      , bg="#C91C1C"
+      , timeout    = 10
+      , position   = "top_right"
+    })
+  end
+end
+
+battimer = timer({timeout = 15})
+battimer:connect_signal("timeout", bat_notification)
+battimer:start()
+
+----------------------------------------------------------------------------------------
 
 -- {{{ PACMAN
 -- Icon
