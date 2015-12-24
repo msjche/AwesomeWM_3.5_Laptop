@@ -147,7 +147,6 @@ separator = wibox.widget.textbox(' ⁞ ')
 ----------------------------------------------------------------------------------------
 -- Blingbling
 
-----------------------------------------------------------------------------------------
 -- Filesystems
 boot_graph = blingbling.progress_graph({ height = 35,
 									width = 60,
@@ -198,6 +197,7 @@ root_graph = blingbling.progress_graph({ height = 35,
 								  })
 vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',10)
 
+----------------------------------------------------------------------------------------
 -- Memory
 mem_graph = blingbling.progress_graph({ height = 30,
 									width = 60,
@@ -212,8 +212,10 @@ mem_graph = blingbling.progress_graph({ height = 30,
 									graph_background_color = "#00000033",
 									graph_line_color = "#1793D033"
 								  })
-vicious.register(mem_graph, vicious.widgets.mem,'$1',3)
+vicious.register(mem_graph, vicious.widgets.mem,'$1',5)
 
+----------------------------------------------------------------------------------------
+-- Volume
 volume_master = blingbling.volume({height = 33, 
 									width = 70, 
 									bar =true, 
@@ -230,6 +232,7 @@ volume_master = blingbling.volume({height = 33,
 volume_master:update_master()
 volume_master:set_master_control()
 
+----------------------------------------------------------------------------------------
 -- CPU
 vicious.cache(vicious.widgets.cpu)
 cpu_graph = blingbling.line_graph({ height = 40,
@@ -256,11 +259,12 @@ cores_graph_conf =({height = 20,
 cores_graphs = {}
 for i=1,8 do
 	cores_graphs[i] = blingbling.progress_graph( cores_graph_conf)
-	vicious.register(cores_graphs[i], vicious.widgets.cpu, "$"..(i+1).."",1)
+	vicious.register(cores_graphs[i], vicious.widgets.cpu, "$"..(i+1).."",2)
 end
 
 vicious.cache(vicious.widgets.net)
 
+----------------------------------------------------------------------------------------
 -- Wifi
 vicious.cache(vicious.widgets.net)
 
@@ -425,7 +429,6 @@ for s = 1, screen.count() do
     left_bottom_layout:add(wifidown)
     left_bottom_layout:add(wifiup)
     left_bottom_layout:add(net_up)
-    left_bottom_layout:add(space)
     left_bottom_layout:add(mem_graph)
     left_bottom_layout:add(memwidget)
     left_bottom_layout:add(space)
