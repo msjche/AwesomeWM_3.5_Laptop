@@ -164,23 +164,6 @@ boot_graph = blingbling.progress_graph({ height = 35,
 								  })
 vicious.register(boot_graph, vicious.widgets.fs,'${/boot used_p}',10)
 
-home_graph = blingbling.progress_graph({ height = 35,
-									width = 60,
-									v_margin = 5,
-									horizontal = true,
-									show_text = true,
-									font = "Droid Sans",
-									font_size = "12",
-									text_color = "#C1C0DE",
-									label ="home $percent%", 
-									rounded_size = 0.3,
-									graph_color = "#1793D099",
-									graph_background_color = "#00000033",
-									graph_line_color = "#1793D033"
-								  })
-vicious.register(home_graph, vicious.widgets.fs,'${/home used_p}',10)
-
-
 root_graph = blingbling.progress_graph({ height = 35,
 									width = 60,
 									v_margin = 5,
@@ -196,6 +179,22 @@ root_graph = blingbling.progress_graph({ height = 35,
 									graph_line_color = "#1793D033"
 								  })
 vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',10)
+
+home_graph = blingbling.progress_graph({ height = 35,
+									width = 60,
+									v_margin = 5,
+									horizontal = true,
+									show_text = true,
+									font = "Droid Sans",
+									font_size = "12",
+									text_color = "#C1C0DE",
+									label ="home $percent%", 
+									rounded_size = 0.3,
+									graph_color = "#1793D099",
+									graph_background_color = "#00000033",
+									graph_line_color = "#1793D033"
+								  })
+vicious.register(home_graph, vicious.widgets.fs,'${/home used_p}',10)
 
 ----------------------------------------------------------------------------------------
 -- Memory
@@ -433,8 +432,8 @@ for s = 1, screen.count() do
     left_bottom_layout:add(memwidget)
     left_bottom_layout:add(space)
     left_bottom_layout:add(boot_graph)
-    left_bottom_layout:add(home_graph)
     left_bottom_layout:add(root_graph)
+    left_bottom_layout:add(home_graph)
     left_bottom_layout:add(fshome)
 
 	-- Now bring it all together (with the tasklist in the middle)
