@@ -220,7 +220,7 @@ volume_master = blingbling.volume({height = 33,
 									bar =true, 
 									show_text = true, 
 									font = "Droid Sans",
-									font_size = "14",
+									font_size = "15",
 									text_color = "#C1C0DE",
 									label ="Vol: $percent%", 
 									pulseaudio = true,
@@ -353,7 +353,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-    --left_layout:add(mylauncher)
+    left_layout:add(Default_launcher)
     left_layout:add(hud_launcher)
     left_layout:add(kill_launcher)
     left_layout:add(mytaglist[s])
@@ -373,16 +373,17 @@ for s = 1, screen.count() do
     right_layout:add(separator)
     right_layout:add(pacicon)
     right_layout:add(pacwidget)
-    right_layout:add(separator)
+    right_layout:add(space)
     right_layout:add(mailicon)
     right_layout:add(separator)
-    right_layout:add(volume_master)
-    right_layout:add(separator)
     right_layout:add(wifiwidget)
-    right_layout:add(space)
+    right_layout:add(separator)
     right_layout:add(netwidget)
+    right_layout:add(separator)
     right_layout:add(wifiicon)
     right_layout:add(vpnwidget)
+    right_layout:add(separator)
+    right_layout:add(volume_master)
     right_layout:add(separator)
     right_layout:add(baticon)
     right_layout:add(batwidget)
@@ -392,7 +393,6 @@ for s = 1, screen.count() do
     right_layout:add(uptimewidget)
     right_layout:add(separator)
     right_layout:add(mytextclock)
-    right_layout:add(Default_launcher)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)

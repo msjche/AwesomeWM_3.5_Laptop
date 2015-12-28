@@ -124,16 +124,16 @@ baticon:buttons(batwidget:buttons())
 		baticon:set_image(beautiful.widget_ac)
 	elseif bat_s == "Discharging" then
 			baticon:set_image(beautiful.widget_batfull)
-			batwidget:set_text(" ( - ) ")
+			batwidget:set_text(" - ")
 		if bat_perc >= bat_70 then
 			baticon:set_image(beautiful.widget_batfull)
-			batwidget:set_text(" ( - ) ")
+			batwidget:set_text(" - ")
 		elseif bat_perc >= bat_40 then
 			baticon:set_image(beautiful.widget_batmed)
-			batwidget:set_text(" ( - ) ")
+			batwidget:set_text(" - ")
 		elseif bat_perc > bat_10 then
 			baticon:set_image(beautiful.widget_batlow)
-			batwidget:set_text(" ( - ) ")
+			batwidget:set_text(" - ")
 		elseif bat_perc > bat_10 then
 		else
 			baticon:set_image(beautiful.widget_batempty)
@@ -142,16 +142,16 @@ baticon:buttons(batwidget:buttons())
 	else
 		if 	bat_perc >= bat_70 then
 			baticon:set_image(beautiful.widget_batfull)
-			batwidget:set_text(" ( + ) ")
+			batwidget:set_text(" + ")
 		elseif bat_perc >= bat_40 then
 			baticon:set_image(beautiful.widget_batmed)
-			batwidget:set_text(" ( + ) ")
+			batwidget:set_text(" + ")
 		elseif bat_perc >= bat_10 then
 			baticon:set_image(beautiful.widget_batlow)
-			batwidget:set_text(" ( + ) ")
+			batwidget:set_text(" + ")
 		else
 			baticon:set_image(beautiful.widget_batempty)
-			batwidget:set_text(" ( + ) ")
+			batwidget:set_text(" + ")
 		end
 	end
 end, 1, "BAT1"
