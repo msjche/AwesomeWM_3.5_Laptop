@@ -119,6 +119,10 @@ end
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- Menu config
+mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
+                              theme = { height = 25, width = 200 }})
+
 -- {{{ Wibox
 
 markup      = lain.util.markup
@@ -407,6 +411,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the top left
     left_top_layout = wibox.layout.fixed.vertical()
+    left_top_layout:add(mylauncher)
     left_top_layout:add(chrome_launcher)
     left_top_layout:add(firefox_launcher)
     left_top_layout:add(torbrowser_launcher)
