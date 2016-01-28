@@ -209,7 +209,7 @@ mem_graph = blingbling.progress_graph({ height = 30,
 									font = "Droid Sans",
 									font_size = "12",
 									text_color = "#C1C0DE",
-									label ="Mem: $percent%", 
+									label ="Mem $percent%", 
 									rounded_size = 0.3,
 									graph_color = "#1793D099",
 									graph_background_color = "#00000033",
@@ -791,7 +791,7 @@ end
 autostart("pkill conky", 1)
 autostart("urxvtd -q -f -o", 1)
 autostart("mpd", 1)
-autostart("xscreensaver -no-splash", 1)
+--autostart("xscreensaver -no-splash", 1)
 autostart("xflux -z 94596", 1)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
@@ -800,6 +800,7 @@ autostart("compton -b", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
+autostart("~/Scripts/up.sh", 1)
 
 -- }}}
 
