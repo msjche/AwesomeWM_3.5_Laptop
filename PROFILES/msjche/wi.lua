@@ -52,8 +52,8 @@ local math         = { floor  = math.floor }
 launcher_dir = active_theme .. "/icons/launchers/"
 icon_dir = active_theme .. "/icons/"
 
-mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
-                        		theme = { height = 25, width = 200 }})
+--mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
+--                        		theme = { height = 25, width = 200 }})
 mylauncher = awful.widget.launcher({ image = icon_dir .. "awesome_icon.png",
 								menu = mymainmenu })
 
