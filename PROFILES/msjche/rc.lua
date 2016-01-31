@@ -135,7 +135,7 @@ gray        = "#858585"
 local util = awful.util
 
 -- Textclock
-mytextclock = awful.widget.textclock(markup(gray, " %a")
+mytextclock = awful.widget.textclock(markup(gray, "%a")
 .. markup(blue, " %d ") .. markup(gray, "%b ") ..  markup(blue, "%H:%M "))
 
 -- Calendar
