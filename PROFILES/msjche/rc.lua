@@ -415,6 +415,7 @@ for s = 1, screen.count() do
     left_top_layout:add(chrome_launcher)
     left_top_layout:add(firefox_launcher)
     left_top_layout:add(torbrowser_launcher)
+    left_top_layout:add(filezilla_launcher)
     left_top_layout:add(libreoffice_launcher)
     left_top_layout:add(gimp_launcher)
     left_top_layout:add(thunderbird_launcher)

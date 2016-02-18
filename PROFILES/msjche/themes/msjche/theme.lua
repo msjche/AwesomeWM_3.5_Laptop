@@ -46,7 +46,7 @@ else
 end
 --}}}
 
-theme.font                          = "monofur for Powerline bold 16"
+theme.font                          = "Droid Sans 16"
 theme.taglist_font                  = "Xirod 13"
 theme.fg_normal                     = "#747474"
 theme.fg_focus                      = "#DDDCFF"
