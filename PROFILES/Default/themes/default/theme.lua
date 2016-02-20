@@ -12,25 +12,34 @@ theme.wallpaper = awful.util.getdir("config") .. "/themes/default/background.jpg
 --theme.font          = "terminus 13"
 theme.font          = "FreeSans 14"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
+theme.fg_normal = "#DCDCCC"
+theme.fg_focus  = "#F0DFAF"
+theme.fg_urgent = "#CC9393"
+theme.bg_normal = "#3F3F3F"
+theme.bg_focus  = "#1E2320"
+theme.bg_urgent = "#3F3F3F"
+
 theme.bg_minimize   = "#444444"
 theme.bg_tooltip    = "#d6d6d6"
 theme.bg_em         = "#5a5a5a"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 theme.fg_tooltip    = "#1a1a1a"
 theme.fg_em         = "#d6d6d6"
 
+-- {{{ Borders
 theme.border_width  = "2"
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
-theme.border_marked = "#91231c"
+theme.border_normal = "#3F3F3F"
+theme.border_focus  = "#6F6F6F"
+theme.border_marked = "#CC9393"
+-- }}}
+
+-- {{{ Titlebars
+theme.titlebar_bg_focus  = "#3F3F3F"
+theme.titlebar_bg_normal = "#3F3F3F"
+-- }}}
+
 theme.fg_widget_value = "#aaaaaa"
 theme.fg_widget_clock = "#aaaaaa"
 theme.fg_widget_value_important = "#aaaaaa"
@@ -44,7 +53,6 @@ theme.border_widget = "#3F3F3F"
 -- overriding the default one when
 -- defined, the sets are:
 -- [taglist|tasklist]_[bg|fg]_[focus|urgent]
--- titlebar_[bg|fg]_[normal|focus]
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- Example:
