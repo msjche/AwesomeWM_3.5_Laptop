@@ -665,6 +665,7 @@ autostart("compton -b", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
+autostart("~/Scripts/up.sh", 1)
 --autostart("~/Scripts/start_HUD.sh", 3)
 autostart("~/Scripts/blanking.sh", 3)
 
