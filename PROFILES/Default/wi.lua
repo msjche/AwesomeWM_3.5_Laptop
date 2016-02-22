@@ -272,17 +272,25 @@ cpuicon = wibox.widget.imagebox()
 cpuicon:set_image(beautiful.widget_cpu)
 --
 cpu = wibox.widget.textbox()
-vicious.register(cpu, vicious.widgets.cpu, "All: $1% 1: $2% 2: $3% 3: $4% 4: $5%", 2)
+vicious.register(cpu, vicious.widgets.cpu, "All: $1% - 1:$2% - 2:$3% - 3:$4% - 4:$5% - 5:$6% - 6:$7%  7:$8% - 8:$9%", 2)
 -- End CPU }}}
---
+
+-- {{{ Start Mem
+fsicon = wibox.widget.imagebox()
+fsicon:set_image(beautiful.widget_fs)
+
+fs = wibox.widget.textbox()
+vicious.register(fs, vicious.widgets.fs, " / ${/ used_p}% - /home ${/home used_p}%", 2)
+-- End Mem }}}
+
 -- {{{ Start Mem
 memicon = wibox.widget.imagebox()
 memicon:set_image(beautiful.widget_ram)
---
+
 mem = wibox.widget.textbox()
-vicious.register(mem, vicious.widgets.mem, "Mem: $1% Use: $2MB Total: $3MB", 2)
+vicious.register(mem, vicious.widgets.mem, "Mem: $1% - $2MB", 2)
 -- End Mem }}}
---
+
 -- {{{ Start Gmail 
 mailicon = wibox.widget.imagebox(beautiful.widget_mail)
 mailwidget = wibox.widget.textbox()
