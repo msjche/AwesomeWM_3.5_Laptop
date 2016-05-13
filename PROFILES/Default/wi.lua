@@ -223,7 +223,7 @@ vicious.register(pacwidget, vicious.widgets.pkg, function(widget, args)
    end
 
   return args[1]
-  end, 1801, "Arch S") -- Arch S for ignorepkg
+  end, 240, "Arch S") -- Arch S for ignorepkg
 --
 -- Buttons
   function popup_pac()
