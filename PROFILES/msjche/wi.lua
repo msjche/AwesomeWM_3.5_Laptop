@@ -26,7 +26,8 @@ beautiful.init(active_theme .. "/theme.lua")
 markup      = lain.util.markup
 darkblue    = theme.bg_focus
 white       = beautiful.fg_focus
-blue        = "#1793D0"
+--blue        = "#1793D0"		--Arch Blue
+blue        = "#7A5ADA"		--Gentoo Purple
 yellow		= "#E3E34E"
 red         = "#EB8F8F"
 gray        = "#858585"
