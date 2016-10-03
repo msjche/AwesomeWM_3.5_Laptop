@@ -144,6 +144,57 @@ separator = wibox.widget.textbox(' ⁞ ')
 ----------------------------------------------------------------------------------------
 -- Blingbling
 
+-- Labels
+cpu_label = blingbling.text_box({ height = 35,
+									width = 60,
+									v_margin = 5,
+									font = "Droid Sans Bold",
+									font_size = "20",
+									text_color = "#DCDCCC",
+									background_color = "#121212",
+									background_text_border = "#FF0000",
+									text_background_color = "#7A5ADA"
+								  })
+cpu_label:set_text("CPU")
+
+net_label = blingbling.text_box({ height = 35,
+									width = 60,
+									v_margin = 5,
+									font = "Droid Sans Bold",
+									font_size = "17",
+									text_color = "#DCDCCC",
+									background_color = "#121212",
+									background_text_border = "#FF0000",
+									text_background_color = "#7A5ADA"
+								  })
+net_label:set_text("NET")
+
+mem_label = blingbling.text_box({ height = 35,
+									width = 60,
+									v_margin = 5,
+									font = "Droid Sans Bold",
+									font_size = "17",
+									text_color = "#DCDCCC",
+									background_color = "#121212",
+									background_text_border = "#FF0000",
+									text_background_color = "#7A5ADA"
+								  })
+mem_label:set_text("MEM")
+
+disks_label = blingbling.text_box({ height = 35,
+									width = 60,
+									v_margin = 5,
+									font = "Droid Sans Bold",
+									font_size = "14",
+									text_color = "#DCDCCC",
+									background_color = "#121212",
+									background_text_border = "#FF0000",
+									text_background_color = "#7A5ADA"
+								  })
+disks_label:set_text("DISKS")
+
+
+----------------------------------------------------------------------------------------
 -- Filesystems
 boot_graph = blingbling.progress_graph({ height = 35,
 									width = 60,
@@ -178,6 +229,22 @@ root_graph = blingbling.progress_graph({ height = 35,
 								  })
 vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',10)
 
+usr_graph = blingbling.progress_graph({ height = 35,
+									width = 60,
+									v_margin = 5,
+									horizontal = true,
+									show_text = true,
+									font = "Droid Sans",
+									font_size = "12",
+									text_color = "#C1C0DE",
+									label ="usr $percent%", 
+									rounded_size = 0.3,
+									graph_color = "#7A5ADA99",
+									graph_background_color = "#00000033",
+									graph_line_color = "#7A5ADA33"
+								  })
+vicious.register(usr_graph, vicious.widgets.fs,'${/usr used_p}',10)
+
 home_graph = blingbling.progress_graph({ height = 35,
 									width = 60,
 									v_margin = 5,
@@ -207,7 +274,7 @@ mem_graph = blingbling.progress_graph({ height = 30,
 									rounded_size = 0.3,
 									graph_color = "#7A5ADA99",
 									graph_background_color = "#00000033",
-									graph_line_color = "#1793D033"
+									graph_line_color = "#7A5ADA33"
 								  })
 vicious.register(mem_graph, vicious.widgets.mem,'$1',5)
 
@@ -222,8 +289,8 @@ volume_master = blingbling.volume({height = 33,
 									text_color = "#C1C0DE",
 									label ="Vol: $percent%", 
 									pulseaudio = true,
-									graph_color = "#1793D099",
-									graph_line_color = "#1793D033",
+									graph_color = "#7A5ADA99",
+									graph_line_color = "#7A5ADA033",
 									graph_background_color = "#C1C0DE20"
 									})
 volume_master:update_master()
@@ -232,34 +299,38 @@ volume_master:set_master_control()
 ----------------------------------------------------------------------------------------
 -- CPU
 vicious.cache(vicious.widgets.cpu)
-cpu_graph = blingbling.line_graph({ height = 40,
-                                        width = 60,
+cpu_graph = blingbling.line_graph({ height = 50,
+                                        width = 65,
                                         show_text = true,
 										font = "Droid Sans",
-										font_size = "13",
+										font_size = "12",
 										text_color = "#C1C0DE",
                                         label = "CPU $percent %",
-	                                    rounded_size = 0,
-    									graph_color = "#1793D099",
+	                                    rounded_size = 0.1,
+    									graph_color = "#7A5ADA99",
 										graph_line_color = "#9F9F9F99",
-                                        graph_background_color = "#00000033"
+										graph_background_color = "#00000033"
                                       })
 vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
 
-cores_graph_conf =({height = 20,
+cores_graph_conf =({height = 55,
 					width = 60,
-					rounded_size = 0.3,
-					graph_color = "#1793D099",
-					graph_line_color = "#9F9F9F99",
-					horizontal = true
+					radius = 22,
+					show_text = true,
+					font_size = "12",
+					font = "Droid Sans",
+					label = "CPU",
 					})
 cores_graphs = {}
 for i=1,8 do
-	cores_graphs[i] = blingbling.progress_graph( cores_graph_conf)
-	vicious.register(cores_graphs[i], vicious.widgets.cpu, "$"..(i+1).."",2)
+	cores_graphs[i] = blingbling.wlourf_circle_graph( cores_graph_conf)
+	cores_graphs[i]:set_graph_colors({{"#C1C0DE",0}, --all value > 0 will be displayed using this color
+									   {"#A0A0F0", 0.1},
+									   {"#7A5ADA", 0.3},
+									   {"#00FF00", 0.5},
+									   {"#FF0000",0.7}})
+	vicious.register(cores_graphs[i], vicious.widgets.cpu, "$"..(i+1).."",0.3)
 end
-
-vicious.cache(vicious.widgets.net)
 
 ----------------------------------------------------------------------------------------
 -- Wifi
@@ -272,11 +343,43 @@ netwidget = blingbling.net({interface = "wlp6s0",
 							text_color = "#C1C0DE",
 							width = 20,
 							height = 33,
-							graph_color = "#1793D099",
+							graph_color = "#7A5ADA99",
 							graph_line_color = "#9F9F9F99",
                 			graph_background_color = "#00000033"
 							})
 netwidget:set_ippopup()
+
+netdown_graph = blingbling.line_graph({ height = 50,
+                                        width = 65,
+                                        show_text = true,
+										font = "Droid Sans",
+										font_size = "12",
+										text_color = "#C1C0DE",
+                                        --label = "${enp0s20u4 down_kb}",
+                                        label = "D $percent kbs",
+	                                    rounded_size = 0.1,
+    									graph_color = "#7A5ADA99",
+										graph_line_color = "#9F9F9F99",
+										graph_background_color = "#00000033"
+                                      })
+vicious.register(netdown_graph, vicious.widgets.net, "${wlp6s0 down_kb}")
+--vicious.register(netdown_graph, vicious.widgets.net, "${enp0s20u4 down_kb}")
+
+netup_graph = blingbling.line_graph({ height = 50,
+                                        width = 65,
+                                        show_text = true,
+										font = "Droid Sans",
+										font_size = "12",
+										text_color = "#C1C0DE",
+                                        label = "U $percent kbs",
+                                        --label = "     Up",
+	                                    rounded_size = 0.1,
+    									graph_color = "#7A5ADA99",
+										graph_line_color = "#9F9F9F99",
+										graph_background_color = "#00000033"
+                                      })
+vicious.register(netup_graph, vicious.widgets.net, "${wlp6s0 up_kb}")
+--vicious.register(netup_graph, vicious.widgets.net, "${enp0s20u4 up_kb}")
 
 ----------------------------------------------------------------------------------------
 
@@ -368,16 +471,16 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(separator)
-    right_layout:add(pacicon)
-    right_layout:add(pacwidget)
+--    right_layout:add(separator)
+--    right_layout:add(pacicon)
+--    right_layout:add(pacwidget)
 --    right_layout:add(space)
 --    right_layout:add(mailicon)
     right_layout:add(separator)
     right_layout:add(wifiwidget)
     right_layout:add(separator)
-    right_layout:add(netwidget)
-    right_layout:add(separator)
+--    right_layout:add(netwidget)
+--    right_layout:add(separator)
     right_layout:add(wifiicon)
     right_layout:add(vpnwidget)
     right_layout:add(separator)
@@ -401,38 +504,47 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 60 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 65 })
 
     -- Widgets that are aligned to the top left
     left_top_layout = wibox.layout.fixed.vertical()
---    left_top_layout:add(mylauncher)
-    left_top_layout:add(chrome_launcher)
-    left_top_layout:add(firefox_launcher)
-    left_top_layout:add(torbrowser_launcher)
-    left_top_layout:add(filezilla_launcher)
-    left_top_layout:add(libreoffice_launcher)
-    left_top_layout:add(gimp_launcher)
-    left_top_layout:add(thunderbird_launcher)
-    left_top_layout:add(steam_launcher)
-    left_top_layout:add(skype_launcher)
-    left_top_layout:add(telegram_launcher)
+    left_top_layout:add(gentoo_launcher)
+--    left_top_layout:add(chrome_launcher)
+--    left_top_layout:add(firefox_launcher)
+--    left_top_layout:add(torbrowser_launcher)
+--    left_top_layout:add(filezilla_launcher)
+--    left_top_layout:add(libreoffice_launcher)
+--    left_top_layout:add(gimp_launcher)
+--    left_top_layout:add(thunderbird_launcher)
+--    left_top_layout:add(steam_launcher)
+--    left_top_layout:add(skype_launcher)
+--    left_top_layout:add(telegram_launcher)
 --    left_top_layout:add(pycharm_launcher)
 	
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()
+   	left_bottom_layout:add(cpu_label)
  	left_bottom_layout:add(cpu_graph)
 	for i=1,8 do
 	  left_bottom_layout:add(cores_graphs[i])
 	end
-    left_bottom_layout:add(net_down)
-    left_bottom_layout:add(wifidown)
-    left_bottom_layout:add(wifiup)
-    left_bottom_layout:add(net_up)
+    left_bottom_layout:add(space)
+   	left_bottom_layout:add(net_label)
+    left_bottom_layout:add(netdown_graph)
+    left_bottom_layout:add(netup_graph)
+--    left_bottom_layout:add(net_down)
+--    left_bottom_layout:add(wifidown)
+--    left_bottom_layout:add(wifiup)
+--    left_bottom_layout:add(net_up)
+    left_bottom_layout:add(space)
+   	left_bottom_layout:add(mem_label)
     left_bottom_layout:add(mem_graph)
     left_bottom_layout:add(memwidget)
     left_bottom_layout:add(space)
+   	left_bottom_layout:add(disks_label)
     left_bottom_layout:add(boot_graph)
     left_bottom_layout:add(root_graph)
+    left_bottom_layout:add(usr_graph)
     left_bottom_layout:add(home_graph)
     left_bottom_layout:add(fshome)
 
@@ -787,7 +899,8 @@ autostart("pkill conky", 1)
 autostart("urxvtd -q -f -o", 1)
 autostart("mpd", 1)
 --autostart("xscreensaver -no-splash", 1)
-autostart("xflux -z 94596", 1)
+--autostart("xflux -z 94596", 1)
+autostart("redshift", 1)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)

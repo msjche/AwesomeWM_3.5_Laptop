@@ -54,10 +54,11 @@ launcher_dir = active_theme .. "/icons/launchers/"
 icon_dir = active_theme .. "/icons/"
 
 --mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
---                        		theme = { height = 25, width = 200 }})
-mylauncher = awful.widget.launcher({ image = icon_dir .. "awesome_icon.png",
-								menu = mymainmenu })
+--                              theme = { height = 16, width = 130 }})
+--mylauncher = awful.widget.launcher({ image = icon_dir .. "awesome_icon.png",
+--								menu = mymainmenu })
 
+gentoo_launcher= awful.widget.launcher({ image = launcher_dir .. "awesome_icon.png", command = home .. "chromium" })
 Default_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = home .. "/Scripts/Theming/default.sh" })
 virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = "VirtualBox" })
 SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
@@ -589,7 +590,7 @@ wifiwidget = lain.widgets.net({
        medlow_signal = tostring (19)
 
 --       link = tostring (40)      -- for testing
-       local link = awful.util.pread("iwconfig wlp6s0 | awk -F '=' '/Quality/ {print $2}' | cut -d '/' -f 1")
+       local link = awful.util.pread("sudo iwconfig wlp6s0 | awk -F '=' '/Quality/ {print $2}' | cut -d '/' -f 1")
        
 	if link == "" then
 	       wifiicon:set_image(beautiful.widget_wifi_no)
