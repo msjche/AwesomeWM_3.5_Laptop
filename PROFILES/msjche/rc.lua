@@ -471,16 +471,9 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
---    right_layout:add(separator)
---    right_layout:add(pacicon)
---    right_layout:add(pacwidget)
---    right_layout:add(space)
---    right_layout:add(mailicon)
     right_layout:add(separator)
     right_layout:add(wifiwidget)
     right_layout:add(separator)
---    right_layout:add(netwidget)
---    right_layout:add(separator)
     right_layout:add(wifiicon)
     right_layout:add(vpnwidget)
     right_layout:add(separator)
@@ -489,8 +482,6 @@ for s = 1, screen.count() do
     right_layout:add(baticon)
     right_layout:add(batwidget)
     right_layout:add(separator)
---    right_layout:add(uptimeicon)
---    right_layout:add(space)
     right_layout:add(uptimewidget)
     right_layout:add(separator)
     right_layout:add(mytextclock)
@@ -509,17 +500,6 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the top left
     left_top_layout = wibox.layout.fixed.vertical()
     left_top_layout:add(gentoo_launcher)
---    left_top_layout:add(chrome_launcher)
---    left_top_layout:add(firefox_launcher)
---    left_top_layout:add(torbrowser_launcher)
---    left_top_layout:add(filezilla_launcher)
---    left_top_layout:add(libreoffice_launcher)
---    left_top_layout:add(gimp_launcher)
---    left_top_layout:add(thunderbird_launcher)
---    left_top_layout:add(steam_launcher)
---    left_top_layout:add(skype_launcher)
---    left_top_layout:add(telegram_launcher)
---    left_top_layout:add(pycharm_launcher)
 	
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()
@@ -532,10 +512,6 @@ for s = 1, screen.count() do
    	left_bottom_layout:add(net_label)
     left_bottom_layout:add(netdown_graph)
     left_bottom_layout:add(netup_graph)
---    left_bottom_layout:add(net_down)
---    left_bottom_layout:add(wifidown)
---    left_bottom_layout:add(wifiup)
---    left_bottom_layout:add(net_up)
     left_bottom_layout:add(space)
    	left_bottom_layout:add(mem_label)
     left_bottom_layout:add(mem_graph)
@@ -592,9 +568,9 @@ globalkeys = awful.util.table.join(
 
 -- Custome key bindings
   	awful.key({ }, "XF86MonBrightnessUp", function ()
-	awful.util.spawn("xbacklight -inc 2") end),
+	awful.util.spawn("xbacklight -inc 5") end),
 	awful.key({ }, "XF86MonBrightnessDown", function ()
-	awful.util.spawn("xbacklight -dec 2") end),
+	awful.util.spawn("xbacklight -dec 5") end),
 	awful.key({ }, "XF86AudioRaiseVolume", function ()
 	awful.util.spawn("amixer set Master 5%+", false) end),
 	awful.key({ }, "XF86AudioLowerVolume", function ()
@@ -909,6 +885,8 @@ autostart("compton -b", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
 --autostart("~/Scripts/up.sh", 1)
+autostart("pkill nm-applet", 1)
+autostart("nm-applet", 4)
 
 -- }}}
 
