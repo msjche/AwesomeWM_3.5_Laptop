@@ -55,7 +55,7 @@ beautiful.init(active_theme .. "/theme.lua")
 terminal 	= "urxvt"
 editor 		= os.getenv("EDITOR") or "vim"
 editor_cmd 	= terminal .. " -e " .. editor
-browser 	= "luakit"
+browser 	= "qutebrowser"
 mail 		= terminal .. " -e mutt "
 musicplr 	= terminal .. " -g l30x34-320+16 -e ncmpcpp "
 
@@ -653,6 +653,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ altkey }, "m", function () awful.util.spawn_with_shell( "urxvt -e htop -s PERCENT_MEM") end),
 	awful.key({ altkey }, "s", function () awful.util.spawn_with_shell( "urxvt -e glances") end),
 	awful.key({ modkey }, "b", function () awful.util.spawn( "qutebrowser") end),
+	awful.key({ modkey }, "x", function () awful.util.spawn( "pkill nm-applet") end),
+	awful.key({ modkey }, "m", function () awful.util.spawn( "nm-applet") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
 	awful.key({ modkey }, "v", function () awful.util.spawn( "kodi") end),
 	awful.key({ modkey }, "o", function () awful.util.spawn( "opera") end),
