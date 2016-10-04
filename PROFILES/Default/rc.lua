@@ -118,7 +118,7 @@ end
 tags = {
  names  = { 
          '☭:Web',
-         '⚡:Pacman', 
+         '⚡:Portage', 
          '♨:News', 
          '☠:IRC',  
          '☃:Music', 
@@ -129,7 +129,7 @@ tags = {
            },
  layout = {
       layouts[10],	-- 1:2eb
-      layouts[8],  	-- 2:pacman
+      layouts[7],  	-- 2:portage
       layouts[8],	-- 3:news
       layouts[10],	-- 4:IRC
       layouts[4],	-- 5:music
