@@ -280,7 +280,7 @@ fsicon = wibox.widget.imagebox()
 fsicon:set_image(beautiful.widget_fs)
 
 fs = wibox.widget.textbox()
-vicious.register(fs, vicious.widgets.fs, " / ${/ used_p}% - /home ${/home used_p}%", 2)
+vicious.register(fs, vicious.widgets.fs, " / ${/ used_p}% - /usr ${/usr used_p}% - /home ${/home used_p}%", 2)
 -- End Mem }}}
 
 -- {{{ Start Mem
