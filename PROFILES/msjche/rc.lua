@@ -339,10 +339,10 @@ vicious.cache(vicious.widgets.net)
 netwidget = blingbling.net({interface = "wlp6s0",
 							show_text = true,
 							font = "Droid Sans",
-							font_size = "14",
+							font_size = "12",
 							text_color = "#C1C0DE",
 							width = 20,
-							height = 33,
+							height = 50,
 							graph_color = "#7A5ADA99",
 							graph_line_color = "#9F9F9F99",
                 			graph_background_color = "#00000033"
@@ -510,8 +510,11 @@ for s = 1, screen.count() do
 	end
     left_bottom_layout:add(space)
    	left_bottom_layout:add(net_label)
-    left_bottom_layout:add(netdown_graph)
-    left_bottom_layout:add(netup_graph)
+--    left_bottom_layout:add(netdown_graph)
+    left_bottom_layout:add(wifiup)
+    left_bottom_layout:add(netwidget)
+--    left_bottom_layout:add(netup_graph)
+    left_bottom_layout:add(wifidown)
     left_bottom_layout:add(space)
    	left_bottom_layout:add(mem_label)
     left_bottom_layout:add(mem_graph)

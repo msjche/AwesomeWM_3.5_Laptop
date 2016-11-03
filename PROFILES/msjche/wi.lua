@@ -36,7 +36,7 @@ background	= "#00000050"
 bright_red  = "#FF0000"
 green       = "#41F300"
 
-widheight = 30
+widheight = 20
 cpuwidth = 50
 wifiwidth = 60
 
@@ -483,7 +483,7 @@ baticon:buttons(batwidget:buttons())
 			baticon:set_image(beautiful.widget_bat_30)
 		elseif bat_perc >= bat_10 and bat_perc < bat_20 then
 			baticon:set_image(beautiful.widget_bat_20)
-		elseif bat_perc > bat_5 and bat_perc < bat_10 then
+		elseif bat_perc >= bat_5 and bat_perc < bat_10 then
 			baticon:set_image(beautiful.widget_bat_10)
 		else
 			baticon:set_image(beautiful.widget_bat_empty)
@@ -551,12 +551,12 @@ local function bat_notification()
   local bat_status_preset = { font = "Insonsolata 15" }
 
   if (bat_capacity <= 15 and bat_status == "Discharging") then
-    naughty.notify({ title      = "Battery Warning"
-      , text       = "Battery low! " .. bat_capacity .."%" .. " left!"
+    naughty.notify({ title = "Battery Warning"
+      , text = "Battery low! " .. bat_capacity .."%" .. " left!"
       , fg="#ffffff"
       , bg="#C91C1C"
-      , timeout    = 10
-      , position   = "top_right"
+      , timeout = 10
+      , position = "top_right"
     })
   end
 end
