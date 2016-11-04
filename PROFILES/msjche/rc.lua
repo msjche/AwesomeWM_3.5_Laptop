@@ -53,6 +53,7 @@ language 		= string.gsub(os.getenv("LANG"), ".utf8", "")
 beautiful.init(active_theme .. "/theme.lua")
 
 terminal 	= "urxvt"
+geditor		= "kate"
 editor 		= os.getenv("EDITOR") or "vim"
 editor_cmd 	= terminal .. " -e " .. editor
 browser 	= "qutebrowser"
@@ -107,14 +108,6 @@ end
 
 -- }}}
 
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
-
--- Menu config
---mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
---                              theme = { height = 25, width = 200 }})
---
 -- {{{ Wibox
 
 markup      = lain.util.markup
@@ -499,7 +492,7 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the top left
     left_top_layout = wibox.layout.fixed.vertical()
-    left_top_layout:add(gentoo_launcher)
+    left_top_layout:add(mylauncher)
 	
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()

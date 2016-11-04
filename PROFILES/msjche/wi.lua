@@ -23,6 +23,9 @@ language 		= string.gsub(os.getenv("LANG"), ".utf8", "")
 
 beautiful.init(active_theme .. "/theme.lua")
 
+terminal = "urxvt"
+geditor  = "kate"
+
 markup      = lain.util.markup
 darkblue    = theme.bg_focus
 white       = beautiful.fg_focus
@@ -38,7 +41,7 @@ green       = "#41F300"
 
 widheight = 20
 cpuwidth = 50
-wifiwidth = 60
+wifiwidth = 70
 
 local util = awful.util
 
@@ -53,12 +56,65 @@ local math         = { floor  = math.floor }
 launcher_dir = active_theme .. "/icons/launchers/"
 icon_dir = active_theme .. "/icons/"
 
---mymainmenu = awful.menu.new({ items = require("menugen").build_menu(),
---                              theme = { height = 16, width = 130 }})
---mylauncher = awful.widget.launcher({ image = icon_dir .. "awesome_icon.png",
---								menu = mymainmenu })
+-- {{{ Menu
+myawesomemenu = {
+   theme = {height = 25, width = 200 }, 
+   { "manual", terminal .. " -e man awesome" },
+   { "edit config", terminal .. " " .. awesome.conffile },
+   { "reload", awesome.restart },
+   { "quit", awesome.quit },
+   { "reboot", "reboot" },
+   { "shutdown", "shutdown" }
+}
+ 
+appsmenu = {
+   { "urxvt", "urxvt" },
+   { "sakura", "sakura" },
+   { "ncmpcpp", terminal .. " -e ncmpcpp" },
+   { "qutebrowser", "qutebrowser" },
+   { "uzbl", "uzbl-browser" },
+   { "firefox", "firefox" },
+   { "chromium", "chromium" },
+   { "thunar", "thunar" },
+   { "ranger", terminal .. " -e ranger" },
+   { "gvim", "gvim" },
+   { "leafpad", "leafpad" },
+   { "htop", terminal .. " -e htop" },
+   { "sysmonitor", "gnome-system-monitor" },
+   theme = {height = 25, width = 200 } 
+}
+ 
+gamesmenu = {
+   { "warsow", "warsow" },
+   { "nexuiz", "nexuiz" },
+   { "xonotic", "xonotic" },
+   { "openarena", "openarena" },
+   { "alienarena", "alienarena" },
+   { "teeworlds", "teeworlds" },
+   { "frozen-bubble", "frozen-bubble" },
+   { "warzone2100", "warzone2100" },
+   { "wesnoth", "wesnoth" },
+   { "supertuxkart", "supertuxkart" },
+   { "xmoto" , "xmoto" },
+   { "flightgear", "flightgear" },
+   { "snes9x" , "snes9x" },
+   theme = {height = 25, width = 200 } 
+}
+ 
+mymainmenu = awful.menu({ items = {	{ "awesome", myawesomemenu },
+                                    { "apps", appsmenu },
+				    				{ "games", gamesmenu },
+                                    { "terminal", terminal },
+				    				{ "web browser", browser },
+				    				{ "text editor", geditor },
+                                  },
+   									theme = {height = 25, width = 200 } 
+                        })
 
-gentoo_launcher= awful.widget.launcher({ image = launcher_dir .. "awesome_icon.png", command = home .. "chromium" })
+mylauncher = awful.widget.launcher({ image = icon_dir .. "awesome_icon.png", menu = mymainmenu, theme = {height = 25, width = 200}})
+
+-- }}}
+
 Default_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = home .. "/Scripts/Theming/default.sh" })
 virtualbox_launcher= awful.widget.launcher({ image = launcher_dir .. "tux.png", command = "VirtualBox" })
 SSR_launcher= awful.widget.launcher({ image = launcher_dir .. "SSR.png", command = "simplescreenrecorder" })
