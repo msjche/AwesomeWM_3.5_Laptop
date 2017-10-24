@@ -464,10 +464,10 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
-    right_layout:add(separator)
-    right_layout:add(wifiwidget)
-    right_layout:add(separator)
-    right_layout:add(wifiicon)
+--    right_layout:add(separator)
+--    right_layout:add(wifiwidget)
+--    right_layout:add(separator)
+--    right_layout:add(wifiicon)
     right_layout:add(vpnwidget)
     right_layout:add(separator)
     right_layout:add(volume_master)
@@ -883,7 +883,7 @@ autostart("compton -b", 1)
 --autostart("megasync", 1)
 autostart("~/Scripts/Theming/1440.sh", 1)
 --autostart("~/Scripts/up.sh", 1)
-autostart("pkill nm-applet", 1)
+--autostart("pkill nm-applet", 1)
 autostart("nm-applet", 4)
 
 -- }}}
