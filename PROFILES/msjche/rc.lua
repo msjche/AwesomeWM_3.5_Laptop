@@ -262,7 +262,7 @@ volume_master = blingbling.volume({height = 33,
 									bar =true, 
 									show_text = true, 
 									font = "Droid Sans",
-									font_size = "15",
+									font_size = "10",
 									text_color = "#C1C0DE",
 									label ="Vol: $percent%", 
 									pulseaudio = true,
@@ -427,7 +427,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 26 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 24 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
