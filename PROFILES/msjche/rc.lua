@@ -138,11 +138,11 @@ separator = wibox.widget.textbox(' ⁞ ')
 -- Blingbling
 
 -- Labels
-cpu_label = blingbling.text_box({ height = 35,
+cpu_label = blingbling.text_box({ height = 30,
 									width = 70,
 									v_margin = 5,
 									font = "Droid Sans Bold",
-									font_size = "20",
+									font_size = "15",
 									text_color = "#DCDCCC",
 									background_color = "#121212",
 									background_text_border = "#FF0000",
@@ -150,11 +150,11 @@ cpu_label = blingbling.text_box({ height = 35,
 								  })
 cpu_label:set_text("CPU")
 
-net_label = blingbling.text_box({ height = 35,
+net_label = blingbling.text_box({ height = 30,
 									width = 70,
 									v_margin = 5,
 									font = "Droid Sans Bold",
-									font_size = "17",
+									font_size = "13",
 									text_color = "#DCDCCC",
 									background_color = "#121212",
 									background_text_border = "#FF0000",
@@ -162,11 +162,11 @@ net_label = blingbling.text_box({ height = 35,
 								  })
 net_label:set_text("NET")
 
-mem_label = blingbling.text_box({ height = 35,
+mem_label = blingbling.text_box({ height = 30,
 									width = 70,
 									v_margin = 5,
 									font = "Droid Sans Bold",
-									font_size = "17",
+									font_size = "13",
 									text_color = "#DCDCCC",
 									background_color = "#121212",
 									background_text_border = "#FF0000",
@@ -174,11 +174,11 @@ mem_label = blingbling.text_box({ height = 35,
 								  })
 mem_label:set_text("MEM")
 
-disks_label = blingbling.text_box({ height = 35,
+disks_label = blingbling.text_box({ height = 30,
 									width = 70,
 									v_margin = 5,
 									font = "Droid Sans Bold",
-									font_size = "14",
+									font_size = "13",
 									text_color = "#DCDCCC",
 									background_color = "#121212",
 									background_text_border = "#FF0000",
@@ -189,13 +189,13 @@ disks_label:set_text("DISKS")
 
 ----------------------------------------------------------------------------------------
 -- Filesystems
-boot_graph = blingbling.progress_graph({ height = 35,
+boot_graph = blingbling.progress_graph({ height = 25,
 									width = 70,
 									v_margin = 5,
 									horizontal = true,
 									show_text = true,
 									font = "Droid Sans",
-									font_size = "12",
+									font_size = "9",
 									text_color = "#C1C0DE",
 									label ="boot $percent%", 
 									rounded_size = 0.3,
@@ -206,13 +206,13 @@ boot_graph = blingbling.progress_graph({ height = 35,
 								  })
 vicious.register(boot_graph, vicious.widgets.fs,'${/boot used_p}',10)
 
-root_graph = blingbling.progress_graph({ height = 35,
+root_graph = blingbling.progress_graph({ height = 25,
 									width = 70,
 									v_margin = 5,
 									horizontal = true,
 									show_text = true,
 									font = "Droid Sans",
-									font_size = "12",
+									font_size = "9",
 									text_color = "#C1C0DE",
 									label ="root $percent%", 
 									rounded_size = 0.3,
@@ -222,29 +222,13 @@ root_graph = blingbling.progress_graph({ height = 35,
 								  })
 vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',10)
 
-usr_graph = blingbling.progress_graph({ height = 35,
+home_graph = blingbling.progress_graph({ height = 25,
 									width = 70,
 									v_margin = 5,
 									horizontal = true,
 									show_text = true,
 									font = "Droid Sans",
-									font_size = "12",
-									text_color = "#C1C0DE",
-									label ="usr $percent%", 
-									rounded_size = 0.3,
-									graph_color = "#7A5ADA99",
-									graph_background_color = "#00000033",
-									graph_line_color = "#7A5ADA33"
-								  })
-vicious.register(usr_graph, vicious.widgets.fs,'${/usr used_p}',10)
-
-home_graph = blingbling.progress_graph({ height = 35,
-									width = 70,
-									v_margin = 5,
-									horizontal = true,
-									show_text = true,
-									font = "Droid Sans",
-									font_size = "12",
+									font_size = "9",
 									text_color = "#C1C0DE",
 									label ="home $percent%", 
 									rounded_size = 0.3,
@@ -256,12 +240,12 @@ vicious.register(home_graph, vicious.widgets.fs,'${/home used_p}',10)
 
 ----------------------------------------------------------------------------------------
 -- Memory
-mem_graph = blingbling.progress_graph({ height = 30,
+mem_graph = blingbling.progress_graph({ height = 25,
 									width = 70,
 									horizontal = true,
 									show_text = true,
 									font = "Droid Sans",
-									font_size = "12",
+									font_size = "9",
 									text_color = "#C1C0DE",
 									label ="Mem $percent%", 
 									rounded_size = 0.3,
@@ -296,7 +280,7 @@ cpu_graph = blingbling.line_graph({ height = 50,
                                         width = 70,
                                         show_text = true,
 										font = "Droid Sans",
-										font_size = "12",
+										font_size = "9",
 										text_color = "#C1C0DE",
                                         label = "CPU $percent %",
 	                                    rounded_size = 0.1,
@@ -306,11 +290,11 @@ cpu_graph = blingbling.line_graph({ height = 50,
                                       })
 vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
 
-cores_graph_conf =({height = 55,
-					width = 60,
-					radius = 24,
+cores_graph_conf =({height = 50,
+					width = 50,
+					radius = 21,
 					show_text = true,
-					font_size = "12",
+					font_size = "9",
 					font = "Droid Sans",
 					label = "CPU",
 					})
@@ -332,7 +316,7 @@ vicious.cache(vicious.widgets.net)
 netwidget = blingbling.net({interface = "wlp6s0",
 							show_text = true,
 							font = "Droid Sans",
-							font_size = "12",
+							font_size = "6",
 							text_color = "#C1C0DE",
 							width = 20,
 							height = 50,
@@ -346,7 +330,7 @@ netdown_graph = blingbling.line_graph({ height = 50,
                                         width = 70,
                                         show_text = true,
 										font = "Droid Sans",
-										font_size = "12",
+										font_size = "9",
 										text_color = "#C1C0DE",
                                         --label = "${enp0s20u4 down_kb}",
                                         label = "D $percent kbs",
@@ -362,7 +346,7 @@ netup_graph = blingbling.line_graph({ height = 50,
                                         width = 70,
                                         show_text = true,
 										font = "Droid Sans",
-										font_size = "12",
+										font_size = "9",
 										text_color = "#C1C0DE",
                                         label = "U $percent kbs",
                                         --label = "     Up",
@@ -443,7 +427,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 33 })
+    mywibox[s] = awful.wibox({ position = "top", screen = s, height = 26 })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -488,7 +472,7 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 70 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 62 })
 
     -- Widgets that are aligned to the top left
     left_top_layout = wibox.layout.fixed.vertical()
@@ -516,7 +500,6 @@ for s = 1, screen.count() do
    	left_bottom_layout:add(disks_label)
     left_bottom_layout:add(boot_graph)
     left_bottom_layout:add(root_graph)
-    left_bottom_layout:add(usr_graph)
     left_bottom_layout:add(home_graph)
     left_bottom_layout:add(fshome)
 
@@ -876,14 +859,15 @@ autostart("urxvtd -q -f -o", 1)
 autostart("mpd", 1)
 --autostart("xscreensaver -no-splash", 1)
 --autostart("xflux -z 94596", 1)
-autostart("redshift", 1)
+autostart("/usr/bin/redshift", 1)
 autostart("udiskie -2", 1)
 autostart("compton -b", 1)
 --autostart("hp-systray", 1)
 --autostart("dropbox", 1)
 --autostart("insync start", 1)
 --autostart("megasync", 1)
-autostart("~/Scripts/Theming/1440.sh", 1)
+--autostart("~/Scripts/Theming/1440.sh", 1)
+autostart("~/Scripts/Theming/1080.sh", 1)
 --autostart("~/Scripts/up.sh", 1)
 --autostart("pkill nm-applet", 1)
 autostart("nm-applet", 4)
