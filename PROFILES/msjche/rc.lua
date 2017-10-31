@@ -846,31 +846,12 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- {{{ Run autostarting applications only once
-function autostart(cmd, delay)
-    delay = delay or 0
-    awful.util.spawn_with_shell("pgrep -u $USER -x -f '" .. cmd .. "' || ( sleep " .. delay .. " && " .. cmd .. " )")
-end
+---- {{{ Run autostarting applications only once
+--function autostart(cmd, delay)
+--    delay = delay or 0
+--    awful.util.spawn_with_shell("pgrep -u $USER -x -f '" .. cmd .. "' || ( sleep " .. delay .. " && " .. cmd .. " )")
+--end
+---- }}}
 
--- Autostart applications. The extra argument is optional, it means how long to
--- delay a command before starting it (in seconds).
-autostart("pkill conky", 1)
-autostart("urxvtd -q -f -o", 1)
-autostart("mpd", 1)
---autostart("xscreensaver -no-splash", 1)
---autostart("xflux -z 94596", 1)
-autostart("/usr/bin/redshift", 1)
-autostart("udiskie -2", 1)
-autostart("compton -b", 1)
---autostart("hp-systray", 1)
---autostart("dropbox", 1)
---autostart("insync start", 1)
---autostart("megasync", 1)
---autostart("~/Scripts/Theming/1440.sh", 1)
-autostart("~/Scripts/Theming/1080.sh", 1)
---autostart("~/Scripts/up.sh", 1)
---autostart("pkill nm-applet", 1)
-autostart("nm-applet", 4)
-
--- }}}
-
+-- Autostart applications
+awful.util.spawn_with_shell("~/.config/awesome/autostart.sh")
