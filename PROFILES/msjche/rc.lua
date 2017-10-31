@@ -277,7 +277,7 @@ volume_master:set_master_control()
 -- CPU
 vicious.cache(vicious.widgets.cpu)
 cpu_graph = blingbling.line_graph({ height = 50,
-                                        width = 70,
+                                        width = 80,
                                         show_text = true,
 										font = "Droid Sans",
 										font_size = "9",
@@ -316,7 +316,7 @@ vicious.cache(vicious.widgets.net)
 netwidget = blingbling.net({interface = "wlp6s0",
 							show_text = true,
 							font = "Droid Sans",
-							font_size = "6",
+							font_size = "5",
 							text_color = "#C1C0DE",
 							width = 20,
 							height = 50,
