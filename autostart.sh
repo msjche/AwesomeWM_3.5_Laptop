@@ -16,11 +16,11 @@ function run {
   fi
 }
 
-run "megasync"
+#run "/usr/bin/megasync"
 run "xscreensaver --no-splash"
-run "/usr/bin/redshift"
-run "/usr/bin/dropbox"
-run "insync start"
+#run "/usr/bin/redshift"
+#run "/opt/dropbox/dropbox"
+#run "insync start"
 run "compton"
 run "urxvtd -q -f -o"
 run "mpd"
