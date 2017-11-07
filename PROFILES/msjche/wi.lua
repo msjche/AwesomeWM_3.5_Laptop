@@ -733,12 +733,32 @@ vpnwidgettimer:connect_signal("timeout",
     if status:read() == nil then
         vpnwidget:set_markup(markup(red, ""))
     else
-        vpnwidget:set_markup(markup(green, " VPN"))
+        vpnwidget:set_markup(markup(blue, " VPN"))
     end
     status:close()    
   end    
 )    
 vpnwidgettimer:start()
+
+----------------------------------------------------------------------------------------
+-- Bumblebee
+
+bbwidget = wibox.widget.textbox()
+bbwidget:set_text(" Bumblebee")
+bbwidgettimer = timer({ timeout = 5 })
+bbwidgettimer:connect_signal("timeout",
+  function()
+    status = io.popen("awk -F ' ' '{print $2}' /proc/acpi/bbswitch")
+    if status:read() == "OFF" then
+        bbwidget:set_markup(markup(red, ""))
+    else
+        bbwidget:set_markup(markup(green, " NVIDIA"))
+    end
+    status:close()    
+  end    
+)    
+bbwidgettimer:start()
+
 
 ----------------------------------------------------------------------------------------
 -- Uptime

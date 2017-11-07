@@ -452,6 +452,7 @@ for s = 1, screen.count() do
 --    right_layout:add(wifiwidget)
 --    right_layout:add(separator)
 --    right_layout:add(wifiicon)
+    right_layout:add(bbwidget)
     right_layout:add(vpnwidget)
     right_layout:add(separator)
     right_layout:add(volume_master)

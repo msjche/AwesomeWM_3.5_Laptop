@@ -20,6 +20,7 @@ function run {
 #run "/opt/dropbox/dropbox"
 #run "insync start"
 #run "/usr/bin/megasync"
+run "xbacklight -set 20"
 run "xscreensaver --no-splash"
 run "compton"
 run "urxvtd -q -f -o"
