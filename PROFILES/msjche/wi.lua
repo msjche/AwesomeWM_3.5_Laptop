@@ -40,7 +40,7 @@ bright_red  = "#FF0000"
 green       = "#41F300"
 
 widheight = 20
-cpuwidth = 50
+cpuwidth = 30
 wifiwidth = 70
 
 local util = awful.util
@@ -172,10 +172,9 @@ yawn = lain.widgets.yawn(2513768,
 tempicon = wibox.widget.imagebox(beautiful.widget_temp)
 tempwidget = lain.widgets.temp({
     settings = function()
-        widget:set_markup(markup(blue, coretemp_now) .. markup(gray, "°C"))
+        widget:set_markup(markup(blue, "    ") .. markup(blue, coretemp_now) .. markup(gray, "°C"))
     end
 })
-
 
 ----------------------------------------------------------------------------------------
 -- Gmail
@@ -351,10 +350,22 @@ volumewidget:buttons(awful.util.table.join(
 ))
 
 ----------------------------------------------------------------------------------------
+-- CPU Freq
+
+-- Core 1
+freq1 = wibox.widget.textbox()
+vicious.register(freq1, vicious.widgets.cpufreq, markup(gray, "Freq (GHz) ") .. markup(blue, "$2"), 5, "cpu0")
+-- Core 2
+freq2 = wibox.widget.textbox()
+vicious.register(freq2, vicious.widgets.cpufreq, "$2 GHz", 5, "cpu1")
+-- Cache that shit
+vicious.cache(vicious.widgets.cpufreq)
+
+----------------------------------------------------------------------------------------
 -- CPU Graph
 
 cpuicon = wibox.widget.imagebox(beautiful.widget_cpu)
-vicious.cache(vicious.widgets.cpu)
+vicious.cache(vicious.widgets.cpufreq)
 
 -- Initialize widget
 cpugraph1 = awful.widget.graph()
@@ -364,8 +375,10 @@ cpugraph1:set_height(widheight)
 cpugraph1:set_background_color(background)
 cpugraph1:set_border_color(border)
 cpugraph1:set_color(blue)
+cpugraph1:set_scale(true)
+--cpugraph1:set_max_value(3)
 -- Register widget
-vicious.register(cpugraph1, vicious.widgets.cpu, "$2")
+vicious.register(cpugraph1, vicious.widgets.cpufreq, "$2", 1, "cpu0")
 
 -- Initialize widget
 cpugraph2 = awful.widget.graph()
@@ -375,8 +388,10 @@ cpugraph2:set_height(widheight)
 cpugraph2:set_background_color(background)
 cpugraph2:set_border_color(border)
 cpugraph2:set_color(blue)
+cpugraph2:set_scale(true)
+--cpugraph2:set_max_value(3)
 -- Register widget
-vicious.register(cpugraph2, vicious.widgets.cpu, "$3")
+vicious.register(cpugraph2, vicious.widgets.cpufreq, "$2", 1, "cpu1")
 
 -- Initialize widget
 cpugraph3 = awful.widget.graph()
@@ -386,8 +401,10 @@ cpugraph3:set_height(widheight)
 cpugraph3:set_background_color(background)
 cpugraph3:set_border_color(border)
 cpugraph3:set_color(blue)
+cpugraph3:set_scale(true)
+cpugraph3:set_max_value(3)
 -- Register widget
-vicious.register(cpugraph3, vicious.widgets.cpu, "$4")
+vicious.register(cpugraph3, vicious.widgets.cpufreq, "$2", 1, "cpu2")
 
 -- Initialize widget
 cpugraph4 = awful.widget.graph()
@@ -397,8 +414,10 @@ cpugraph4:set_height(widheight)
 cpugraph4:set_background_color(background)
 cpugraph4:set_border_color(border)
 cpugraph4:set_color(blue)
+cpugraph4:set_scale(true)
+--cpugraph4:set_max_value(3)
 -- Register widget
-vicious.register(cpugraph4, vicious.widgets.cpu, "$5")
+vicious.register(cpugraph4, vicious.widgets.cpufreq, "$2", 1, "cpu3")
 
 -- Initialize widget
 cpugraph5 = awful.widget.graph()
@@ -409,7 +428,7 @@ cpugraph5:set_background_color(background)
 cpugraph5:set_border_color(border)
 cpugraph5:set_color(blue)
 -- Register widget
-vicious.register(cpugraph5, vicious.widgets.cpu, "$6")
+vicious.register(cpugraph5, vicious.widgets.cpufreq, "$6")
 
 -- Initialize widget
 cpugraph6 = awful.widget.graph()
@@ -420,7 +439,7 @@ cpugraph6:set_background_color(background)
 cpugraph6:set_border_color(border)
 cpugraph6:set_color(blue)
 -- Register widget
-vicious.register(cpugraph6, vicious.widgets.cpu, "$7")
+vicious.register(cpugraph6, vicious.widgets.cpufreq, "$7")
 
 -- Initialize widget
 cpugraph7 = awful.widget.graph()
@@ -431,7 +450,7 @@ cpugraph7:set_background_color(background)
 cpugraph7:set_border_color(border)
 cpugraph7:set_color(blue)
 -- Register widget
-vicious.register(cpugraph7, vicious.widgets.cpu, "$8")
+vicious.register(cpugraph7, vicious.widgets.cpufreq, "$8")
 
 -- Initialize widget
 cpugraph8 = awful.widget.graph()
@@ -442,7 +461,7 @@ cpugraph8:set_background_color(background)
 cpugraph8:set_border_color(border)
 cpugraph8:set_color(blue)
 -- Register widget
-vicious.register(cpugraph8, vicious.widgets.cpu, "$9")
+vicious.register(cpugraph8, vicious.widgets.cpufreq, "$9")
 
 ----------------------------------------------------------------------------------------
 -- File System
@@ -479,8 +498,8 @@ memwidget = lain.widgets.mem({
         mem_u      = mem_now.used
         mem_t      = mem_now.total
         mem_p      = mem_now.percent
---		widget:set_markup(markup(blue, mem_u) .. markup(gray, "MB"))
-        widget:set_markup(markup(gray, " ") .. markup(blue, mem_u))
+	widget:set_markup(markup(blue, mem_u) .. markup(gray, " MB"))
+--        widget:set_markup(markup(gray, " ") .. markup(blue, mem_u))
 		widget:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("urxvt -e htop -s PERCENT_MEM", false) end)))
     end
 })

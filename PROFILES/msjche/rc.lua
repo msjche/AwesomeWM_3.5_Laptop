@@ -139,7 +139,7 @@ separator = wibox.widget.textbox(' ⁞ ')
 
 -- Labels
 cpu_label = blingbling.text_box({ height = 35,
-				    width = 80,
+				    width = 95,
 				    v_margin = 5,
 				    font = "Droid Sans Bold",
 				    font_size = "22",
@@ -151,7 +151,7 @@ cpu_label = blingbling.text_box({ height = 35,
 cpu_label:set_text("CPU")
 
 net_label = blingbling.text_box({ height = 35,
-				    width = 80,
+				    width = 95,
 				    v_margin = 5,
 				    font = "Droid Sans Bold",
 				    font_size = "22",
@@ -163,7 +163,7 @@ net_label = blingbling.text_box({ height = 35,
 net_label:set_text("NET")
 
 mem_label = blingbling.text_box({ height = 35,
-				    width = 80,
+				    width = 95,
 				    v_margin = 5,
 				    font = "Droid Sans Bold",
 				    font_size = "17",
@@ -175,7 +175,7 @@ mem_label = blingbling.text_box({ height = 35,
 mem_label:set_text("MEM")
 
 disks_label = blingbling.text_box({ height = 35,
-				    width = 80,
+				    width = 95,
 				    v_margin = 5,
 				    font = "Droid Sans Bold",
 				    font_size = "17",
@@ -186,11 +186,10 @@ disks_label = blingbling.text_box({ height = 35,
 				    })
 disks_label:set_text("DISKS")
 
-
 ----------------------------------------------------------------------------------------
 -- Filesystems
 boot_graph = blingbling.progress_graph({ height = 30,
-					width = 80,
+					width = 95,
 					v_margin = 5,
 					horizontal = true,
 					show_text = true,
@@ -204,10 +203,10 @@ boot_graph = blingbling.progress_graph({ height = 30,
 					graph_background_color = "#00000033",
 					graph_line_color = "#7A5ADA33"
 					})
-vicious.register(boot_graph, vicious.widgets.fs,'${/boot used_p}',10)
+vicious.register(boot_graph, vicious.widgets.fs,'${/boot used_p}',60)
 
 root_graph = blingbling.progress_graph({ height = 30,
-					width = 80,
+					width = 95,
 					v_margin = 5,
 					horizontal = true,
 					show_text = true,
@@ -220,10 +219,10 @@ root_graph = blingbling.progress_graph({ height = 30,
 					graph_background_color = "#00000033",
 					graph_line_color = "#7A5ADA33"
 								  })
-vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',10)
+vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',60)
 
 home_graph = blingbling.progress_graph({ height = 30,
-					width = 80,
+					width = 95,
 					v_margin = 5,
 					horizontal = true,
 					show_text = true,
@@ -236,12 +235,12 @@ home_graph = blingbling.progress_graph({ height = 30,
 					graph_background_color = "#00000033",
 					graph_line_color = "#7A5ADA33"
 					})
-vicious.register(home_graph, vicious.widgets.fs,'${/home used_p}',10)
+vicious.register(home_graph, vicious.widgets.fs,'${/home used_p}',60)
 
 ----------------------------------------------------------------------------------------
 -- Memory
 mem_graph = blingbling.progress_graph({ height = 30,
-					width = 80,
+					width = 95,
 					horizontal = true,
 					show_text = true,
 					font = "Droid Sans",
@@ -253,12 +252,12 @@ mem_graph = blingbling.progress_graph({ height = 30,
 					graph_background_color = "#00000033",
 					graph_line_color = "#7A5ADA33"
 					})
-vicious.register(mem_graph, vicious.widgets.mem,'$1',5)
+vicious.register(mem_graph, vicious.widgets.mem,'$1',15)
 
 ----------------------------------------------------------------------------------------
 -- Volume
 volume_master = blingbling.volume({height = 33, 
-					width = 80, 
+					width = 95, 
 					bar =true, 
 					show_text = true, 
 					font = "Droid Sans",
@@ -277,7 +276,7 @@ volume_master:set_master_control()
 -- CPU
 vicious.cache(vicious.widgets.cpu)
 cpu_graph = blingbling.line_graph({ height = 45,
-                                        width = 80,
+                                        width = 95,
                                         show_text = true,
 					font = "Droid Sans",
 					font_size = "12",
@@ -292,7 +291,7 @@ vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
 
 cores_graph_conf =({height = 70,
 					width = 70,
-					radius = 30,
+					radius = 33,
 					show_text = true,
 					font_size = "12",
 					font = "Droid Sans",
@@ -473,7 +472,7 @@ for s = 1, screen.count() do
     mywibox[s]:set_widget(layout)
 
     -- Create the vertical wibox
-    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 80 })
+    myverticalwibox[s] = awful.wibox({ position = "left", screen = s, width = 95 })
 
     -- Widgets that are aligned to the top left
     left_top_layout = wibox.layout.fixed.vertical()
@@ -481,24 +480,30 @@ for s = 1, screen.count() do
 	
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()
-   	left_bottom_layout:add(cpu_label)
- 	left_bottom_layout:add(cpu_graph)
-	for i=1,8 do
-	  left_bottom_layout:add(cores_graphs[i])
+    left_bottom_layout:add(cpu_label)
+--    left_bottom_layout:add(cpugraph1)
+--    left_bottom_layout:add(cpugraph2)
+--    left_bottom_layout:add(cpugraph3)
+    left_bottom_layout:add(freq1)
+--    left_bottom_layout:add(freq2)
+    left_bottom_layout:add(cpu_graph)
+    left_bottom_layout:add(tempwidget)
+    for i=1,8 do
+	left_bottom_layout:add(cores_graphs[i])
 	end
     left_bottom_layout:add(space)
-   	left_bottom_layout:add(net_label)
+    left_bottom_layout:add(net_label)
 --    left_bottom_layout:add(netdown_graph)
     left_bottom_layout:add(wifiup)
     left_bottom_layout:add(netwidget)
 --    left_bottom_layout:add(netup_graph)
     left_bottom_layout:add(wifidown)
     left_bottom_layout:add(space)
-   	left_bottom_layout:add(mem_label)
+    left_bottom_layout:add(mem_label)
     left_bottom_layout:add(mem_graph)
     left_bottom_layout:add(memwidget)
     left_bottom_layout:add(space)
-   	left_bottom_layout:add(disks_label)
+    left_bottom_layout:add(disks_label)
     left_bottom_layout:add(boot_graph)
     left_bottom_layout:add(root_graph)
     left_bottom_layout:add(home_graph)
@@ -507,7 +512,7 @@ for s = 1, screen.count() do
 	-- Now bring it all together (with the tasklist in the middle)
     vertical_layout = wibox.layout.align.vertical()
     vertical_layout:set_top(left_top_layout)
-	vertical_layout:set_bottom(left_bottom_layout)
+    vertical_layout:set_bottom(left_bottom_layout)
     myverticalwibox[s]:set_widget(vertical_layout)
  
    
