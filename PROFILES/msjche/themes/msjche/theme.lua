@@ -47,7 +47,7 @@ end
 --}}}
 
 theme.font                          = "Droid Sans Bold 13"
-theme.taglist_font                  = "Xirod 14"
+theme.taglist_font                  = "Xirod 15"
 theme.fg_normal                     = "#747474"
 theme.fg_focus                      = "#DDDCFF"
 theme.bg_normal                     = "#12121299"

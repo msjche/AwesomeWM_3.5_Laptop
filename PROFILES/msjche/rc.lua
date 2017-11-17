@@ -194,7 +194,7 @@ boot_graph = blingbling.progress_graph({ height = 30,
 					horizontal = true,
 					show_text = true,
 					font = "Droid Sans",
-					font_size = "10",
+					font_size = "12",
 					text_color = "#C1C0DE",
 					label ="boot $percent%", 
 					rounded_size = 0.3,
@@ -211,7 +211,7 @@ root_graph = blingbling.progress_graph({ height = 30,
 					horizontal = true,
 					show_text = true,
 					font = "Droid Sans",
-					font_size = "10",
+					font_size = "12",
 					text_color = "#C1C0DE",
 					label ="root $percent%", 
 					rounded_size = 0.3,
@@ -227,7 +227,7 @@ home_graph = blingbling.progress_graph({ height = 30,
 					horizontal = true,
 					show_text = true,
 					font = "Droid Sans",
-					font_size = "10",
+					font_size = "12",
 					text_color = "#C1C0DE",
 					label ="home $percent%", 
 					rounded_size = 0.3,
@@ -257,7 +257,7 @@ vicious.register(mem_graph, vicious.widgets.mem,'$1',15)
 ----------------------------------------------------------------------------------------
 -- Volume
 volume_master = blingbling.volume({height = 33, 
-					width = 95, 
+					width = 70, 
 					bar =true, 
 					show_text = true, 
 					font = "Droid Sans",
@@ -289,7 +289,7 @@ cpu_graph = blingbling.line_graph({ height = 45,
                                       })
 vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
 
-cores_graph_conf =({height = 70,
+cores_graph_conf =({height = 75,
 					width = 70,
 					radius = 33,
 					show_text = true,
@@ -315,7 +315,7 @@ vicious.cache(vicious.widgets.net)
 netwidget = blingbling.net({interface = "wlp6s0",
 					show_text = true,
 					font = "Droid Sans",
-					font_size = "7",
+					font_size = "8",
 					text_color = "#C1C0DE",
 					width = 20,
 					height = 60,
@@ -481,11 +481,11 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()
     left_bottom_layout:add(cpu_label)
---    left_bottom_layout:add(cpugraph1)
---    left_bottom_layout:add(cpugraph2)
---    left_bottom_layout:add(cpugraph3)
+    left_bottom_layout:add(cpugraph1)
     left_bottom_layout:add(freq1)
 --    left_bottom_layout:add(freq2)
+--    left_bottom_layout:add(freq3)
+--    left_bottom_layout:add(freq4)
     left_bottom_layout:add(cpu_graph)
     left_bottom_layout:add(tempwidget)
     for i=1,8 do

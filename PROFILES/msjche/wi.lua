@@ -101,14 +101,14 @@ gamesmenu = {
    theme = {height = 25, width = 200 } 
 }
  
-mymainmenu = awful.menu({ items = {	{ "awesome", myawesomemenu },
-                                    { "apps", appsmenu },
-				    				{ "games", gamesmenu },
-                                    { "terminal", terminal },
-				    				{ "web browser", browser },
-				    				{ "text editor", geditor },
+mymainmenu = awful.menu({ items = {{ "awesome", myawesomemenu },
+                                   { "apps", appsmenu },
+--				   { "games", gamesmenu },
+                                   { "terminal", terminal },
+				   { "web browser", browser },
+				   { "text editor", geditor },
                                   },
-   									theme = {height = 25, width = 200 } 
+				    theme = {height = 25, width = 200 } 
                         })
 
 mylauncher = awful.widget.launcher({ image = icon_dir .. "awesome_icon.png", menu = mymainmenu, theme = {height = 25, width = 200}})
@@ -354,12 +354,10 @@ volumewidget:buttons(awful.util.table.join(
 
 -- Core 1
 freq1 = wibox.widget.textbox()
-vicious.register(freq1, vicious.widgets.cpufreq, markup(gray, "Freq (GHz) ") .. markup(blue, "$2"), 5, "cpu0")
+vicious.register(freq1, vicious.widgets.cpufreq, markup(gray, "Freq (") .. markup(blue, "GHz") .. markup(gray, ") ") .. markup(blue, "$2"),3 , "cpu0")
 -- Core 2
-freq2 = wibox.widget.textbox()
-vicious.register(freq2, vicious.widgets.cpufreq, "$2 GHz", 5, "cpu1")
--- Cache that shit
-vicious.cache(vicious.widgets.cpufreq)
+--freq2 = wibox.widget.textbox()
+--vicious.register(freq2, vicious.widgets.cpufreq, markup(blue, "$2"), 1, "cpu1")
 
 ----------------------------------------------------------------------------------------
 -- CPU Graph
@@ -498,7 +496,7 @@ memwidget = lain.widgets.mem({
         mem_u      = mem_now.used
         mem_t      = mem_now.total
         mem_p      = mem_now.percent
-	widget:set_markup(markup(blue, mem_u) .. markup(gray, " MB"))
+	widget:set_markup(markup(gray, "  ") .. markup(blue, mem_u) .. markup(gray, " MB"))
 --        widget:set_markup(markup(gray, " ") .. markup(blue, mem_u))
 		widget:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn("urxvt -e htop -s PERCENT_MEM", false) end)))
     end
