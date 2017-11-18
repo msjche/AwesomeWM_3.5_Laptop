@@ -481,7 +481,8 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the bottom left
     left_bottom_layout = wibox.layout.fixed.vertical()
     left_bottom_layout:add(cpu_label)
-    left_bottom_layout:add(cpugraph1)
+    left_bottom_layout:add(space)
+--    left_bottom_layout:add(cpugraph1)
     left_bottom_layout:add(freq1)
 --    left_bottom_layout:add(freq2)
 --    left_bottom_layout:add(freq3)
