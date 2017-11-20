@@ -167,16 +167,6 @@ yawn = lain.widgets.yawn(2513768,
 })
 
 ----------------------------------------------------------------------------------------
--- Coretemp
-
-tempicon = wibox.widget.imagebox(beautiful.widget_temp)
-tempwidget = lain.widgets.temp({
-    settings = function()
-        widget:set_markup(markup(blue, "    ") .. markup(blue, coretemp_now) .. markup(gray, "°C"))
-    end
-})
-
-----------------------------------------------------------------------------------------
 -- Gmail
 
 mailicon = wibox.widget.imagebox(beautiful.widget_mail)
@@ -776,6 +766,11 @@ bbwidgettimer:connect_signal("timeout",
 )    
 bbwidgettimer:start()
 
+----------------------------------------------------------------------------------------
+-- CPU Temp
+
+  tempwidget  = wibox.widget.textbox()
+  vicious.register(tempwidget, vicious.widgets.thermal, markup(gray, "Temp: ") .. markup(blue,"$1") .. markup(gray,"°C"), 5, { "coretemp.0/hwmon/hwmon0/", "core"})
 
 ----------------------------------------------------------------------------------------
 -- Uptime
