@@ -343,17 +343,14 @@ volumewidget:buttons(awful.util.table.join(
 -- CPU Freq
 
 -- Core 1
+vicious.cache(vicious.widgets.cpufreq)
 freq1 = wibox.widget.textbox()
 vicious.register(freq1, vicious.widgets.cpufreq, markup(gray, "Freq (") .. markup(blue, "GHz") .. markup(gray, ") ") .. markup(blue, "$2"),3 , "cpu0")
--- Core 2
---freq2 = wibox.widget.textbox()
---vicious.register(freq2, vicious.widgets.cpufreq, markup(blue, "$2"), 1, "cpu1")
 
 ----------------------------------------------------------------------------------------
 -- CPU Graph
 
 cpuicon = wibox.widget.imagebox(beautiful.widget_cpu)
-vicious.cache(vicious.widgets.cpufreq)
 
 -- Initialize widget
 cpugraph1 = awful.widget.graph()
@@ -367,89 +364,6 @@ cpugraph1:set_scale(true)
 --cpugraph1:set_max_value(3)
 -- Register widget
 vicious.register(cpugraph1, vicious.widgets.cpufreq, "$2", 1, "cpu0")
-
--- Initialize widget
-cpugraph2 = awful.widget.graph()
--- Graph properties
-cpugraph2:set_width(cpuwidth)
-cpugraph2:set_height(widheight)
-cpugraph2:set_background_color(background)
-cpugraph2:set_border_color(border)
-cpugraph2:set_color(blue)
-cpugraph2:set_scale(true)
---cpugraph2:set_max_value(3)
--- Register widget
-vicious.register(cpugraph2, vicious.widgets.cpufreq, "$2", 1, "cpu1")
-
--- Initialize widget
-cpugraph3 = awful.widget.graph()
--- Graph properties
-cpugraph3:set_width(cpuwidth)
-cpugraph3:set_height(widheight)
-cpugraph3:set_background_color(background)
-cpugraph3:set_border_color(border)
-cpugraph3:set_color(blue)
-cpugraph3:set_scale(true)
-cpugraph3:set_max_value(3)
--- Register widget
-vicious.register(cpugraph3, vicious.widgets.cpufreq, "$2", 1, "cpu2")
-
--- Initialize widget
-cpugraph4 = awful.widget.graph()
--- Graph properties
-cpugraph4:set_width(cpuwidth)
-cpugraph4:set_height(widheight)
-cpugraph4:set_background_color(background)
-cpugraph4:set_border_color(border)
-cpugraph4:set_color(blue)
-cpugraph4:set_scale(true)
---cpugraph4:set_max_value(3)
--- Register widget
-vicious.register(cpugraph4, vicious.widgets.cpufreq, "$2", 1, "cpu3")
-
--- Initialize widget
-cpugraph5 = awful.widget.graph()
--- Graph properties
-cpugraph5:set_width(cpuwidth)
-cpugraph5:set_height(widheight)
-cpugraph5:set_background_color(background)
-cpugraph5:set_border_color(border)
-cpugraph5:set_color(blue)
--- Register widget
-vicious.register(cpugraph5, vicious.widgets.cpufreq, "$6")
-
--- Initialize widget
-cpugraph6 = awful.widget.graph()
--- Graph properties
-cpugraph6:set_width(cpuwidth)
-cpugraph6:set_height(widheight)
-cpugraph6:set_background_color(background)
-cpugraph6:set_border_color(border)
-cpugraph6:set_color(blue)
--- Register widget
-vicious.register(cpugraph6, vicious.widgets.cpufreq, "$7")
-
--- Initialize widget
-cpugraph7 = awful.widget.graph()
--- Graph properties
-cpugraph7:set_width(cpuwidth)
-cpugraph7:set_height(widheight)
-cpugraph7:set_background_color(background)
-cpugraph7:set_border_color(border)
-cpugraph7:set_color(blue)
--- Register widget
-vicious.register(cpugraph7, vicious.widgets.cpufreq, "$8")
-
--- Initialize widget
-cpugraph8 = awful.widget.graph()
--- Graph properties
-cpugraph8:set_width(cpuwidth)
-cpugraph8:set_height(widheight)
-cpugraph8:set_background_color(background)
-cpugraph8:set_border_color(border)
-cpugraph8:set_color(blue)
--- Register widget
-vicious.register(cpugraph8, vicious.widgets.cpufreq, "$9")
 
 ----------------------------------------------------------------------------------------
 -- File System

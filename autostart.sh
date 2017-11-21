@@ -16,6 +16,7 @@ function run {
   fi
 }
 
+run "pkill conky"
 #run "/usr/bin/redshift"
 #run "/opt/dropbox/dropbox"
 #run "insync start"
@@ -26,6 +27,6 @@ run "compton"
 run "urxvtd -q -f -o"
 run "mpd"
 run "nm-applet"
-#bash "/home/msjche/Scripts/start_HUD.sh"
+bash "/home/msjche/Scripts/start_HUD.sh"
 bash "/home/msjche/Scripts/Theming/1440.sh"
 #bash "/home/msjche/Scripts/Theming/1080.sh"
