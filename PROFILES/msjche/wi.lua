@@ -41,7 +41,7 @@ green       = "#41F300"
 
 widheight = 20
 cpuwidth = 30
-wifiwidth = 70
+wifiwidth = 95
 
 local util = awful.util
 
