@@ -633,11 +633,12 @@ globalkeys = awful.util.table.join(
 
 	-- User programs
 
-	awful.key({ modkey, "Shift"   }, "Delete", function() awful.util.spawn("oblogout") end),
+	awful.key({ modkey, "Shift" }, "Delete", function() awful.util.spawn("oblogout") end),
 	awful.key({ modkey }, "Escape", function() awful.util.spawn("poweroff") end),
 	awful.key({ altkey }, "m", function () awful.util.spawn_with_shell( "urxvt -e htop -s PERCENT_MEM") end),
 	awful.key({ altkey }, "s", function () awful.util.spawn_with_shell( "urxvt -e glances") end),
 	awful.key({ modkey }, "b", function () awful.util.spawn( "qutebrowser") end),
+	awful.key({ modkey, "Shift" }, "b", function () awful.util.spawn( "firefox-bin") end),
 	awful.key({ modkey }, "k", function () awful.util.spawn( "pkill nm-applet") end),
 	awful.key({ modkey }, "m", function () awful.util.spawn( "nm-applet") end),
 	awful.key({ modkey }, "w", function () awful.util.spawn( "nmcli_dmenu") end),
@@ -801,6 +802,7 @@ client.connect_signal("manage", function (c, startup)
     end
 
     local titlebars_enabled = false
+--    local titlebars_enabled = true
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
         -- buttons for the titlebar
         local buttons = awful.util.table.join(
