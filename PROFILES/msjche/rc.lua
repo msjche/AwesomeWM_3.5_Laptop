@@ -144,7 +144,7 @@ cpu_label = blingbling.text_box({ height = 35,
 				    font = "Droid Sans Bold",
 				    font_size = "22",
 				    text_color = "#DCDCCC",
-				    background_color = "#121212",
+				    background_color = "#12121200",
 				    background_text_border = "#FF0000",
 				    text_background_color = "#7A5ADA"
 				 })
@@ -156,7 +156,7 @@ net_label = blingbling.text_box({ height = 35,
 				    font = "Droid Sans Bold",
 				    font_size = "22",
 				    text_color = "#DCDCCC",
-				    background_color = "#121212",
+				    background_color = "#12121200",
 				    background_text_border = "#FF0000",
 				    text_background_color = "#7A5ADA"
 				})
@@ -168,7 +168,7 @@ mem_label = blingbling.text_box({ height = 35,
 				    font = "Droid Sans Bold",
 				    font_size = "17",
 				    text_color = "#DCDCCC",
-				    background_color = "#121212",
+				    background_color = "#12121200",
 				    background_text_border = "#FF0000",
 				    text_background_color = "#7A5ADA"
 				})
@@ -180,7 +180,7 @@ disks_label = blingbling.text_box({ height = 35,
 				    font = "Droid Sans Bold",
 				    font_size = "17",
 				    text_color = "#DCDCCC",
-				    background_color = "#121212",
+				    background_color = "#12121200",
 				    background_text_border = "#FF0000",
 				    text_background_color = "#7A5ADA"
 				    })
@@ -200,7 +200,7 @@ boot_graph = blingbling.progress_graph({ height = 30,
 					rounded_size = 0.3,
 					--graph_color = "#1793D099", --Arch Blue
 					graph_color = "#7A5ADA99", -- Gentoo Purple
-					graph_background_color = "#00000033",
+					graph_background_color = "#00000000",
 					graph_line_color = "#7A5ADA33"
 					})
 vicious.register(boot_graph, vicious.widgets.fs,'${/boot used_p}',60)
@@ -216,7 +216,7 @@ root_graph = blingbling.progress_graph({ height = 30,
 					label ="root $percent%", 
 					rounded_size = 0.3,
 					graph_color = "#7A5ADA99",
-					graph_background_color = "#00000033",
+					graph_background_color = "#00000000",
 					graph_line_color = "#7A5ADA33"
 								  })
 vicious.register(root_graph, vicious.widgets.fs,'${/ used_p}',60)
@@ -232,7 +232,7 @@ home_graph = blingbling.progress_graph({ height = 30,
 					label ="home $percent%", 
 					rounded_size = 0.3,
 					graph_color = "#7A5ADA99",
-					graph_background_color = "#00000033",
+					graph_background_color = "#00000000",
 					graph_line_color = "#7A5ADA33"
 					})
 vicious.register(home_graph, vicious.widgets.fs,'${/home used_p}',60)
@@ -249,7 +249,7 @@ mem_graph = blingbling.progress_graph({ height = 30,
 					label ="Mem $percent%", 
 					rounded_size = 0.3,
 					graph_color = "#7A5ADA99",
-					graph_background_color = "#00000033",
+					graph_background_color = "#00000000",
 					graph_line_color = "#7A5ADA33"
 					})
 vicious.register(mem_graph, vicious.widgets.mem,'$1',15)
@@ -285,7 +285,7 @@ cpu_graph = blingbling.line_graph({ height = 45,
 					rounded_size = 0.1,
     					graph_color = "#7A5ADA99",
 					graph_line_color = "#9F9F9F99",
-					graph_background_color = "#00000033"
+					graph_background_color = "#00000000"
                                       })
 vicious.register(cpu_graph, vicious.widgets.cpu,'$1',2)
 

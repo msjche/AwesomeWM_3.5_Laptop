@@ -35,7 +35,7 @@ yellow		= "#E3E34E"
 red         = "#EB8F8F"
 gray        = "#858585"
 border      = "#4A4A4A50"
-background	= "#00000050"
+background	= "#00000000"
 bright_red  = "#FF0000"
 green       = "#41F300"
 
