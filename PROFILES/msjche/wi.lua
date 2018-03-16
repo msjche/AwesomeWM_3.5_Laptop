@@ -186,40 +186,40 @@ vicious.register(mailwidget, vicious.widgets.gmail,
 ----------------------------------------------------------------------------------------
 -- Pacman
 
--- Icon
-pacicon = wibox.widget.imagebox()
-pacicon:set_image(beautiful.widget_pac)
-
-pacwidget = wibox.widget.textbox()
-vicious.register(pacwidget, vicious.widgets.pkg, function(widget, args)
-   if args[1] > 0 then
-   pacicon:set_image(beautiful.widget_pacnew)
-   else
-   pacicon:set_image(beautiful.widget_pac)
-   end
-
-  return args[1]
-  end, 1, "Arch S") -- Arch S for ignorepkg
+---- Icon
+--pacicon = wibox.widget.imagebox()
+--pacicon:set_image(beautiful.widget_pac)
 --
--- Buttons
-  function popup_pac()
-  local pac_updates = ""
-  local f = io.popen("sudo pacman -S --dbpath /tmp/checkup-db-msjche/sync")
---  local f = io.popen("cat /tmp/off.updates")
-  if f then
-	pac_updates = f:read("*a"):match(".*/(.*)-.*\n$")
-  else
-	local pac_updates = ""
-  end
-  f:close()
-  if not pac_updates then
-	  pac_updates = "System is up to date"
-  end
-  naughty.notify { text = pac_updates }
-  end
-  pacwidget:buttons(awful.util.table.join(awful.button({ }, 1, popup_pac)))
-  pacicon:buttons(pacwidget:buttons())
-
+--pacwidget = wibox.widget.textbox()
+--vicious.register(pacwidget, vicious.widgets.pkg, function(widget, args)
+--   if args[1] > 0 then
+--   pacicon:set_image(beautiful.widget_pacnew)
+--   else
+--   pacicon:set_image(beautiful.widget_pac)
+--   end
+--
+--  return args[1]
+--  end, 1, "Arch S") -- Arch S for ignorepkg
+--
+---- Buttons
+--  function popup_pac()
+--  local pac_updates = ""
+--  local f = io.popen("sudo pacman -S --dbpath /tmp/checkup-db-msjche/sync")
+----  local f = io.popen("cat /tmp/off.updates")
+--  if f then
+--	pac_updates = f:read("*a"):match(".*/(.*)-.*\n$")
+--  else
+--	local pac_updates = ""
+--  end
+--  f:close()
+--  if not pac_updates then
+--	  pac_updates = "System is up to date"
+--  end
+--  naughty.notify { text = pac_updates }
+--  end
+--  pacwidget:buttons(awful.util.table.join(awful.button({ }, 1, popup_pac)))
+--  pacicon:buttons(pacwidget:buttons())
+--
 
 ----------------------------------------------------------------------------------------
 -- Pianobar
